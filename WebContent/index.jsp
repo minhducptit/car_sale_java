@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ResourceBundle"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta charset="UTF-8">
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
+
 <link href="css/content.css" rel="stylesheet" type="text/css" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,21 +21,22 @@
 <script src="https://kit.fontawesome.com/33edc35265.js"></script>
 </head>
 <body>
+	<%ResourceBundle resourceBundle= ResourceBundle.getBundle("carsale.common.Content", request.getLocale()); %>
 	<div class="header">
 		<div class="header-left">
 			<img src="./icon/gmail_header48px.png" /> <span
-				style="color: aliceblue;">otohn@gmail.com</span> &nbsp; <img
-				src="./icon/phone_52px.png" /> <span style="color: aliceblue;">+84
-				39 559 2104</span>
+				style="color: aliceblue;"><%=resourceBundle.getString("mail") %></span>
+			&nbsp; <img src="./icon/phone_52px.png" /> <span
+				style="color: aliceblue;">+84 39 559 2104</span>
 		</div>
 		<div class=" header-right ">
 			<a class="active" href="listCarPrice.jsp">Bảng giá xe</a> <a
-				href="carsales">Mua xe trả góp</a> <a href="#about ">Thư
-				viện</a>
+				href="carsales">Mua xe trả góp</a> <a href="#about ">Thư viện</a>
 		</div>
 	</div>
 	<div class="navbar">
-		<a href="index.jsp">Trang Chủ</a> <a href="new.jsp">Tin Tức</a>
+		<a href="index.jsp"><%=resourceBundle.getString("home") %></a> <a
+			href="new.jsp">Tin Tức</a>
 		<div class="dropdown">
 			<button class="dropbtn">
 				Sản Phẩm <i class="fa fa-caret-down"></i>
