@@ -6,4 +6,6 @@ car sale:
 5. common:Chứa các class dùng chung, haowcj các hàm xử lý dùng chung.
 6: dao: Chứa các class thực hiện nhiệm vụ tương tác với cơ sở dữ liệu.
 7. exception: Chứa các class exception trong project.
-8. validator: Chứa các class bắt lỗi validator 
+8. validator: Chứa các class bắt lỗi validator. 
+
+
