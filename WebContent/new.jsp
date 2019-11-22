@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ResourceBundle"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,24 +24,28 @@
 </head>
 <body>
 	<!-- Hearder -->
+	<%
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("carsale.common.Content", request.getLocale());
+	%>
 	<div class="header">
 		<div class="header-left">
 			<img src="./icon/gmail_header48px.png" /> <span
-				style="color: aliceblue;">otohn@gmail.com</span> &nbsp; <img
-				src="./icon/phone_52px.png" /> <span style="color: aliceblue;">+84
-				39 559 2104</span>
+				style="color: aliceblue;"><%=resourceBundle.getString("email")%></span>
+			&nbsp; <img src="./icon/phone_52px.png" /> <span
+				style="color: aliceblue;"><%=resourceBundle.getString("phone")%></span>
 		</div>
 		<div class=" header-right ">
-			<a class="active" href="listCarPrice.jsp">Bảng giá xe</a> <a
-				href="carsales.jsp">Mua xe trả góp</a> <a href="#about ">Thư
-				viện</a>
+			<a class="active" href="listCarPrice.jsp"><%=resourceBundle.getString("banggiaxe")%></a>
+			<a href="carsales"><%=resourceBundle.getString("muaxetragop")%></a> <a
+				href="#about "><%=resourceBundle.getString("thuvien")%></a>
 		</div>
 	</div>
 	<div class="navbar">
-		<a href="index.jsp">Trang Chủ</a> <a href="new.jsp">Tin Tức</a>
+		<a href="index.jsp"><%=resourceBundle.getString("home")%></a> <a
+			href="new.jsp"><%=resourceBundle.getString("tintuc")%></a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				Sản Phẩm <i class="fa fa-caret-down"></i>
+				<%=resourceBundle.getString("sanpham")%><i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
 				<div class="row">
@@ -67,7 +72,7 @@
 					</div>
 					<div class="column">
 						<h3>
-							<a href="suv.jsp">BÁN TẢi</a>
+							<a href="suv.jsp"><%=resourceBundle.getString("xebantai")%></a>
 						</h3>
 						<a href="#">Hilux 2.4G 4x4MT</a> <a href="#">Hilux 2.4E 4×2 AT</a>
 						<a href="#">Hilux 2.8G 4×4 AT</a>
@@ -75,8 +80,9 @@
 				</div>
 			</div>
 		</div>
-		<a href="listCarPrice.jsp">Bảng giá xe</a> <a href="service.jsp">Dịch
-			vụ</a> <a href="contact.jsp">Liên hệ</a>
+		<a href="listCarPrice.jsp"><%=resourceBundle.getString("banggiaxe")%></a>
+		<a href="service.jsp"><%=resourceBundle.getString("dichvu")%></a> <a
+			href="contact.jsp"><%=resourceBundle.getString("contact")%></a>
 	</div>
 	<!--content new-->
 	<div class="container-news">
@@ -84,29 +90,29 @@
 			<ul>
 				<li><a href="index.jsp"> <span>home</span>
 				</a> <span>|</span></li>
-				<li><a href="new.jsp">Tin tức</a></li>
+				<li><a href="new.jsp"><%=resourceBundle.getString("tintuc")%></a></li>
 			</ul>
 		</div>
 		<div class="container-left">
 			<div class="block block-news-event">
 				<div div class="block-title">
 					<h3>
-						<b>Tin tức sự kiện</b>
+						<b><%=resourceBundle.getString("tintucsukien")%></b>
 					</h3>
 				</div>
 				<div class="block-content content-news-event">
 					<ul>
-						<li><a href="service.jsp">Dịch Vụ</a></li>
-						<li><a href="#">Kiến thức ô tô</a></li>
-						<li><a href="#">Luật giao thông</a></li>
-						<li><a href="new.jsp">Tin tức</a></li>
+						<li><a href="service.jsp"><%=resourceBundle.getString("dichvu")%></a></li>
+						<li><a href="#"><%=resourceBundle.getString("kienthucoto")%></a></li>
+						<li><a href="#"><%=resourceBundle.getString("luatgiaothong")%></a></li>
+						<li><a href="new.jsp"><%=resourceBundle.getString("tintuc")%></a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="block block-support-online">
 				<div class="block-title">
 					<h3>
-						<b>Hỗ trợ trực tuyến</b>
+						<b><%=resourceBundle.getString("hotrotructuyen")%></b>
 					</h3>
 				</div>
 				<div class="block-content content-support-online">
@@ -124,7 +130,7 @@
 			<div class="block block-news">
 				<div div class="block-title">
 					<h3>
-						<b>Tin tức mới</b>
+						<b><%=resourceBundle.getString("tintucmoi")%></b>
 					</h3>
 				</div>
 				<div class="block-content content-news">
@@ -151,7 +157,7 @@
 			<div class="block block-access-statistics">
 				<div div class="block-title">
 					<h3>
-						<b>Thống kê truy cập</b>
+						<b><%=resourceBundle.getString("thongketruycap")%></b>
 					</h3>
 				</div>
 				<div class="block-content content-access-statistics">
@@ -164,10 +170,10 @@
 
 					<div class="statistics">
 						<ul>
-							<li>Tổng số lượt truy cập hôm nay: <span>1000</span></li>
-							<li>Tổng số lượt truy cập tháng này: <span>30000</span></li>
-							<li>Tổng số lượt truy cập : <span>200221</span></li>
-							<li>Đang online : <span>221</span></li>
+							<li><%=resourceBundle.getString("luotngay")%><span>1000</span></li>
+							<li><%=resourceBundle.getString("luotthang")%><span>30000</span></li>
+							<li><%=resourceBundle.getString("tongluot")%><span>200221</span></li>
+							<li><%=resourceBundle.getString("online")%><span>221</span></li>
 							<li></li>
 						</ul>
 					</div>
@@ -176,7 +182,7 @@
 		</div>
 		<div class="container-right">
 			<div class="block-categories">
-				<h3>Chuyên mục: Tin tức</h3>
+				<h3><%=resourceBundle.getString("chuyenmuc")%></h3>
 			</div>
 
 			<div class="image-text">
@@ -198,7 +204,7 @@
 				</div>
 			</div>
 			<div class="see-more">
-				<a href="postnews.jsp">Xem thêm</a>
+				<a href="postnews.jsp"><%=resourceBundle.getString("xemthem")%></a>
 			</div>
 
 			<div class="image-text">
@@ -222,7 +228,7 @@
 				</div>
 			</div>
 			<div class="see-more">
-				<a href="#">Xem thêm</a>
+				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
 			</div>
 
 			<div class="image-text">
@@ -244,7 +250,7 @@
 				</div>
 			</div>
 			<div class="see-more">
-				<a href="#">Xem thêm</a>
+				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
 			</div>
 
 			<div class="image-text">
@@ -268,7 +274,7 @@
 				</div>
 			</div>
 			<div class="see-more">
-				<a href="#">Xem thêm</a>
+				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
 			</div>
 
 			<div class="image-text">
@@ -292,7 +298,7 @@
 				</div>
 			</div>
 			<div class="see-more">
-				<a href="#">Xem thêm</a>
+				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
 			</div>
 
 			<div class="image-text">
@@ -316,7 +322,31 @@
 				</div>
 			</div>
 			<div class="see-more">
-				<a href="#">Xem thêm</a>
+				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
+			</div>
+
+			<div class="image-text">
+				<div class="image">
+					<a href="#"><img src="img/car1.jpg" alt="imageCar"></a>
+				</div>
+				<div class="text">
+					<a href="#">
+						<p>
+						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
+							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
+						</p>
+					</a>
+					<p>class="time">2019-10-05</p>
+					<p>Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ
+						khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và
+						Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại
+						lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 – Công ty Ô tô
+						Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc
+						thực hiện […]</p>
+				</div>
+			</div>
+			<div class="see-more">
+				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
 			</div>
 
 			<div class="image-text">
@@ -340,31 +370,7 @@
 				</div>
 			</div>
 			<div class="see-more">
-				<a href="#">Xem thêm</a>
-			</div>
-
-			<div class="image-text">
-				<div class="image">
-					<a href="#"><img src="img/car1.jpg" alt="imageCar"></a>
-				</div>
-				<div class="text">
-					<a href="#">
-						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
-						</p>
-					</a>
-					<p class="time">2019-10-05</p>
-					<p>Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ
-						khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và
-						Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại
-						lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 – Công ty Ô tô
-						Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc
-						thực hiện […]</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="#">Xem thêm</a>
+				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
 			</div>
 		</div>
 		<div class="clear"></div>
@@ -373,27 +379,27 @@
 	<footer>
 		<div class="footer-top">
 			<div class="footer-grid left-grid">
-				<h3>Top xem nhiều nhất</h3>
+				<h3><%=resourceBundle.getString("xemnhieunhat")%></h3>
 				<ul>
 					<li><a href="#">SUV</a></li>
 					<li><a href="#">SEDAN</a></li>
-					<li><a href="#">Bán tải</a></li>
+					<li><a href="#"><%=resourceBundle.getString("xebantai")%></a></li>
 					<li><a href="#">VIOS</a></li>
 				</ul>
 			</div>
 			<div class="footer-grid center-grid">
-				<h3>Về chúng tôi</h3>
+				<h3><%=resourceBundle.getString("aboutus")%></h3>
 				<div class="f_menu">
 					<ul>
-						<li>Địa chỉ: Học viện công Nghệ Bưu chính viễn thông</li>
+						<li><%=resourceBundle.getString("diachi")%>: Học viện công
+							Nghệ Bưu chính viễn thông</li>
 						<li>Hotline: 0973.631.248</li>
-						<li><i> Đừng ngần ngại liên hệ với chúng tôi trước để
-								được phục vụ tốt nhất </i></li>
+						<li><i><%=resourceBundle.getString("loinhankhachhang")%></i></li>
 					</ul>
 				</div>
 			</div>
 			<div class="footer-grid right-grid">
-				<h3>Thông tin liên hệ</h3>
+				<h3><%=resourceBundle.getString("contactinfo")%></h3>
 				<ul class="follow_icon">
 					<li><a href="#" style="opacity: 1;"> <img
 							src="images/follow_icon.png" alt="">
@@ -414,15 +420,18 @@
 							src="img/follow_icon5.png" alt="">
 					</a></li>
 				</ul>
-				<p>Mọi góp ý xin gọi: 03456789</p>
-				<span> <a href="ltwthaydung@carssale.com">support(at)carssale.com</a>
+				<p><%=resourceBundle.getString("gopyxingoi")%>: 03456789
+				</p>
+				<span> <a href="https://www.facebook.com/otovinhphuctoyota/">ltwthaydung@carssale.com</a>
 				</span>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="copy-right">
 			<p>
-				Bản quyền &copy; 2019 Car Sale. Đã đăng ký bản quyền | Thiết kê bởi
+				<%=resourceBundle.getString("copyright")%>
+				&copy; 2019 Car Sale.|
+				<%=resourceBundle.getString("designby")%>
 				<a href="#"> Nhom LTW </a>
 			</p>
 		</div>
