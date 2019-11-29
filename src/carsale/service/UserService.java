@@ -62,4 +62,13 @@ public interface UserService {
    * @return the int
    */
   public int deleteUser(int userId);
+  
+  /**
+   * Checks if is exits.
+   *
+   * @param username the username
+   * @param password the password
+   * @return the user
+   */
+  User isExits(String username, String password);
 }

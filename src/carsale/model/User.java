@@ -3,6 +3,7 @@ package carsale.model;
 
 import java.io.Serializable;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class User.
  */
@@ -30,7 +31,7 @@ public class User implements Serializable {
   private String address;
 
   /** The role. */
-  private String role;
+  private Role role;
 
   /** The user name. */
   private String userName;
@@ -68,7 +69,7 @@ public class User implements Serializable {
    *          the password
    */
   public User(int userId, String fullName, int age, String phone, String email, String address,
-      String role, String userName, String password) {
+      Role role, String userName, String password) {
     super();
     this.userId = userId;
     this.fullName = fullName;
@@ -200,7 +201,7 @@ public class User implements Serializable {
    *
    * @return the role
    */
-  public String getRole() {
+  public Role getRole() {
     return role;
   }
 
@@ -210,7 +211,7 @@ public class User implements Serializable {
    * @param role
    *          the role to set
    */
-  public void setRole(String role) {
+  public void setRole(Role role) {
     this.role = role;
   }
 
