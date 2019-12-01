@@ -14,9 +14,6 @@ public class Description implements Serializable {
   /** The des id. */
   private int desId;
 
-  /** The des title. */
-  private String desTitle;
-
   /** The des content. */
   private String desContent;
 
@@ -24,7 +21,10 @@ public class Description implements Serializable {
   private String desType;
 
   /** The image. */
-  private Image image;
+  private String desImage;
+
+  /** The car. */
+  private Car car;
 
   /**
    * Instantiates a new description.
@@ -34,32 +34,22 @@ public class Description implements Serializable {
   }
 
   /**
-   * Instantiates a new description.
-   *
    * @param desId
-   *          the des id
-   * @param desTitle
-   *          the des title
    * @param desContent
-   *          the des content
    * @param desType
-   *          the des type
-   * @param image
-   *          the image
+   * @param desImage
+   * @param car
    */
-  public Description(int desId, String desTitle, String desContent, String desType,
-      Image image) {
+  public Description(int desId, String desContent, String desType, String desImage, Car car) {
     super();
     this.desId = desId;
-    this.desTitle = desTitle;
     this.desContent = desContent;
     this.desType = desType;
-    this.image = image;
+    this.desImage = desImage;
+    this.car = car;
   }
 
   /**
-   * Gets the des id.
-   *
    * @return the desId
    */
   public int getDesId() {
@@ -67,8 +57,6 @@ public class Description implements Serializable {
   }
 
   /**
-   * Sets the des id.
-   *
    * @param desId
    *          the desId to set
    */
@@ -77,27 +65,6 @@ public class Description implements Serializable {
   }
 
   /**
-   * Gets the des title.
-   *
-   * @return the desTitle
-   */
-  public String getDesTitle() {
-    return desTitle;
-  }
-
-  /**
-   * Sets the des title.
-   *
-   * @param desTitle
-   *          the desTitle to set
-   */
-  public void setDesTitle(String desTitle) {
-    this.desTitle = desTitle;
-  }
-
-  /**
-   * Gets the des content.
-   *
    * @return the desContent
    */
   public String getDesContent() {
@@ -105,8 +72,6 @@ public class Description implements Serializable {
   }
 
   /**
-   * Sets the des content.
-   *
    * @param desContent
    *          the desContent to set
    */
@@ -115,8 +80,6 @@ public class Description implements Serializable {
   }
 
   /**
-   * Gets the des type.
-   *
    * @return the desType
    */
   public String getDesType() {
@@ -124,8 +87,6 @@ public class Description implements Serializable {
   }
 
   /**
-   * Sets the des type.
-   *
    * @param desType
    *          the desType to set
    */
@@ -134,22 +95,33 @@ public class Description implements Serializable {
   }
 
   /**
-   * Gets the image.
-   *
-   * @return the image
+   * @return the desImage
    */
-  public Image getImage() {
-    return image;
+  public String getDesImage() {
+    return desImage;
   }
 
   /**
-   * Sets the image.
-   *
-   * @param image
-   *          the image to set
+   * @param desImage
+   *          the desImage to set
    */
-  public void setImage(Image image) {
-    this.image = image;
+  public void setDesImage(String desImage) {
+    this.desImage = desImage;
+  }
+
+  /**
+   * @return the car
+   */
+  public Car getCar() {
+    return car;
+  }
+
+  /**
+   * @param car
+   *          the car to set
+   */
+  public void setCar(Car car) {
+    this.car = car;
   }
 
   /**
@@ -159,8 +131,8 @@ public class Description implements Serializable {
    */
   @Override
   public String toString() {
-    return "Description [desId=" + desId + ", desTitle=" + desTitle + ", desContent="
-        + desContent + ", desType=" + desType + ", image=" + image + "]";
+    return "Description [desId=" + desId + ", desContent=" + desContent + ", desType="
+        + desType + ", desImage=" + desImage + ", car=" + car + "]";
   }
 
 }

@@ -20,6 +20,8 @@ public class Image implements Serializable {
   /** The image type. */
   private String imageType;
 
+  private Car car;
+
   /**
    * Instantiates a new image.
    */
@@ -28,25 +30,20 @@ public class Image implements Serializable {
   }
 
   /**
-   * Instantiates a new image.
-   *
    * @param imageId
-   *          the image id
    * @param imageUrl
-   *          the image url
    * @param imageType
-   *          the image type
+   * @param car
    */
-  public Image(int imageId, String imageUrl, String imageType) {
+  public Image(int imageId, String imageUrl, String imageType, Car car) {
     super();
     this.imageId = imageId;
     this.imageUrl = imageUrl;
     this.imageType = imageType;
+    this.car = car;
   }
 
   /**
-   * Gets the image id.
-   *
    * @return the imageId
    */
   public int getImageId() {
@@ -54,8 +51,6 @@ public class Image implements Serializable {
   }
 
   /**
-   * Sets the image id.
-   *
    * @param imageId
    *          the imageId to set
    */
@@ -64,8 +59,6 @@ public class Image implements Serializable {
   }
 
   /**
-   * Gets the image url.
-   *
    * @return the imageUrl
    */
   public String getImageUrl() {
@@ -73,8 +66,6 @@ public class Image implements Serializable {
   }
 
   /**
-   * Sets the image url.
-   *
    * @param imageUrl
    *          the imageUrl to set
    */
@@ -83,8 +74,6 @@ public class Image implements Serializable {
   }
 
   /**
-   * Gets the image type.
-   *
    * @return the imageType
    */
   public String getImageType() {
@@ -92,13 +81,26 @@ public class Image implements Serializable {
   }
 
   /**
-   * Sets the image type.
-   *
    * @param imageType
    *          the imageType to set
    */
   public void setImageType(String imageType) {
     this.imageType = imageType;
+  }
+
+  /**
+   * @return the car
+   */
+  public Car getCar() {
+    return car;
+  }
+
+  /**
+   * @param car
+   *          the car to set
+   */
+  public void setCar(Car car) {
+    this.car = car;
   }
 
   /**
@@ -109,7 +111,7 @@ public class Image implements Serializable {
   @Override
   public String toString() {
     return "Image [imageId=" + imageId + ", imageUrl=" + imageUrl + ", imageType=" + imageType
-        + "]";
+        + ", car=" + car + "]";
   }
 
 }

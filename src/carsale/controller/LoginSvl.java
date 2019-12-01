@@ -1,7 +1,6 @@
 package carsale.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import carsale.model.User;
 import carsale.security.Authentication;
 import carsale.untils.FormUtil;
-import carsale.untils.SessionUtil;
 
 /**
  * Servlet implementation class LoginSvl

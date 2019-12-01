@@ -22,17 +22,18 @@ public class Car implements Serializable {
   /** The car category. */
   private String carCategory;
 
-  /** The car status. */
-  private String carStatus;
-
   /** The car des. */
   private String carDes;
+
+  private Double carPrice;
 
   /** The list image. */
   private ArrayList<Image> listImage;
 
   /** The description. */
-  private Description description;
+  private ArrayList<Description> listDescription;
+
+  private ArrayList<Spec> listSpec;
 
   /**
    * Instantiates a new car.
@@ -42,38 +43,46 @@ public class Car implements Serializable {
   }
 
   /**
-   * Instantiates a new car.
-   *
    * @param carId
-   *          the car id
    * @param carName
-   *          the car name
    * @param carCategory
-   *          the car category
-   * @param carStatus
-   *          the car status
    * @param carDes
-   *          the car des
+   * @param carPrice
    * @param listImage
-   *          the list image
-   * @param description
-   *          the description
+   * @param listDescription
+   * @param listSpec
    */
-  public Car(int carId, String carName, String carCategory, String carStatus, String carDes,
-      ArrayList<Image> listImage, Description description) {
+  public Car(int carId, String carName, String carCategory, String carDes, Double carPrice,
+      ArrayList<Image> listImage, ArrayList<Description> listDescription,
+      ArrayList<Spec> listSpec) {
     super();
     this.carId = carId;
     this.carName = carName;
     this.carCategory = carCategory;
-    this.carStatus = carStatus;
     this.carDes = carDes;
+    this.carPrice = carPrice;
     this.listImage = listImage;
-    this.description = description;
+    this.listDescription = listDescription;
+    this.listSpec = listSpec;
   }
 
   /**
-   * Gets the car id.
-   *
+   * @param carId
+   * @param carName
+   * @param carCategory
+   * @param carDes
+   * @param carPrice
+   */
+  public Car(int carId, String carName, String carCategory, String carDes, Double carPrice) {
+    super();
+    this.carId = carId;
+    this.carName = carName;
+    this.carCategory = carCategory;
+    this.carDes = carDes;
+    this.carPrice = carPrice;
+  }
+
+  /**
    * @return the carId
    */
   public int getCarId() {
@@ -81,8 +90,6 @@ public class Car implements Serializable {
   }
 
   /**
-   * Sets the car id.
-   *
    * @param carId
    *          the carId to set
    */
@@ -91,8 +98,6 @@ public class Car implements Serializable {
   }
 
   /**
-   * Gets the car name.
-   *
    * @return the carName
    */
   public String getCarName() {
@@ -100,8 +105,6 @@ public class Car implements Serializable {
   }
 
   /**
-   * Sets the car name.
-   *
    * @param carName
    *          the carName to set
    */
@@ -110,8 +113,6 @@ public class Car implements Serializable {
   }
 
   /**
-   * Gets the car category.
-   *
    * @return the carCategory
    */
   public String getCarCategory() {
@@ -119,8 +120,6 @@ public class Car implements Serializable {
   }
 
   /**
-   * Sets the car category.
-   *
    * @param carCategory
    *          the carCategory to set
    */
@@ -129,27 +128,6 @@ public class Car implements Serializable {
   }
 
   /**
-   * Gets the car status.
-   *
-   * @return the carStatus
-   */
-  public String getCarStatus() {
-    return carStatus;
-  }
-
-  /**
-   * Sets the car status.
-   *
-   * @param carStatus
-   *          the carStatus to set
-   */
-  public void setCarStatus(String carStatus) {
-    this.carStatus = carStatus;
-  }
-
-  /**
-   * Gets the car des.
-   *
    * @return the carDes
    */
   public String getCarDes() {
@@ -157,8 +135,6 @@ public class Car implements Serializable {
   }
 
   /**
-   * Sets the car des.
-   *
    * @param carDes
    *          the carDes to set
    */
@@ -167,8 +143,21 @@ public class Car implements Serializable {
   }
 
   /**
-   * Gets the list image.
-   *
+   * @return the carPrice
+   */
+  public Double getCarPrice() {
+    return carPrice;
+  }
+
+  /**
+   * @param carPrice
+   *          the carPrice to set
+   */
+  public void setCarPrice(Double carPrice) {
+    this.carPrice = carPrice;
+  }
+
+  /**
    * @return the listImage
    */
   public ArrayList<Image> getListImage() {
@@ -176,8 +165,6 @@ public class Car implements Serializable {
   }
 
   /**
-   * Sets the list image.
-   *
    * @param listImage
    *          the listImage to set
    */
@@ -186,22 +173,33 @@ public class Car implements Serializable {
   }
 
   /**
-   * Gets the description.
-   *
-   * @return the description
+   * @return the listDescription
    */
-  public Description getDescription() {
-    return description;
+  public ArrayList<Description> getListDescription() {
+    return listDescription;
   }
 
   /**
-   * Sets the description.
-   *
-   * @param description
-   *          the description to set
+   * @param listDescription
+   *          the listDescription to set
    */
-  public void setDescription(Description description) {
-    this.description = description;
+  public void setListDescription(ArrayList<Description> listDescription) {
+    this.listDescription = listDescription;
+  }
+
+  /**
+   * @return the listSpec
+   */
+  public ArrayList<Spec> getListSpec() {
+    return listSpec;
+  }
+
+  /**
+   * @param listSpec
+   *          the listSpec to set
+   */
+  public void setListSpec(ArrayList<Spec> listSpec) {
+    this.listSpec = listSpec;
   }
 
   /**
@@ -212,8 +210,8 @@ public class Car implements Serializable {
   @Override
   public String toString() {
     return "Car [carId=" + carId + ", carName=" + carName + ", carCategory=" + carCategory
-        + ", carStatus=" + carStatus + ", carDes=" + carDes + ", listImage=" + listImage
-        + ", description=" + description + "]";
+        + ", carDes=" + carDes + ", carPrice=" + carPrice + ", listImage=" + listImage
+        + ", listDescription=" + listDescription + ", listSpec=" + listSpec + "]";
   }
 
 }

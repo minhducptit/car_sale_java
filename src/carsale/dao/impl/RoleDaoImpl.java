@@ -1,6 +1,4 @@
-/*
- * (C) Copyright Global CyberSoft (GCS) 2019. All rights reserved. Proprietary and confidential.
- */
+
 package carsale.dao.impl;
 
 import java.util.List;
@@ -9,9 +7,6 @@ import carsale.dao.RoleDao;
 import carsale.mapper.RoleMapper;
 import carsale.model.Role;
 
-/**
- * @author <a href="mailto:developer@hitachiconsulting.com">minhduc97.ptit</a>
- */
 public class RoleDaoImpl extends AbstractDao<Role> implements RoleDao {
 
   /**
