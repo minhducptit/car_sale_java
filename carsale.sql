@@ -1,103 +1,27 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               5.2.14-MariaDB - mariadb.org binary distribution
+-- Server version:               10.4.6-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
--- HeidiSQL Version:             10.2.0.5599
+-- HeidiSQL Version:             9.5.0.5196
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-CREATE DATABASE carsalel CHARACTER SET utf8 COLLATE utf8_general_ci;
-use carsalel;
-CREATE TABLE car(
-	car_id INT AUTO_INCREMENT,
-	car_name VARCHAR(50) NOT null,
-	category VARCHAR(50) NOT NULL,
-	des VARCHAR(500) NOT NULL,
-	price DOUBLE NOT NULL,
-	PRIMARY KEY(car_id)
-);
-CREATE TABLE image(
-	image_id INT AUTO_INCREMENT,
-	url VARCHAR(100) NOT NULL,
-	type_image VARCHAR(50) NOT NULL, -- loai image: post, car, spec
-	car_id INT NOT NULL,
-	PRIMARY KEY(image_id),
-	FOREIGN KEY (car_id) REFERENCES car(car_id)
-);
 
-CREATE TABLE description(
-	des_id INT AUTO_INCREMENT,
-	content VARCHAR(2000) NOT NULL,
-	type_des VARCHAR(50) NOT NULL,
-	des_img VARCHAR(100) NOT NULL,
-	car_id INT NOT NULL,
-	PRIMARY KEY(des_id),
-	FOREIGN KEY(car_id) REFERENCES car(car_id)
-);
-CREATE TABLE role(
-	id INT NOT NULL AUTO_INCREMENT,
-	NAME VARCHAR(50),
-	CODE VARCHAR(50),
-	PRIMARY KEY (id)
-);
-CREATE TABLE user(
-	user_id INT AUTO_INCREMENT,
-	full_name VARCHAR(100) NOT null,
-	age INT NOT NULL,
-	phone VARCHAR(20) NOT NULL,
-	email VARCHAR(50) NOT NULL,
-	address VARCHAR(50) NOT NULL,
-	username VARCHAR(50),
-	pass VARCHAR(50),
-	role INT NOT NULL,
-	PRIMARY KEY(user_id),
-	FOREIGN KEY (role) REFERENCES role(id)
-);
-CREATE TABLE post(
-	post_id INT AUTO_INCREMENT,
-	title VARCHAR(200) NOT NULL,
-	content VARCHAR(2000) NOT NULL,
-	des VARCHAR(500) NOT NULL,
-	time_update DATETIME NOT NULL,
-	post_url VARCHAR(100) NOT NULL,
-	type_post VARCHAR(50) NOT NULL,
-	user_id INT,
-	PRIMARY KEY (post_id),
-	FOREIGN KEY (user_id) REFERENCES user(user_id)
-);
-CREATE TABLE comment(
-	comment_id INT AUTO_INCREMENT,
-	content VARCHAR(2000) NOT NULL,
-	time_comment DATETIME NOT NULL,
-	user_id INT NOT NULL,
-	post_id INT NOT NULL,
-	PRIMARY KEY(comment_id),
-	FOREIGN KEY (user_id) REFERENCES user(user_id),
-	FOREIGN KEY (post_id) REFERENCES post(post_id)
-);
-CREATE TABLE spec( 
-	spec_id INT AUTO_INCREMENT,
-	spec_name VARCHAR(50) NOT NULL,
-	detail VARCHAR(2000) NOT NULL,
-	car_id INT NOT NULL,
-	PRIMARY KEY (spec_id),
-	FOREIGN KEY(car_id) REFERENCES car(car_id)
-);
-CREATE TABLE city_fee(
-	city_fee_id INT AUTO_INCREMENT,
- 	city_name VARCHAR(50) NOT NULL,
- 	tax DOUBLE  NOT NULL,
- 	-- registration DOUBLE  NOT NULL,
- 	-- insurrance DOUBLE  NOT NULL,
- 	-- license_plate DOUBLE  NOT NULL,
- 	PRIMARY KEY(city_fee_id)
-);
+-- Dumping structure for table carsalel.car
+CREATE TABLE IF NOT EXISTS `car` (
+  `car_id` int(11) NOT NULL AUTO_INCREMENT,
+  `car_name` varchar(50) NOT NULL,
+  `category` varchar(50) NOT NULL,
+  `des` varchar(500) NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`car_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
--- them du lieu
--- Dumping data for table carsale.car: ~32 rows (approximately)
+-- Dumping data for table carsalel.car: ~32 rows (approximately)
 /*!40000 ALTER TABLE `car` DISABLE KEYS */;
 INSERT INTO `car` (`car_id`, `car_name`, `category`, `des`, `price`) VALUES
 	(1, 'Vios 1.5E (MT)', 'SEDAN, Toyota Vios', 'Toyota Innova Vios 1.5E Xe Đủ Màu, Giao Luôn   - Ưu đãi cực lớn cho các dòng xe Vios', 531000000),
@@ -134,7 +58,15 @@ INSERT INTO `car` (`car_id`, `car_name`, `category`, `des`, `price`) VALUES
 	(32, 'Land Cruiser Prado VX', 'SUV, Toyota Land Cruiser', 'Toyota Prado VX Phiên Bản Mới Nhất Xe Đủ Màu, Giao Sớm    ', 2340000000);
 /*!40000 ALTER TABLE `car` ENABLE KEYS */;
 
--- Dumping data for table carsale.city_fee: ~3 rows (approximately)
+-- Dumping structure for table carsalel.city_fee
+CREATE TABLE IF NOT EXISTS `city_fee` (
+  `city_fee_id` int(11) NOT NULL AUTO_INCREMENT,
+  `city_name` varchar(50) NOT NULL,
+  `tax` double NOT NULL,
+  PRIMARY KEY (`city_fee_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table carsalel.city_fee: ~3 rows (approximately)
 /*!40000 ALTER TABLE `city_fee` DISABLE KEYS */;
 INSERT INTO `city_fee` (`city_fee_id`, `city_name`, `tax`) VALUES
 	(1, 'Hà Nội', 0.12),
@@ -142,11 +74,37 @@ INSERT INTO `city_fee` (`city_fee_id`, `city_name`, `tax`) VALUES
 	(3, 'Thành phố khác', 0.1);
 /*!40000 ALTER TABLE `city_fee` ENABLE KEYS */;
 
--- Dumping data for table carsale.comment: ~0 rows (approximately)
+-- Dumping structure for table carsalel.comment
+CREATE TABLE IF NOT EXISTS `comment` (
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(2000) NOT NULL,
+  `time_comment` datetime NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  PRIMARY KEY (`comment_id`),
+  KEY `user_id` (`user_id`),
+  KEY `post_id` (`post_id`),
+  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table carsalel.comment: ~0 rows (approximately)
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 
--- Dumping data for table carsale.description: ~10 rows (approximately)
+-- Dumping structure for table carsalel.description
+CREATE TABLE IF NOT EXISTS `description` (
+  `des_id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(2000) NOT NULL,
+  `type_des` varchar(50) NOT NULL,
+  `des_img` varchar(100) NOT NULL,
+  `car_id` int(11) NOT NULL,
+  PRIMARY KEY (`des_id`),
+  KEY `car_id` (`car_id`),
+  CONSTRAINT `description_ibfk_1` FOREIGN KEY (`car_id`) REFERENCES `car` (`car_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table carsalel.description: ~10 rows (approximately)
 /*!40000 ALTER TABLE `description` DISABLE KEYS */;
 INSERT INTO `description` (`des_id`, `content`, `type_des`, `des_img`, `car_id`) VALUES
 	(1, 'Cụm đèn trước xe  được trang bị đèn halogen phản xạ đa chiều trên nền mạ kim loại sáng bóng, đảm bảo hiệu quả chiếu sáng tối ưu khi di chuyển trên đường.', 'ngoại thất', 'image/oxncrh.jpg', 1),
@@ -161,7 +119,18 @@ INSERT INTO `description` (`des_id`, `content`, `type_des`, `des_img`, `car_id`)
 	(10, 'Động cơ mới được trang bị hệ thống Dual VVT-i giúp tiết kiệm nhiên liệu, vận hành êm ái, thân thiện với môi trường', 'vận hành', 'image/wsdem3.png', 1);
 /*!40000 ALTER TABLE `description` ENABLE KEYS */;
 
--- Dumping data for table carsale.image: ~54 rows (approximately)
+-- Dumping structure for table carsalel.image
+CREATE TABLE IF NOT EXISTS `image` (
+  `image_id` int(11) NOT NULL AUTO_INCREMENT,
+  `url` varchar(100) NOT NULL,
+  `type_image` varchar(50) NOT NULL,
+  `car_id` int(11) NOT NULL,
+  PRIMARY KEY (`image_id`),
+  KEY `car_id` (`car_id`),
+  CONSTRAINT `image_ibfk_1` FOREIGN KEY (`car_id`) REFERENCES `car` (`car_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table carsalel.image: ~54 rows (approximately)
 /*!40000 ALTER TABLE `image` DISABLE KEYS */;
 INSERT INTO `image` (`image_id`, `url`, `type_image`, `car_id`) VALUES
 	(1, 'image/113201443326PM-vios_2.jpg', 'car', 1),
@@ -219,35 +188,66 @@ INSERT INTO `image` (`image_id`, `url`, `type_image`, `car_id`) VALUES
 	(53, 'image/2bsp33.png', 'vận hành', 21),
 	(54, 'image/wsdem3.png', 'vận hành', 21);
 /*!40000 ALTER TABLE `image` ENABLE KEYS */;
--- Dumping data for table carsale.role: ~2 rows (approximately)
-/*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` (`id`, `NAME`, `CODE`) VALUES
-	(1, 'ADMIN', '1'),
-	(2, 'USER', '0');
-/*!40000 ALTER TABLE `role` ENABLE KEYS */;
--- Dumping data for table carsale.user: ~1 rows (approximately)
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`user_id`, `full_name`, `age`, `phone`, `email`, `address`, `username`, `pass`, `role`) VALUES
-	(1, 'Team LTW', 1, '0987654321', 'carsale@gmail.com', 'Hà Nội', 'admin', 'admin', 1);
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
--- Dumping data for table carsale.post: ~12 rows (approximately)
+
+-- Dumping structure for table carsalel.post
+CREATE TABLE IF NOT EXISTS `post` (
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `content` varchar(2000) NOT NULL,
+  `des` varchar(500) NOT NULL,
+  `time_update` datetime NOT NULL,
+  `post_url` varchar(100) NOT NULL,
+  `type_post` varchar(50) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`post_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `post_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table carsalel.post: ~12 rows (approximately)
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
-INSERT INTO `post` (`post_id`, `title`, `content`, `des`, `time_update`, `user_id`, `post_url`, `type_post`) VALUES
-	(1, 'TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA', 'Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại lý Toyota trên toàn quốc.Fortuner & Innova là hai mẫu xe thường xuyên nằm trong danh sách xe bán chạy trên thị trường Việt Nam. Bên cạnh khách hàng cá nhân, gia đình, hai mẫu xe cũng được giới kinh doanh dịch vụ ưa chuộng. Có được thành công đó là nhờ việc kế thừa các giá trị cốt lõi tạo nên thành công của Toyota bao gồm chất lượng, độ bền và độ tin cậy cùng với chi phí vận hành, mức tiêu hao nhiên liệu thấp, phụ tùng sẵn có dễ thay thế cùng dịch vụ chất lượng cao và chuyên nghiệp với hệ thống 59 đại lý trải dài khắp 27 tỉnh thành trên cả nước và giá trị bán lại cao.', 'Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 – Công ty Ô tô Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc thực hiện […]', '2019-09-14 00:00:00', 1, 'image/FB-3a-1.jpg', 'tin tức'),
-	(2, 'TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA', 'Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại lý Toyota trên toàn quốc.Fortuner & Innova là hai mẫu xe thường xuyên nằm trong danh sách xe bán chạy trên thị trường Việt Nam. Bên cạnh khách hàng cá nhân, gia đình, hai mẫu xe cũng được giới kinh doanh dịch vụ ưa chuộng. Có được thành công đó là nhờ việc kế thừa các giá trị cốt lõi tạo nên thành công của Toyota bao gồm chất lượng, độ bền và độ tin cậy cùng với chi phí vận hành, mức tiêu hao nhiên liệu thấp, phụ tùng sẵn có dễ thay thế cùng dịch vụ chất lượng cao và chuyên nghiệp với hệ thống 59 đại lý trải dài khắp 27 tỉnh thành trên cả nước và giá trị bán lại cao.', 'Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại lý Toyota trên toàn quốc. Từ ngày 03/9/2019 – Công ty Ô tô Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc thực hiện chương […]', '2019-09-08 00:00:00', 1, 'image/jlfnod.jpg', 'tin tức'),
-	(3, 'TOYOTA VIỆT NAM XUẤT XƯỞNG CHIẾC XE THỨ 500.000', 'Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại lý Toyota trên toàn quốc.Fortuner & Innova là hai mẫu xe thường xuyên nằm trong danh sách xe bán chạy trên thị trường Việt Nam. Bên cạnh khách hàng cá nhân, gia đình, hai mẫu xe cũng được giới kinh doanh dịch vụ ưa chuộng. Có được thành công đó là nhờ việc kế thừa các giá trị cốt lõi tạo nên thành công của Toyota bao gồm chất lượng, độ bền và độ tin cậy cùng với chi phí vận hành, mức tiêu hao nhiên liệu thấp, phụ tùng sẵn có dễ thay thế cùng dịch vụ chất lượng cao và chuyên nghiệp với hệ thống 59 đại lý trải dài khắp 27 tỉnh thành trên cả nước và giá trị bán lại cao.', 'Nhà máy của TMV tại Vĩnh Phúc bắt đầu được thành lập vào năm 1995 và đi vào hoạt động từ năm 1996, sản lượng chỉ đạt trung bình 2 xe/ngày, với qui mô sản xuất 212 xe/năm, đến nay sản lượng nhà máy đã đạt trên 200 xe/ngày, tương đương 54.000 xe/năm. Các mẫu xe sản xuất và lắp ráp chiến lược như Vios, Innova liên tục nằm trong danh sách những mẫu xe được ưa chuộng nhất thị trường, đóng góp lớn vào kết quả ngày hôm nay với 500.000 xe xuất xưởng', '2019-06-21 00:00:00', 1, 'image/Nhà-máy-TMV-1.jpg', 'tin tức'),
-	(4, 'QUÀ TẶNG MÙA HÈ TỪ TOYOTA NHẬN QUÀ CỰC KHỦNG 5-6/2019', 'NHẬN QUÀ CỰC KHỦNG 5-6/2019 TẠI TOYOTA VĨNH PHÚC \r\nTặng 01 năm BẢO HIỂM THÂN VỎ XE + CAMERA LÙI CHÍNH HÃNG (VIOS G)\r\nTặng gói phụ kiện chính hãng: MÀN HÌNH DVD, CAMERA LÙI CHÍNH HÃNG, BỌC GHẾ DA (VIOS E CVT, E MT)\r\nTặng tiền mặt sốc trừ thẳng vào giá xe\r\nHỗ trợ trả góp lãi suất chỉ từ 0,33%/tháng\r\nGIÁ XE TOYOTA VIOS 2019:\r\n– Toyota Vios 1.5 E MT: 531.000.000 VNĐ.\r\n– Toyota Vios 1.5 E CVT: 569.000.000 VNĐ.\r\n– Toyota Vios 1.5 G CVT: 606.000.000 VNĐ.\r\nHãy liên hệ với chúng tôi để nhận thêm ưu đãi: Hotline: 0973.631.248', 'NHẬN QUÀ CỰC KHỦNG 5-6/2019 TẠI TOYOTA VĨNH PHÚC Tặng 01 năm BẢO HIỂM THÂN VỎ XE + CAMERA LÙI CHÍNH HÃNG (VIOS G) Tặng gói phụ kiện chính hãng: MÀN HÌNH DVD, CAMERA LÙI CHÍNH HÃNG, BỌC GHẾ DA (VIOS E CVT, E MT) Tặng tiền mặt sốc trừ thẳng vào giá xe Hỗ […]', '2019-05-17 00:00:00', 1, 'image/PR-Articles.jpg', 'tin tức'),
-	(5, 'SIÊU KHUYẾN MÃI THÁNG 3 dành cho VIOS, COROLLA ALTIS, INNOVA,WIGO', 'Chi tiết ưu đãi như sau:\r\n– Đối với VIOS G, COROLLA ALTIS, INNOVA (tất cả phiên bản) Tặng 01 năm Bảo hiểm Toyota\r\n– Đối với WIGO MT  Tặng 15 triệu phí trước bạ.\r\n– Đối với VIOS E (CVT), VIOS E MT  Tặng DVD + Camera lùi hoặc hỗ trợ lãi suất TFS 2.99% trong 6 tháng.\r\nNgoài ra, Khách hàng được tham dự chương trình bốc thăm may mắn và có cơ hội nhận được 01 chiếc xe cùng loại – chương trình do Toyota Việt Nam tổ chức.\r\n————-\r\nThời gian áp dụng: đến hết ngày  31/03/2019.', 'Chi tiết ưu đãi như sau: – Đối với VIOS G, COROLLA ALTIS, INNOVA (tất cả phiên bản) Tặng 01 năm Bảo hiểm Toyota – Đối với WIGO MT  Tặng 15 triệu phí trước bạ. – Đối với VIOS E (CVT), VIOS E MT  Tặng DVD + Camera lùi hoặc hỗ trợ lãi suất TFS 2.99% trong 6 […]', '2019-03-20 00:00:00', 1, 'image/96feb7162136c3689a27.jpg', 'tin tức'),
-	(6, 'Giới thiệu Toyota WIGO số sàn', 'Toyota Wigo 2018 nhập về Việt nam sử dụng động cơ dung tích lớn hơn động cơ của mẫu xe này tại triển lãm ô tô Việt nam 2017.\r\n\r\n \r\n\r\nBảng màu xe Wigo 2018. Xe có 6 màu: Trắng, Bạc, Đỏ, Cam, Xám, Đen\r\n\r\nChi tiết Toyota Wigo 2018 phần ngoại thất\r\n\r\nToyota Wigo 2018 được thiết kế phần đầu xe rộng  và 2 đèn ở dưới giống với thiết kế camry. Thiết kế đèn Đèn trước BI – Halogen có đèn led chạy ban ngày.\r\n\r\n \r\n\r\nThân xe Toyota Wigo 2018. Kích thước dài, rộng, cao của Wigo lần lượt là 3.660 x 1.600 x 1.520 (mm). Những thông số này nhỉnh hơn đôi chút so với Kia Morning. Khi bán tại Việt Nam, Wigo sẽ là sự bổ sung hợp lý cho liên doanh ôtô Nhật Bản, bởi hãng còn thiếu những chiếc hatchback giá rẻ.\r\n\r\n \r\n\r\nĐuôi xe\r\n\r\nHình ảnh đèn trước Projector giống với đàn các anh Toyota Vios, Yaris\r\n\r\nCận cảnh Lazang kích thước 175/65R14 với 8 chấu đơn bố trí chéo trông khá ngầu\r\n\r\nĐánh giá Toyota Wigo 2018 về ngoại thất: với thiết kế thể thao hầm hố, kích thước nhỉnh hơn các đối thủ hiện nay tại thị trường ô tô Việt nam, lại mang thương hiệu Toyota nên Toyota Wigo sẽ là một “đối thủ nguy hiểm” đối với bất kỳ mẫu xe nào trong phân khúc A hatchback\r\n\r\nChi tiết Toyota Wigo 2018 phần nội thất\r\n\r\nNội thất khoang lái với tông màu đen. Có thể thấy ghế lái chỉnh cơ.\r\n\r\nNội thất khoang sau xe Toyota Wigo. Ghế nỉ khá đơn sơ. So với các đối thủ khác thì nội thất của mẫu xe hạng A này khá thua kém\r\n\r\n \r\n\r\nBảng taplo với đầu CD cho số sàn và DVD cho số tự động\r\n\r\nTay lái 3 chấu bằng nhựa có nút chỉnh âm thanh\r\n\r\nCốp sau Toyota Wigo nhỏ bé chỉ tương đương với xe Kia Morning\r\n\r\nChi tiết Toyota Wigo 2018 phần động cơ, vận hành, an toàn\r\n\r\n \r\n\r\nHình ảnh động cơ xe Toyota Wigo 2018 nhập về Việt nam. Phiên bản xe Toyota Wigo nhập khẩu về Việt nam sử dụng động cơ 3NR-VE 1.2L, Dual VVT-i, dung tích 1197cc, công suất cực đại 88Hp /6000rpm, mô-men xoắn cực đại 110Nm/ 4200rpm (bản trưng bày tại triển lãm ô tô Việt Nam năm nay sở hữu động cơ 3 xi-lanh,dung tích 1.0 lít). Khối động cơ lớn hơn mang đến khả năng vận ', 'TOYOTA HIROSHIMA VĨNH PHÚC XIN KÍNH CHÀO QUÝ KHÁCH CHÚNG TÔI XIN GIỚI THIỆUTOYOTA WIGO PHÂN KHÚC A  Tư vấn bán hàng: Nguyễn Thị Thanh Hải Hotline: 0973.631.248 TOYOTA WIGO 2018:    Toyota Wigo 2018 phân phối tại Việt nam được nhập khẩu từ Indonesia, bao gồm 2 phiên bản là Toyota Wigo 1.2G AT […]', '2019-02-17 00:00:00', 1, 'image/24h-toyotavietnam-1-1539168646-206-width1320height743-768x432.jpg', 'tin tức'),
-	(7, 'GIỚI THIỆU VỀ VIOS 1.5E TỰ ĐỘNG', ' VIOS 1.5E TỰ ĐỘNG\r\nHãng sản xuất Toyota\r\nBảo hành3 năm or 100.000km\r\nGiáLiên hệ\r\nNỘI DUNG CHI TIẾT\r\nToyota Vios E Tự Động\r\nBẢNG GIÁ XE VIOS 2019 ĐÃ GIẢM GIÁ NIÊM YẾT:\r\nBẢNG GIÁ XE VIOS 2019	SỐ TIỀN\r\nTOYOTA VIOS G TỰ ĐỘNG	606.000.000\r\nTOYOTA VIOS E TỰ ĐỘNG	569.000.000\r\nTOYOTA VIOS E  SỐ SÀN	531.000.000\r\n* Khi khách hàng mua xe sẽ được giảm giá trực tiếp:\r\n+ Giảm trực tiếp tiền mặt\r\n+ Tặng phụ kiện chính hãng tùy theo khách hàng chọn\r\n+ Tặng 2 năm bảo hiểm thân vỏ\r\n\r\nQuy trình khách hàng mua ô tô trả góp bao gồm:\r\nChi phí lăn bánh tạm tính cho biển tỉnh:\r\nChi phí Lăn bánh	Số tiền\r\nThuế trước bạ (10%)	56.900.000\r\nĐăng ký xe	200.000\r\nLệ phí đăng kiểm	340.000\r\nPhí đường bộ	1.560.000\r\nTổng chi phí	59.000.000\r\n', ' VIOS 1.5E TỰ ĐỘNG Hãng sản xuất Toyota Bảo hành3 năm or 100.000km GiáLiên hệ NỘI DUNG CHI TIẾT Toyota Vios E Tự Động            CÔNG TY TOYOTA HIROSHIMA VĨNH PHÚC + Tư Vấn bán hàng  :  Nguyễn Thị Thanh Hải + Số điện thoại tư vấn  :  0973.631.248 + Hỗ […]', '2019-02-17 00:00:00', 1, 'image/Beige-4R0.png', 'tin tức'),
-	(8, 'KIẾN THỨC VỀ CẤU TẠO Ô TÔ BẠN NÊN BIẾT', 'Xe ô tô là một trong những phương tiện phổ biến nhất hiện nay. Nó giúp chúng ta có thể đi lại và vận chuyển hàng hóa một cách dễ dàng. Chính vì sự tiện lợi ấy đã có không ít người sở hữu cho mình một chiếc ô tô để đáp ứng nhu cầu đó. Vậy nó được cấu tạo như thế nào? Là một trong những câu hỏi đang được nhiều người quan tâm nhất hiện nay. Chính vì vậy mà hôm nay chúng tôi xin cung cấp cho bạn đọc một số thông tin về việc cấu tạo ô tô cũng như chức năng của từng bộ phận.\r\nCấu tạo chung của ô tô gồm 2 phần chính\r\nA. Ngoại thất\r\nNắp ca-pô: Là phần khung kim loại ở phía đầu xe có công dụng bảo vệ cho khoang động cơ, có thể đóng mở để bảo trì và sửa chữa các bộ phận bên trong.\r\n\r\nLưới tản nhiệt: Hầu hết mỗi xe ô tô đều được trang bị lưới tản nhiệt ở mặt trước để bảo vệ bộ tản nhiệt và động cơ, đồng thời cho phép không khí luồn vào bên trong. \r\n\r\nĐèn pha: Là một thiết bị chiếu sáng cho mỗi chiếc xe thường đặt ở hai góc trái phải nối liền giữa nắp capô và mặt trước của xe. \r\n\r\nCản: Là cấu trúc gắn liền hoặc được tích hợp vào phía trước và phía sau của ô tô để hấp thụ lực tác động khi xảy ra va chạm, nó góp phần giảm thiểu chấn thương cho người ngồi trong xe và hư hại ở các bộ phận khác.\r\n\r\nKính chắn gió: Là một dạng cửa sổ kính nằm ở phía trước của ô tô, không chỉ có công dụng chắn gió, bụi, mưa…vào trong xe, mà còn tham gia gia tăng độ cứng cho kết cấu xe và bảo vệ an toàn cho hành khách trong một số tình huống va chạm.\r\n\r\nGương chiếu hậu: Là gương được gắn bên góc của hai cửa trước nhằm mục đích hỗ trợ người lái nhìn thấy khu vực phía sau và hai bên của chiếc xe.\r\n\r\nB. Nội thất\r\nVô lăng\r\nBảng đồng hồ\r\nĐồng hồ đo tốc độ\r\nĐồng hồ đo vòng tua\r\nBàn đạp phanh\r\nBàn đạp ga\r\nBàn đạp ly hợp\r\nCần số\r\nBài viết với một số thông tin hữu ích về cấu tạo ô tô cũng như công dụng của từng bộ phận mà trường chúng tôi cung cấp cho bạn đọc. Hy vọng rằng qua bài viết này các bạn có thể hiểu rõ hơn về các bộ phận cấu thành nên một chiếc xe nhé. Chúc các bạn thành công!', 'Xe ô tô là một trong những phương tiện phổ biến nhất hiện nay. Nó giúp chúng ta có thể đi lại và vận chuyển hàng hóa một cách dễ dàng. Chính vì sự tiện lợi ấy đã có không ít người sở hữu cho mình một chiếc ô tô để đáp ứng nhu cầu […]', '2019-01-20 00:00:00', 1, 'image/cấu-tạo-xe-1.jpg', 'tin tức'),
-	(9, 'TOYOTA COROLLA THẾ HỆ MỚI TRẺ HÓA THIẾT KẾ', 'Thiết kế Corolla 2020 thay đổi toàn diện so với hiện tại, bổ sung thêm những công nghệ mới hỗ trợ người lái.\r\nToyota Corolla sedan thế hệ 12 vén màn trong một sự kiện riêng tại Mỹ. Thiết kế xe có nhiều điểm giống phiên bản Corolla hatchback ra mắt năm ngoái. Trong khi đó, hệ khung gầm phát triển từ nền tảng TNGA, khoang nội thất thay đổi với nhiều nâng cấp và bổ sung thêm động cơ 4 xi-lanh 2.0 mới.\r\nThiết kế đầu xe Corolla mới thay đổi đáng kể. Lưới tản nhiệt phong cách mới khá giống trên mẫu Avalon, cụm đèn thiết kế lại dùng bóng bi-LED. Corolla 2020 có kích thước dài, rộng, cao lần lượt 4.640 x 1.780 x 1.435 mm. Trục cơ sở đạt 2.700 mm. Hãng xe Nhật cho biết kết cấu mới trên xe mang đến trải nghiệm lái năng động cũng như êm ái, yên tĩnh và an toàn hơn.\r\n\r\nTrong khi đó, không gian cabin thay đổi đáng kể ở nội thất. Bảng táp-lô thiết kế lại. Hệ thống thông tin-giải trí tích hợp màn hình cảm ứng dựng đứng kích thước 8 inch. Corolla 2020 tích hợp Apple CarPlay và Amazon Alexa, kết nối Wifi, hệ thống âm thanh 6 loa.\r\n\r\nSedan của Toyota trang bị hệ thống treo Macpherson phía trước và liên kết đa điểm phía sau. Sự kết hợp của hệ thống treo này giúp kết cấu xe chắc chắn hơn, cải thiện trải nghiệm lái.\r\nTrong khi đó, Corolla 2020 trang bị hệ thống chống va chạm Toyota Safety Sense gồm cảnh báo va chạm trước, cảnh báo lệch làn đường, hệ thống điều khiển hành trình thích ứng. Ngoài ra, xe còn có các trang bị an toàn cơ bản khác như hệ thống phanh ABS, ổn định thân xe điện tử, 6 túi khí.\r\n\r\nTại Mỹ, Corolla 2020 trang bị động cơ 4 xi-lanh, 2.0, công suất 169 mã lực ở các phiên bản SE và XSE. Trong khi đó, phiên bản L, LE và XLE sử dụng động cơ 1.8 cũ, nhưng được chỉnh sửa giúp cải thiện khả năng tăng tốc.\r\n\r\nGiá bán Toyota Corolla 2020 sedan hiện chưa được công bố. Xe dự kiến bán tại Mỹ và châu Âu vào mùa xuân 2019.\r\n\r\n                                                                                                                     Nguồn : https://vnexpress.net', 'Thiết kế Corolla 2020 thay đổi toàn diện so với hiện tại, bổ sung thêm những công nghệ mới hỗ trợ người lái. Toyota Corolla sedan thế hệ 12 vén màn trong một sự kiện riêng tại Mỹ. Thiết kế xe có nhiều điểm giống phiên bản Corolla hatchback ra mắt năm ngoái. Trong khi […]', '2019-01-10 00:00:00', 1, 'image/2020-toyota-corolla-2-6174-1542344527.jpg', 'tin tức'),
-	(10, 'TOYOTA VIOS VÀ TOYOTA RUSH ĐÃ ĐẠT CHỨNG NHẬN AN TOÀN 5 SAO ASEAN NCAP', 'Toyota được trao giải thưởng xuất sắc nhất của ASEAN NCAP ở hạng mục “Không ngừng cải tiến an toàn” cho hai mẫu xe Toyota Vios và Toyota Rush.\r\nỦy ban Đánh giá xe Đông Nam Á (ASEAN NCAP) vừa tổ chức lễ trao giải lần thứ 3 (2 năm một lần) – ASEAN NCAP Grand Prix 2018 tại Karawang, Tây Java, Indonesia. Lễ trao giải ASEAN NCAP Grand Prix nhằm tôn vinh thành tích của những mẫu xe đã tham dự quá trình đánh giá của ASEAN NCAP trong hai năm qua.\r\nTại lễ trao giải, Toyota được vinh danh ở “Giải thưởng thương hiệu 5 sao tốt nhất” (2017 – 2018), trong đó đáng chú ý là Giải thưởng xuất sắc nhất của ASEAN NCAP ở hạng mục “Không ngừng cải tiến an toàn” cho hai mẫu xe Toyota Vios và Toyota Rush.\r\nTheo đó, ở các thế hệ trước, cả 2 mẫu xe này chỉ mới nhận được 4 sao NCAP. Tuy nhiên, với việc bổ sung các tính năng an toàn hiện đại, Vios và Rush đã lần lượt nhận được đánh giá 5 sao ASEAN NCAP vào năm 2017 và 2018. Thành tựu này như một minh chứng rõ ràng cho những nỗ lực không ngừng của Toyota nhằm bảo vệ hành khách và nâng cao tiêu chuẩn an toàn trong các mẫu xe của hãng.\r\nCụ thể, Toyota Vios 2018 thế hệ hệ mới đã được trang bị thêm hàng loạt công nghệ an toàn mà thế hệ cũ chưa có như: 07 túi khí, 4 phanh đĩa, hệ thống ABS, EBD, BA và đặc biệt là hệ thống cân bằng điện tử VSC, hỗ trợ khởi hành ngang dốc, hệ thống kiểm soát lực kéo và hệ thống chống trộm.\r\nToyota Vios 2018 vẫn sử dụng động cơ 2NR-FBE 1.5L Dual VVT-I, công suất 108 mã lực tại 6.000 vòng/phút, mô-men xoắn cực đại 140 Nm tại 4.200 vòng/phút, đi kèm hộp số sàn 5 cấp hoặc hộp số tự động CVT. Có 3 phiên bản Vios được bán tại Việt Nam: 1.5EMT/1.5E CVT/1.5G CVT với giá bán đề xuất: 531 – 606 triệu đồng\r\nVề phần mình, ra đời vào năm 2007 và giữ vị trí dẫn đầu trong phân khúc tại nhiều thị trường như Phillipines, Indonesia, Thái Lan….Toyota Rush thế hệ thứ 3 cũng đã được chứng nhận an toàn 5 sao ASEAN NCAP với loạt công nghệ an toàn: hệ thống phân bố lực phanh điện tử EDB, hỗ trợ phanh (BA), hệ thống chống bó cứng phanh (ABS)', 'Toyota được trao giải thưởng xuất sắc nhất của ASEAN NCAP ở hạng mục “Không ngừng cải tiến an toàn” cho hai mẫu xe Toyota Vios và Toyota Rush. Ủy ban Đánh giá xe Đông Nam Á (ASEAN NCAP) vừa tổ chức lễ trao giải lần thứ 3 (2 năm một lần) – ASEAN NCAP Grand […]', '2019-01-01 00:00:00', 1, 'image/4.bn_.png', 'tin tức'),
-	(11, 'DỊCH VỤ BẢO DƯỠNG', 'Trong quá trình vận hành, nhiều chi tiết trên xe bị mài mòn hoặc hư hỏng theo thời gian sử dụng. Điều này xảy ra với bất kỳ cơ cấu máy móc nào. Do đó, bạn cần mang xe đi kiểm tra, bảo dưỡng một cách định kỳ để đảm bảo từng chi tiết cấu thành nói riêng và tổng thể chiếc xe nói chung luôn được vận hành tốt.Dựa trên quá trình nghiên cứu các đặc tính và điều kiện sử dụng xe tại Việt Nam, Công ty ô tô Toyota Việt Nam đã xây dựng nên tiêu chuẩn về bảo dưỡng định kỳ cho mỗi loại xe mà chúng tôi sản xuất\r\nĐể được tư vấn chi tiết về nội dung kiểm tra, bảo dưỡng định kỳ, xin liên hệ với các Đại lý chính hãng của Toyota Việt Nam trên toàn quốc.\r\nVới trang thiết bị chuyên dụng và quy trình bảo dưỡng 2-3 kỹ thuật viên chuyên nghiệp, Bảo Dưỡng Nhanh sẽ giúp Quý khách hàng hài lòng hơn khi tổng thời gian chờ đợi trại trạm dịch vụ giảm xuống chỉ còn 60 phút (tính từ khi Quý khách ký lệnh sửa chữa bàn giao xe cho đến khi được thông báo xe sẵn sàng giao), trong khi quy trình bảo dưỡng thông thường mất 2-3 tiếng.\r\nGiàn lạnh là một thành phần của cụm điều hòa, không khí sau khi đi qua giàn lạnh sẽ được làm mát và tỏa vào trong xe. Sau thời gian dài sử dụng, bụi bẩn và hơi ẩm tích tụ trên bề mặt giàn lạnh làm giảm hiệu quả làm mát của điều hòa, phát sinh nấm mốc và vi khuẩn có hại cho hô hấp của người sử dụng. Toyota khuyến nghị cần định kỳ vệ sinh giàn lạnh kể từ 30.000km và sau mỗi 20.000 Km (1 lần/năm) để duy trì không khí trong lành cho xe.\r\n\r\nTuy nhiên hiện nay, việc vệ sinh giàn lạnh điều hòa là công việc rất khó khăn và phức tạp vì nó nằm sâu trong bảng táp-lô. Phương pháp truyền thống hay được sử dụng để vệ sinh giàn lạnh phải tháo dỡ toàn bộ bảng táp-lô cùng nhiều chi tiết với thời gian kéo dài từ 4 đến 6 tiếng.\r\n\r\nDịch vụ vệ sinh giàn lạnh điều hòa chính hãng Toyota, sử dụng Máy vệ sinh tự động với thiết bị chuyên biệt có thể làm sạch tận bên trong giàn lạnh mà không cần tháo dỡ táp lô với thời gian cho một lần dịch vụ chỉ 1 tiếng đồng hồ.', 'Trong quá trình vận hành, nhiều chi tiết trên xe bị mài mòn hoặc hư hỏng theo thời gian sử dụng. Điều này xảy ra với bất kỳ cơ cấu máy móc nào. Do đó, bạn cần mang xe đi kiểm tra, bảo dưỡng một cách định kỳ để đảm bảo từng chi tiết cấu […]', '2018-05-06 00:00:00', 1, 'image/dich-vu-bao-duong.jpg', 'dịch vụ'),
-	(12, 'CHÍNH SÁCH BẢO HÀNH', 'Tự hào là doanh nghiệp đứng vị trí dẫn đầu trên thị trường về dịch vụ sau bán hàng trong nhiều năm liên tiếp và được khách hàng đánh giá cao.\r\n\r\nA. Những gì được bảo hành\r\n1. Thời hạn bảo hành\r\nChế độ bảo hành bắt đầu được tính ngay kể từ thời điểm xe được giao cho chủ xe đầu tiên. Trong vòng 36 tháng hoặc 100.000 km, tùy thuộc điều kiện nào đến trước, Toyota đảm bảo sẽ sửa chữa hoặc thay thế bất kỳ phụ tùng nào của xe Toyota mới bị hỏng hóc.\r\n– Bảo hành ắc quy: Thời hạn bảo hành cho ắc quy là 12 tháng hoặc 20.000 km tùy điều kiện nào tới trước.\r\n– Bảo hành lốp: Bảo hành lốp: Ðược bảo hành theo chế độ riêng của nhà sản xuất lốp. Để biết thêm chi tiết, xin quý khách vui lòng tham khảo những trang web sau: Bridgestone, Dunlop, Michelin.\r\n\r\n2. Điều kiện bảo hành\r\n\r\nToyota chỉ đảm bảo sửa chữa, thay thế các phụ tùng của xe Toyota mới bị hỏng hóc trong điều kiện:\r\n– Xe hoạt động trong điều kiện bình thường\r\n– Nguyên liệu phụ tùng không tốt\r\n– Lỗi lắp ráp\r\n– Trừ những điều kiện ghi trong mục NHỮNG GÌ KHÔNG ĐƯỢC BẢO HÀNH\r\nChú ý: Bảo hành vẫn áp dụng khi xe được chuyển nhượng cho những chủ xe khác.\r\n\r\n3. Phạm vi áp dụng bảo hành\r\nBảo hành chỉ áp dụng trong phạm vi nước Cộng hòa Xã hội chủ nghĩa Việt Nam.\r\n\r\n4. Bảo hành miễn phí\r\nMọi sửa chữa thuộc chế độ bảo hành (phụ tùng, công lao động) là miễn phí.\r\n\r\nB. Những gì không được bảo hành\r\nNhững yếu tố ngoài kiểm soát của nhà sản xuất\r\n– Những sửa chữa hay điều chỉnh do sử dụng sai (đua xe, chở quá tải), cẩu thả, tự ý sửa đổi, biến cải, đấu nối, tháo ngắt, sửa chữa điều chỉnh không đúng kỹ thuật, tai nạn, tự ý lắp thêm phụ tùng/phụ kiện, không thuộc chế độ bảo hành.\r\n– Ăn mòn do hóa mỹ phẩm hoặc ăn mòn bề mặt xe do bị đá bắn hoặc xước sơn không được bảo hành.\r\n– Hư hại hay bị ăn mòn do môi trường như mưa axit, hóa chất, nhựa cây, muối, mưa đá, mưa bão, sấm chớp, ngập lụt và những tác động tự nhiên khác không được bảo hành.', 'Tự hào là doanh nghiệp đứng vị trí dẫn đầu trên thị trường về dịch vụ sau bán hàng trong nhiều năm liên tiếp và được khách hàng đánh giá cao. A. Những gì được bảo hành 1. Thời hạn bảo hành Chế độ bảo hành bắt đầu được tính ngay kể từ thời điểm […]', '2018-05-06 00:00:00', 1, 'image/chinh-sach-bao-hanh.jpg', 'dịch vụ');
+INSERT INTO `post` (`post_id`, `title`, `content`, `des`, `time_update`, `post_url`, `type_post`, `user_id`) VALUES
+	(1, 'TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA', 'Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại lý Toyota trên toàn quốc.Fortuner & Innova là hai mẫu xe thường xuyên nằm trong danh sách xe bán chạy trên thị trường Việt Nam. Bên cạnh khách hàng cá nhân, gia đình, hai mẫu xe cũng được giới kinh doanh dịch vụ ưa chuộng. Có được thành công đó là nhờ việc kế thừa các giá trị cốt lõi tạo nên thành công của Toyota bao gồm chất lượng, độ bền và độ tin cậy cùng với chi phí vận hành, mức tiêu hao nhiên liệu thấp, phụ tùng sẵn có dễ thay thế cùng dịch vụ chất lượng cao và chuyên nghiệp với hệ thống 59 đại lý trải dài khắp 27 tỉnh thành trên cả nước và giá trị bán lại cao.', 'Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 – Công ty Ô tô Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc thực hiện […]', '2019-09-14 00:00:00', 'image/FB-3a-1.jpg', 'tin tức', 1),
+	(2, 'TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA', 'Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại lý Toyota trên toàn quốc.Fortuner & Innova là hai mẫu xe thường xuyên nằm trong danh sách xe bán chạy trên thị trường Việt Nam. Bên cạnh khách hàng cá nhân, gia đình, hai mẫu xe cũng được giới kinh doanh dịch vụ ưa chuộng. Có được thành công đó là nhờ việc kế thừa các giá trị cốt lõi tạo nên thành công của Toyota bao gồm chất lượng, độ bền và độ tin cậy cùng với chi phí vận hành, mức tiêu hao nhiên liệu thấp, phụ tùng sẵn có dễ thay thế cùng dịch vụ chất lượng cao và chuyên nghiệp với hệ thống 59 đại lý trải dài khắp 27 tỉnh thành trên cả nước và giá trị bán lại cao.', 'Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại lý Toyota trên toàn quốc. Từ ngày 03/9/2019 – Công ty Ô tô Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc thực hiện chương […]', '2019-09-08 00:00:00', 'image/jlfnod.jpg', 'tin tức', 1),
+	(3, 'TOYOTA VIỆT NAM XUẤT XƯỞNG CHIẾC XE THỨ 500.000', 'Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại lý Toyota trên toàn quốc.Fortuner & Innova là hai mẫu xe thường xuyên nằm trong danh sách xe bán chạy trên thị trường Việt Nam. Bên cạnh khách hàng cá nhân, gia đình, hai mẫu xe cũng được giới kinh doanh dịch vụ ưa chuộng. Có được thành công đó là nhờ việc kế thừa các giá trị cốt lõi tạo nên thành công của Toyota bao gồm chất lượng, độ bền và độ tin cậy cùng với chi phí vận hành, mức tiêu hao nhiên liệu thấp, phụ tùng sẵn có dễ thay thế cùng dịch vụ chất lượng cao và chuyên nghiệp với hệ thống 59 đại lý trải dài khắp 27 tỉnh thành trên cả nước và giá trị bán lại cao.', 'Nhà máy của TMV tại Vĩnh Phúc bắt đầu được thành lập vào năm 1995 và đi vào hoạt động từ năm 1996, sản lượng chỉ đạt trung bình 2 xe/ngày, với qui mô sản xuất 212 xe/năm, đến nay sản lượng nhà máy đã đạt trên 200 xe/ngày, tương đương 54.000 xe/năm. Các mẫu xe sản xuất và lắp ráp chiến lược như Vios, Innova liên tục nằm trong danh sách những mẫu xe được ưa chuộng nhất thị trường, đóng góp lớn vào kết quả ngày hôm nay với 500.000 xe xuất xưởng', '2019-06-21 00:00:00', 'image/Nhà-máy-TMV-1.jpg', 'tin tức', 1),
+	(4, 'QUÀ TẶNG MÙA HÈ TỪ TOYOTA NHẬN QUÀ CỰC KHỦNG 5-6/2019', 'NHẬN QUÀ CỰC KHỦNG 5-6/2019 TẠI TOYOTA VĨNH PHÚC \r\nTặng 01 năm BẢO HIỂM THÂN VỎ XE + CAMERA LÙI CHÍNH HÃNG (VIOS G)\r\nTặng gói phụ kiện chính hãng: MÀN HÌNH DVD, CAMERA LÙI CHÍNH HÃNG, BỌC GHẾ DA (VIOS E CVT, E MT)\r\nTặng tiền mặt sốc trừ thẳng vào giá xe\r\nHỗ trợ trả góp lãi suất chỉ từ 0,33%/tháng\r\nGIÁ XE TOYOTA VIOS 2019:\r\n– Toyota Vios 1.5 E MT: 531.000.000 VNĐ.\r\n– Toyota Vios 1.5 E CVT: 569.000.000 VNĐ.\r\n– Toyota Vios 1.5 G CVT: 606.000.000 VNĐ.\r\nHãy liên hệ với chúng tôi để nhận thêm ưu đãi: Hotline: 0973.631.248', 'NHẬN QUÀ CỰC KHỦNG 5-6/2019 TẠI TOYOTA VĨNH PHÚC Tặng 01 năm BẢO HIỂM THÂN VỎ XE + CAMERA LÙI CHÍNH HÃNG (VIOS G) Tặng gói phụ kiện chính hãng: MÀN HÌNH DVD, CAMERA LÙI CHÍNH HÃNG, BỌC GHẾ DA (VIOS E CVT, E MT) Tặng tiền mặt sốc trừ thẳng vào giá xe Hỗ […]', '2019-05-17 00:00:00', 'image/PR-Articles.jpg', 'tin tức', 1),
+	(5, 'SIÊU KHUYẾN MÃI THÁNG 3 dành cho VIOS, COROLLA ALTIS, INNOVA,WIGO', 'Chi tiết ưu đãi như sau:\r\n– Đối với VIOS G, COROLLA ALTIS, INNOVA (tất cả phiên bản) Tặng 01 năm Bảo hiểm Toyota\r\n– Đối với WIGO MT  Tặng 15 triệu phí trước bạ.\r\n– Đối với VIOS E (CVT), VIOS E MT  Tặng DVD + Camera lùi hoặc hỗ trợ lãi suất TFS 2.99% trong 6 tháng.\r\nNgoài ra, Khách hàng được tham dự chương trình bốc thăm may mắn và có cơ hội nhận được 01 chiếc xe cùng loại – chương trình do Toyota Việt Nam tổ chức.\r\n————-\r\nThời gian áp dụng: đến hết ngày  31/03/2019.', 'Chi tiết ưu đãi như sau: – Đối với VIOS G, COROLLA ALTIS, INNOVA (tất cả phiên bản) Tặng 01 năm Bảo hiểm Toyota – Đối với WIGO MT  Tặng 15 triệu phí trước bạ. – Đối với VIOS E (CVT), VIOS E MT  Tặng DVD + Camera lùi hoặc hỗ trợ lãi suất TFS 2.99% trong 6 […]', '2019-03-20 00:00:00', 'image/96feb7162136c3689a27.jpg', 'tin tức', 1),
+	(6, 'Giới thiệu Toyota WIGO số sàn', 'Toyota Wigo 2018 nhập về Việt nam sử dụng động cơ dung tích lớn hơn động cơ của mẫu xe này tại triển lãm ô tô Việt nam 2017.\r\n\r\n \r\n\r\nBảng màu xe Wigo 2018. Xe có 6 màu: Trắng, Bạc, Đỏ, Cam, Xám, Đen\r\n\r\nChi tiết Toyota Wigo 2018 phần ngoại thất\r\n\r\nToyota Wigo 2018 được thiết kế phần đầu xe rộng  và 2 đèn ở dưới giống với thiết kế camry. Thiết kế đèn Đèn trước BI – Halogen có đèn led chạy ban ngày.\r\n\r\n \r\n\r\nThân xe Toyota Wigo 2018. Kích thước dài, rộng, cao của Wigo lần lượt là 3.660 x 1.600 x 1.520 (mm). Những thông số này nhỉnh hơn đôi chút so với Kia Morning. Khi bán tại Việt Nam, Wigo sẽ là sự bổ sung hợp lý cho liên doanh ôtô Nhật Bản, bởi hãng còn thiếu những chiếc hatchback giá rẻ.\r\n\r\n \r\n\r\nĐuôi xe\r\n\r\nHình ảnh đèn trước Projector giống với đàn các anh Toyota Vios, Yaris\r\n\r\nCận cảnh Lazang kích thước 175/65R14 với 8 chấu đơn bố trí chéo trông khá ngầu\r\n\r\nĐánh giá Toyota Wigo 2018 về ngoại thất: với thiết kế thể thao hầm hố, kích thước nhỉnh hơn các đối thủ hiện nay tại thị trường ô tô Việt nam, lại mang thương hiệu Toyota nên Toyota Wigo sẽ là một “đối thủ nguy hiểm” đối với bất kỳ mẫu xe nào trong phân khúc A hatchback\r\n\r\nChi tiết Toyota Wigo 2018 phần nội thất\r\n\r\nNội thất khoang lái với tông màu đen. Có thể thấy ghế lái chỉnh cơ.\r\n\r\nNội thất khoang sau xe Toyota Wigo. Ghế nỉ khá đơn sơ. So với các đối thủ khác thì nội thất của mẫu xe hạng A này khá thua kém\r\n\r\n \r\n\r\nBảng taplo với đầu CD cho số sàn và DVD cho số tự động\r\n\r\nTay lái 3 chấu bằng nhựa có nút chỉnh âm thanh\r\n\r\nCốp sau Toyota Wigo nhỏ bé chỉ tương đương với xe Kia Morning\r\n\r\nChi tiết Toyota Wigo 2018 phần động cơ, vận hành, an toàn\r\n\r\n \r\n\r\nHình ảnh động cơ xe Toyota Wigo 2018 nhập về Việt nam. Phiên bản xe Toyota Wigo nhập khẩu về Việt nam sử dụng động cơ 3NR-VE 1.2L, Dual VVT-i, dung tích 1197cc, công suất cực đại 88Hp /6000rpm, mô-men xoắn cực đại 110Nm/ 4200rpm (bản trưng bày tại triển lãm ô tô Việt Nam năm nay sở hữu động cơ 3 xi-lanh,dung tích 1.0 lít). Khối động cơ lớn hơn mang đến khả năng vận ', 'TOYOTA HIROSHIMA VĨNH PHÚC XIN KÍNH CHÀO QUÝ KHÁCH CHÚNG TÔI XIN GIỚI THIỆUTOYOTA WIGO PHÂN KHÚC A  Tư vấn bán hàng: Nguyễn Thị Thanh Hải Hotline: 0973.631.248 TOYOTA WIGO 2018:    Toyota Wigo 2018 phân phối tại Việt nam được nhập khẩu từ Indonesia, bao gồm 2 phiên bản là Toyota Wigo 1.2G AT […]', '2019-02-17 00:00:00', 'image/24h-toyotavietnam-1-1539168646-206-width1320height743-768x432.jpg', 'tin tức', 1),
+	(7, 'GIỚI THIỆU VỀ VIOS 1.5E TỰ ĐỘNG', ' VIOS 1.5E TỰ ĐỘNG\r\nHãng sản xuất Toyota\r\nBảo hành3 năm or 100.000km\r\nGiáLiên hệ\r\nNỘI DUNG CHI TIẾT\r\nToyota Vios E Tự Động\r\nBẢNG GIÁ XE VIOS 2019 ĐÃ GIẢM GIÁ NIÊM YẾT:\r\nBẢNG GIÁ XE VIOS 2019	SỐ TIỀN\r\nTOYOTA VIOS G TỰ ĐỘNG	606.000.000\r\nTOYOTA VIOS E TỰ ĐỘNG	569.000.000\r\nTOYOTA VIOS E  SỐ SÀN	531.000.000\r\n* Khi khách hàng mua xe sẽ được giảm giá trực tiếp:\r\n+ Giảm trực tiếp tiền mặt\r\n+ Tặng phụ kiện chính hãng tùy theo khách hàng chọn\r\n+ Tặng 2 năm bảo hiểm thân vỏ\r\n\r\nQuy trình khách hàng mua ô tô trả góp bao gồm:\r\nChi phí lăn bánh tạm tính cho biển tỉnh:\r\nChi phí Lăn bánh	Số tiền\r\nThuế trước bạ (10%)	56.900.000\r\nĐăng ký xe	200.000\r\nLệ phí đăng kiểm	340.000\r\nPhí đường bộ	1.560.000\r\nTổng chi phí	59.000.000\r\n', ' VIOS 1.5E TỰ ĐỘNG Hãng sản xuất Toyota Bảo hành3 năm or 100.000km GiáLiên hệ NỘI DUNG CHI TIẾT Toyota Vios E Tự Động            CÔNG TY TOYOTA HIROSHIMA VĨNH PHÚC + Tư Vấn bán hàng  :  Nguyễn Thị Thanh Hải + Số điện thoại tư vấn  :  0973.631.248 + Hỗ […]', '2019-02-17 00:00:00', 'image/Beige-4R0.png', 'tin tức', 1),
+	(8, 'KIẾN THỨC VỀ CẤU TẠO Ô TÔ BẠN NÊN BIẾT', 'Xe ô tô là một trong những phương tiện phổ biến nhất hiện nay. Nó giúp chúng ta có thể đi lại và vận chuyển hàng hóa một cách dễ dàng. Chính vì sự tiện lợi ấy đã có không ít người sở hữu cho mình một chiếc ô tô để đáp ứng nhu cầu đó. Vậy nó được cấu tạo như thế nào? Là một trong những câu hỏi đang được nhiều người quan tâm nhất hiện nay. Chính vì vậy mà hôm nay chúng tôi xin cung cấp cho bạn đọc một số thông tin về việc cấu tạo ô tô cũng như chức năng của từng bộ phận.\r\nCấu tạo chung của ô tô gồm 2 phần chính\r\nA. Ngoại thất\r\nNắp ca-pô: Là phần khung kim loại ở phía đầu xe có công dụng bảo vệ cho khoang động cơ, có thể đóng mở để bảo trì và sửa chữa các bộ phận bên trong.\r\n\r\nLưới tản nhiệt: Hầu hết mỗi xe ô tô đều được trang bị lưới tản nhiệt ở mặt trước để bảo vệ bộ tản nhiệt và động cơ, đồng thời cho phép không khí luồn vào bên trong. \r\n\r\nĐèn pha: Là một thiết bị chiếu sáng cho mỗi chiếc xe thường đặt ở hai góc trái phải nối liền giữa nắp capô và mặt trước của xe. \r\n\r\nCản: Là cấu trúc gắn liền hoặc được tích hợp vào phía trước và phía sau của ô tô để hấp thụ lực tác động khi xảy ra va chạm, nó góp phần giảm thiểu chấn thương cho người ngồi trong xe và hư hại ở các bộ phận khác.\r\n\r\nKính chắn gió: Là một dạng cửa sổ kính nằm ở phía trước của ô tô, không chỉ có công dụng chắn gió, bụi, mưa…vào trong xe, mà còn tham gia gia tăng độ cứng cho kết cấu xe và bảo vệ an toàn cho hành khách trong một số tình huống va chạm.\r\n\r\nGương chiếu hậu: Là gương được gắn bên góc của hai cửa trước nhằm mục đích hỗ trợ người lái nhìn thấy khu vực phía sau và hai bên của chiếc xe.\r\n\r\nB. Nội thất\r\nVô lăng\r\nBảng đồng hồ\r\nĐồng hồ đo tốc độ\r\nĐồng hồ đo vòng tua\r\nBàn đạp phanh\r\nBàn đạp ga\r\nBàn đạp ly hợp\r\nCần số\r\nBài viết với một số thông tin hữu ích về cấu tạo ô tô cũng như công dụng của từng bộ phận mà trường chúng tôi cung cấp cho bạn đọc. Hy vọng rằng qua bài viết này các bạn có thể hiểu rõ hơn về các bộ phận cấu thành nên một chiếc xe nhé. Chúc các bạn thành công!', 'Xe ô tô là một trong những phương tiện phổ biến nhất hiện nay. Nó giúp chúng ta có thể đi lại và vận chuyển hàng hóa một cách dễ dàng. Chính vì sự tiện lợi ấy đã có không ít người sở hữu cho mình một chiếc ô tô để đáp ứng nhu cầu […]', '2019-01-20 00:00:00', 'image/cấu-tạo-xe-1.jpg', 'tin tức', 1),
+	(9, 'TOYOTA COROLLA THẾ HỆ MỚI TRẺ HÓA THIẾT KẾ', 'Thiết kế Corolla 2020 thay đổi toàn diện so với hiện tại, bổ sung thêm những công nghệ mới hỗ trợ người lái.\r\nToyota Corolla sedan thế hệ 12 vén màn trong một sự kiện riêng tại Mỹ. Thiết kế xe có nhiều điểm giống phiên bản Corolla hatchback ra mắt năm ngoái. Trong khi đó, hệ khung gầm phát triển từ nền tảng TNGA, khoang nội thất thay đổi với nhiều nâng cấp và bổ sung thêm động cơ 4 xi-lanh 2.0 mới.\r\nThiết kế đầu xe Corolla mới thay đổi đáng kể. Lưới tản nhiệt phong cách mới khá giống trên mẫu Avalon, cụm đèn thiết kế lại dùng bóng bi-LED. Corolla 2020 có kích thước dài, rộng, cao lần lượt 4.640 x 1.780 x 1.435 mm. Trục cơ sở đạt 2.700 mm. Hãng xe Nhật cho biết kết cấu mới trên xe mang đến trải nghiệm lái năng động cũng như êm ái, yên tĩnh và an toàn hơn.\r\n\r\nTrong khi đó, không gian cabin thay đổi đáng kể ở nội thất. Bảng táp-lô thiết kế lại. Hệ thống thông tin-giải trí tích hợp màn hình cảm ứng dựng đứng kích thước 8 inch. Corolla 2020 tích hợp Apple CarPlay và Amazon Alexa, kết nối Wifi, hệ thống âm thanh 6 loa.\r\n\r\nSedan của Toyota trang bị hệ thống treo Macpherson phía trước và liên kết đa điểm phía sau. Sự kết hợp của hệ thống treo này giúp kết cấu xe chắc chắn hơn, cải thiện trải nghiệm lái.\r\nTrong khi đó, Corolla 2020 trang bị hệ thống chống va chạm Toyota Safety Sense gồm cảnh báo va chạm trước, cảnh báo lệch làn đường, hệ thống điều khiển hành trình thích ứng. Ngoài ra, xe còn có các trang bị an toàn cơ bản khác như hệ thống phanh ABS, ổn định thân xe điện tử, 6 túi khí.\r\n\r\nTại Mỹ, Corolla 2020 trang bị động cơ 4 xi-lanh, 2.0, công suất 169 mã lực ở các phiên bản SE và XSE. Trong khi đó, phiên bản L, LE và XLE sử dụng động cơ 1.8 cũ, nhưng được chỉnh sửa giúp cải thiện khả năng tăng tốc.\r\n\r\nGiá bán Toyota Corolla 2020 sedan hiện chưa được công bố. Xe dự kiến bán tại Mỹ và châu Âu vào mùa xuân 2019.\r\n\r\n                                                                                                                     Nguồn : https://vnexpress.net', 'Thiết kế Corolla 2020 thay đổi toàn diện so với hiện tại, bổ sung thêm những công nghệ mới hỗ trợ người lái. Toyota Corolla sedan thế hệ 12 vén màn trong một sự kiện riêng tại Mỹ. Thiết kế xe có nhiều điểm giống phiên bản Corolla hatchback ra mắt năm ngoái. Trong khi […]', '2019-01-10 00:00:00', 'image/2020-toyota-corolla-2-6174-1542344527.jpg', 'tin tức', 1),
+	(10, 'TOYOTA VIOS VÀ TOYOTA RUSH ĐÃ ĐẠT CHỨNG NHẬN AN TOÀN 5 SAO ASEAN NCAP', 'Toyota được trao giải thưởng xuất sắc nhất của ASEAN NCAP ở hạng mục “Không ngừng cải tiến an toàn” cho hai mẫu xe Toyota Vios và Toyota Rush.\r\nỦy ban Đánh giá xe Đông Nam Á (ASEAN NCAP) vừa tổ chức lễ trao giải lần thứ 3 (2 năm một lần) – ASEAN NCAP Grand Prix 2018 tại Karawang, Tây Java, Indonesia. Lễ trao giải ASEAN NCAP Grand Prix nhằm tôn vinh thành tích của những mẫu xe đã tham dự quá trình đánh giá của ASEAN NCAP trong hai năm qua.\r\nTại lễ trao giải, Toyota được vinh danh ở “Giải thưởng thương hiệu 5 sao tốt nhất” (2017 – 2018), trong đó đáng chú ý là Giải thưởng xuất sắc nhất của ASEAN NCAP ở hạng mục “Không ngừng cải tiến an toàn” cho hai mẫu xe Toyota Vios và Toyota Rush.\r\nTheo đó, ở các thế hệ trước, cả 2 mẫu xe này chỉ mới nhận được 4 sao NCAP. Tuy nhiên, với việc bổ sung các tính năng an toàn hiện đại, Vios và Rush đã lần lượt nhận được đánh giá 5 sao ASEAN NCAP vào năm 2017 và 2018. Thành tựu này như một minh chứng rõ ràng cho những nỗ lực không ngừng của Toyota nhằm bảo vệ hành khách và nâng cao tiêu chuẩn an toàn trong các mẫu xe của hãng.\r\nCụ thể, Toyota Vios 2018 thế hệ hệ mới đã được trang bị thêm hàng loạt công nghệ an toàn mà thế hệ cũ chưa có như: 07 túi khí, 4 phanh đĩa, hệ thống ABS, EBD, BA và đặc biệt là hệ thống cân bằng điện tử VSC, hỗ trợ khởi hành ngang dốc, hệ thống kiểm soát lực kéo và hệ thống chống trộm.\r\nToyota Vios 2018 vẫn sử dụng động cơ 2NR-FBE 1.5L Dual VVT-I, công suất 108 mã lực tại 6.000 vòng/phút, mô-men xoắn cực đại 140 Nm tại 4.200 vòng/phút, đi kèm hộp số sàn 5 cấp hoặc hộp số tự động CVT. Có 3 phiên bản Vios được bán tại Việt Nam: 1.5EMT/1.5E CVT/1.5G CVT với giá bán đề xuất: 531 – 606 triệu đồng\r\nVề phần mình, ra đời vào năm 2007 và giữ vị trí dẫn đầu trong phân khúc tại nhiều thị trường như Phillipines, Indonesia, Thái Lan….Toyota Rush thế hệ thứ 3 cũng đã được chứng nhận an toàn 5 sao ASEAN NCAP với loạt công nghệ an toàn: hệ thống phân bố lực phanh điện tử EDB, hỗ trợ phanh (BA), hệ thống chống bó cứng phanh (ABS)', 'Toyota được trao giải thưởng xuất sắc nhất của ASEAN NCAP ở hạng mục “Không ngừng cải tiến an toàn” cho hai mẫu xe Toyota Vios và Toyota Rush. Ủy ban Đánh giá xe Đông Nam Á (ASEAN NCAP) vừa tổ chức lễ trao giải lần thứ 3 (2 năm một lần) – ASEAN NCAP Grand […]', '2019-01-01 00:00:00', 'image/4.bn_.png', 'tin tức', 1),
+	(11, 'DỊCH VỤ BẢO DƯỠNG', 'Trong quá trình vận hành, nhiều chi tiết trên xe bị mài mòn hoặc hư hỏng theo thời gian sử dụng. Điều này xảy ra với bất kỳ cơ cấu máy móc nào. Do đó, bạn cần mang xe đi kiểm tra, bảo dưỡng một cách định kỳ để đảm bảo từng chi tiết cấu thành nói riêng và tổng thể chiếc xe nói chung luôn được vận hành tốt.Dựa trên quá trình nghiên cứu các đặc tính và điều kiện sử dụng xe tại Việt Nam, Công ty ô tô Toyota Việt Nam đã xây dựng nên tiêu chuẩn về bảo dưỡng định kỳ cho mỗi loại xe mà chúng tôi sản xuất\r\nĐể được tư vấn chi tiết về nội dung kiểm tra, bảo dưỡng định kỳ, xin liên hệ với các Đại lý chính hãng của Toyota Việt Nam trên toàn quốc.\r\nVới trang thiết bị chuyên dụng và quy trình bảo dưỡng 2-3 kỹ thuật viên chuyên nghiệp, Bảo Dưỡng Nhanh sẽ giúp Quý khách hàng hài lòng hơn khi tổng thời gian chờ đợi trại trạm dịch vụ giảm xuống chỉ còn 60 phút (tính từ khi Quý khách ký lệnh sửa chữa bàn giao xe cho đến khi được thông báo xe sẵn sàng giao), trong khi quy trình bảo dưỡng thông thường mất 2-3 tiếng.\r\nGiàn lạnh là một thành phần của cụm điều hòa, không khí sau khi đi qua giàn lạnh sẽ được làm mát và tỏa vào trong xe. Sau thời gian dài sử dụng, bụi bẩn và hơi ẩm tích tụ trên bề mặt giàn lạnh làm giảm hiệu quả làm mát của điều hòa, phát sinh nấm mốc và vi khuẩn có hại cho hô hấp của người sử dụng. Toyota khuyến nghị cần định kỳ vệ sinh giàn lạnh kể từ 30.000km và sau mỗi 20.000 Km (1 lần/năm) để duy trì không khí trong lành cho xe.\r\n\r\nTuy nhiên hiện nay, việc vệ sinh giàn lạnh điều hòa là công việc rất khó khăn và phức tạp vì nó nằm sâu trong bảng táp-lô. Phương pháp truyền thống hay được sử dụng để vệ sinh giàn lạnh phải tháo dỡ toàn bộ bảng táp-lô cùng nhiều chi tiết với thời gian kéo dài từ 4 đến 6 tiếng.\r\n\r\nDịch vụ vệ sinh giàn lạnh điều hòa chính hãng Toyota, sử dụng Máy vệ sinh tự động với thiết bị chuyên biệt có thể làm sạch tận bên trong giàn lạnh mà không cần tháo dỡ táp lô với thời gian cho một lần dịch vụ chỉ 1 tiếng đồng hồ.', 'Trong quá trình vận hành, nhiều chi tiết trên xe bị mài mòn hoặc hư hỏng theo thời gian sử dụng. Điều này xảy ra với bất kỳ cơ cấu máy móc nào. Do đó, bạn cần mang xe đi kiểm tra, bảo dưỡng một cách định kỳ để đảm bảo từng chi tiết cấu […]', '2018-05-06 00:00:00', 'image/dich-vu-bao-duong.jpg', 'dịch vụ', 1),
+	(12, 'CHÍNH SÁCH BẢO HÀNH', 'Tự hào là doanh nghiệp đứng vị trí dẫn đầu trên thị trường về dịch vụ sau bán hàng trong nhiều năm liên tiếp và được khách hàng đánh giá cao.\r\n\r\nA. Những gì được bảo hành\r\n1. Thời hạn bảo hành\r\nChế độ bảo hành bắt đầu được tính ngay kể từ thời điểm xe được giao cho chủ xe đầu tiên. Trong vòng 36 tháng hoặc 100.000 km, tùy thuộc điều kiện nào đến trước, Toyota đảm bảo sẽ sửa chữa hoặc thay thế bất kỳ phụ tùng nào của xe Toyota mới bị hỏng hóc.\r\n– Bảo hành ắc quy: Thời hạn bảo hành cho ắc quy là 12 tháng hoặc 20.000 km tùy điều kiện nào tới trước.\r\n– Bảo hành lốp: Bảo hành lốp: Ðược bảo hành theo chế độ riêng của nhà sản xuất lốp. Để biết thêm chi tiết, xin quý khách vui lòng tham khảo những trang web sau: Bridgestone, Dunlop, Michelin.\r\n\r\n2. Điều kiện bảo hành\r\n\r\nToyota chỉ đảm bảo sửa chữa, thay thế các phụ tùng của xe Toyota mới bị hỏng hóc trong điều kiện:\r\n– Xe hoạt động trong điều kiện bình thường\r\n– Nguyên liệu phụ tùng không tốt\r\n– Lỗi lắp ráp\r\n– Trừ những điều kiện ghi trong mục NHỮNG GÌ KHÔNG ĐƯỢC BẢO HÀNH\r\nChú ý: Bảo hành vẫn áp dụng khi xe được chuyển nhượng cho những chủ xe khác.\r\n\r\n3. Phạm vi áp dụng bảo hành\r\nBảo hành chỉ áp dụng trong phạm vi nước Cộng hòa Xã hội chủ nghĩa Việt Nam.\r\n\r\n4. Bảo hành miễn phí\r\nMọi sửa chữa thuộc chế độ bảo hành (phụ tùng, công lao động) là miễn phí.\r\n\r\nB. Những gì không được bảo hành\r\nNhững yếu tố ngoài kiểm soát của nhà sản xuất\r\n– Những sửa chữa hay điều chỉnh do sử dụng sai (đua xe, chở quá tải), cẩu thả, tự ý sửa đổi, biến cải, đấu nối, tháo ngắt, sửa chữa điều chỉnh không đúng kỹ thuật, tai nạn, tự ý lắp thêm phụ tùng/phụ kiện, không thuộc chế độ bảo hành.\r\n– Ăn mòn do hóa mỹ phẩm hoặc ăn mòn bề mặt xe do bị đá bắn hoặc xước sơn không được bảo hành.\r\n– Hư hại hay bị ăn mòn do môi trường như mưa axit, hóa chất, nhựa cây, muối, mưa đá, mưa bão, sấm chớp, ngập lụt và những tác động tự nhiên khác không được bảo hành.', 'Tự hào là doanh nghiệp đứng vị trí dẫn đầu trên thị trường về dịch vụ sau bán hàng trong nhiều năm liên tiếp và được khách hàng đánh giá cao. A. Những gì được bảo hành 1. Thời hạn bảo hành Chế độ bảo hành bắt đầu được tính ngay kể từ thời điểm […]', '2018-05-06 00:00:00', 'image/chinh-sach-bao-hanh.jpg', 'dịch vụ', 1);
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
--- Dumping data for table carsale.spec: ~6 rows (approximately)
+-- Dumping structure for table carsalel.role
+CREATE TABLE IF NOT EXISTS `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `code` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table carsalel.role: ~2 rows (approximately)
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` (`id`, `name`, `code`) VALUES
+	(1, 'ADMIN', 'ADMIN'),
+	(2, 'USER', 'USER');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+
+-- Dumping structure for table carsalel.spec
+CREATE TABLE IF NOT EXISTS `spec` (
+  `spec_id` int(11) NOT NULL AUTO_INCREMENT,
+  `spec_name` varchar(50) NOT NULL,
+  `detail` varchar(2000) NOT NULL,
+  `car_id` int(11) NOT NULL,
+  PRIMARY KEY (`spec_id`),
+  KEY `car_id` (`car_id`),
+  CONSTRAINT `spec_ibfk_1` FOREIGN KEY (`car_id`) REFERENCES `car` (`car_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table carsalel.spec: ~6 rows (approximately)
 /*!40000 ALTER TABLE `spec` DISABLE KEYS */;
 INSERT INTO `spec` (`spec_id`, `spec_name`, `detail`, `car_id`) VALUES
 	(1, 'Kích thước', 'Kích thước tổng thể	Dài x Rộng x Cao	mm	4410 x 1700 x 1475\r\nKích thước nội thất	Dài x Rộng x Cao	mm	1915 x 1425 x 1205\r\nChiều dài cơ sở		mm	2550</br>\r\nChiều rộng cơ sở	Trước/Sau	mm	1470/1460\r\nKhoảng sáng gầm xe		mm	145\r\nBán kín quay vòng tối thiểu		m	5.1\r\nTrọng lượng không tải		kg	1050 – 1065\r\nTrọng lượng toàn tải		kg	1500\r\nDung tích bình nhiên liệu		l	42', 2),
@@ -257,6 +257,31 @@ INSERT INTO `spec` (`spec_id`, `spec_name`, `detail`, `car_id`) VALUES
 	(5, 'Tiện ích', 'Hàng ghế trước	Ghế người lái	–	Chỉnh tay 6 hướng', 2),
 	(6, 'An toàn', 'Hệ thống phanh	Trước	–	Đĩa thông gió 15 inch\r\nSau	–	Đĩa 15 inch\r\nHệ thống chống bó cứng phanh		–	Có\r\nHệ thống phân phối lực phanh điện tử		–	Có\r\nHệ thống hỗ trợ phanh khẩn cấp		–	Có\r\nTúi khí			Người lái và hành khách phía trước\r\nKhung xe GOA		–	Có', 2);
 /*!40000 ALTER TABLE `spec` ENABLE KEYS */;
+
+-- Dumping structure for table carsalel.user
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `full_name` varchar(100) NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `username` varchar(50) NOT NULL,
+  `pass` varchar(100) NOT NULL,
+  `role` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  KEY `role` (`role`),
+  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table carsalel.user: ~2 rows (approximately)
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`user_id`, `full_name`, `age`, `phone`, `email`, `address`, `username`, `pass`, `role`) VALUES
+	(1, 'Team LTW', 1, '0987654321', 'carsale@gmail.com', 'Hà Nội', 'admin', '$2a$12$EGwRX3G./i9tHRatCetR0.LUAdHlTHTl11hEM.qsc8NgUlF6R/04u', 1),
+	(6, 'Pham minh DUc', 12, '1231111', 'minhduc97.ptit@gmail.com', 'Há»c Viá»n Cong nghá» bÆ°u chÃ­nh viá»n thÃ´ng', 'admin123', '$2a$12$IUzXxZgrd8PW3JvS50OAQeGkk.WJZvkVrr9/tY4zU1Av1tMKkvwNm', 2);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
