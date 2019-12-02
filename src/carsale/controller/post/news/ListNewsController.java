@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import carsale.model.Car;
 import carsale.model.Post;
 import carsale.service.PostService;
 import carsale.serviceImpl.PostServiceImpl;
@@ -19,7 +18,7 @@ import carsale.serviceImpl.PostServiceImpl;
 /**
  * Servlet implementation class ListNewsController
  */
-@WebServlet("/list-news")
+@WebServlet("/api/list-news")
 public class ListNewsController extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private PostService postService;

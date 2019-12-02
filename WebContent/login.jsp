@@ -24,7 +24,7 @@
 			</table>
 			<input type="submit" value="submit" name="action" />
 		</form>
-		<a href="href="login?action=signup"">Đăng ký tài khoản</a>
+		<a href="login?action=signup">Đăng ký tài khoản</a>
 	</div>
 </body>
 </html>

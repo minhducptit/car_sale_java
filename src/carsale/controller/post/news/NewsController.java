@@ -1,7 +1,6 @@
 package carsale.controller.post.news;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +17,7 @@ import carsale.serviceImpl.PostServiceImpl;
 /**
  * Servlet implementation class NewsController
  */
-@WebServlet("/news")
+@WebServlet("/api/news")
 public class NewsController extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private PostService postService;

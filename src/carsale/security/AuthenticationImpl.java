@@ -1,6 +1,4 @@
-/*
- * (C) Copyright Global CyberSoft (GCS) 2019. All rights reserved. Proprietary and confidential.
- */
+
 package carsale.security;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +14,7 @@ public class AuthenticationImpl implements Authentication {
   private String userName;
   private String password;
   private UserService userService;
-  private BCrypt bcrypt;
+
 
   /**
    * {@inheritDoc}
@@ -31,6 +29,7 @@ public class AuthenticationImpl implements Authentication {
       User userModel= userService.getByUsername(this.userName);
       //Giai ma mat khau 
       BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), userModel.getPassword());
+      //Nếu khớp mật khẩu
       if(result.verified) {
         user=userModel;
       }
@@ -41,10 +40,10 @@ public class AuthenticationImpl implements Authentication {
     }
     if (user != null) {
       SessionUtil.getInstance().putValue(req, "USER", user);
-      if (user.getRole().getRoleName().equals("ADMIN")) {
-        return "/admin-home";
-      } else if (user.getRole().getRoleName().equals("USER")) {
-        return "/trang-chu";
+      if (user.getRole().getRoleCode().equals("ADMIN")) {
+        return "/admin/home";
+      } else if (user.getRole().getRoleCode().equals("USER")) {
+        return "/api/trang-chu";
       }
     }
     return "/login?action=signin&user=null";

@@ -18,7 +18,7 @@ import carsale.serviceImpl.CarServiceImpl;
 /**
  * Servlet implementation class HomeController
  */
-@WebServlet("/trang-chu")
+@WebServlet("/api/trang-chu")
 public class HomeController extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private CarService carService;

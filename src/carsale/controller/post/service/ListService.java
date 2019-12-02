@@ -18,7 +18,7 @@ import carsale.serviceImpl.PostServiceImpl;
 /**
  * Servlet implementation class ListService
  */
-@WebServlet("/list-service")
+@WebServlet("/api/list-service")
 public class ListService extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private PostService postService;

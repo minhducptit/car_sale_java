@@ -24,8 +24,7 @@ public class LoginSvl extends HttpServlet {
    * @see HttpServlet#HttpServlet()
    */
   public LoginSvl() {
-    super();
-    // TODO Auto-generated constructor stub
+   
   }
 
   /**
@@ -67,7 +66,7 @@ public class LoginSvl extends HttpServlet {
       System.out.println("Signup: " + user.toString());
       String url =
           Authentication.of(user.getUserName(), user.getPassword()).urlRediect(request);
-      System.out.println(url);
+      System.out.println("Login URL:"+url);
       response.sendRedirect(request.getContextPath() + url);
     }
   }

@@ -1,6 +1,4 @@
-/*
- * (C) Copyright Global CyberSoft (GCS) 2019. All rights reserved. Proprietary and confidential.
- */
+
 package carsale.filter;
 
 import java.io.IOException;
@@ -18,9 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import carsale.model.User;
 import carsale.untils.SessionUtil;
 
-/**
- * @author <a href="mailto:developer@hitachiconsulting.com">minhduc97.ptit</a>
- */
 public class AuthorticationFilter implements Filter {
 
   private ServletContext context;
@@ -47,20 +42,28 @@ public class AuthorticationFilter implements Filter {
     HttpServletRequest req = (HttpServletRequest) request;
     HttpServletResponse resp = (HttpServletResponse) response;
     String url = req.getRequestURI();
+    System.out.println("Filter urf: " + url);
     if (url.startsWith(req.getContextPath() + "/admin")
         || url.startsWith(req.getContextPath() + "/api")) {
       User user = (User) SessionUtil.getInstance().getValue(req, "USER");
+      // System.out.println("filter user: "+user.toString());
       if (user != null) {
-        if (user.getRole().getRoleName().equals("ADMIN")) {
+        if (user.getRole().getRoleCode().equals("ADMIN")) {
+          System.out.println("Filler role admin");
           chain.doFilter(request, response);
-        } else if (user.getRole().getRoleName().equals("USER")) {
-          resp.sendRedirect(req.getContextPath() + "/login?action=signin&user=null");
+        } else if (user.getRole().getRoleCode().equals("USER")) {
+          System.out.println("Filter role user");
+          chain.doFilter(request, response);
+          // resp.sendRedirect(req.getContextPath() +
+          // "/login?action=signin&user=null");
         }
       } else {
         resp.sendRedirect(req.getContextPath() + "/login?action=signin&user=null");
       }
     } else {
       chain.doFilter(request, response);
+      // resp.sendRedirect(req.getContextPath() +
+      // "/login?action=signin&user=null");
     }
 
   }
