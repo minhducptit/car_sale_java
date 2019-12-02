@@ -9,7 +9,6 @@ import carsale.model.User;
 
 public class UserMapper implements IRowMapper<User> {
 
-
   @Override
   public User mapRow(ResultSet rs) {
     try {
@@ -28,11 +27,12 @@ public class UserMapper implements IRowMapper<User> {
         role.setRoleCode(rs.getString("code"));
         user.setRole(role);
       } catch (SQLException e) {
-        // TODO: handle exception
+        System.out.println("Converter:" + e.getMessage());
+        return null;
       }
       return user;
     } catch (SQLException e) {
-      System.out.println("Converter:"+e.getMessage());
+      System.out.println("Converter:" + e.getMessage());
       return null;
     }
 

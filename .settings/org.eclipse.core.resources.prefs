@@ -4,3 +4,4 @@ encoding//src/carsale/common/Content_en.properties=UTF-8
 encoding//src/carsale/common/Content_vi.properties=UTF-8
 encoding//src/carsale/controller/LoginSvl.java=UTF-8
 encoding//src/carsale/controller/SignUpController.java=UTF-8
+encoding//src/carsale/dao/impl/PostDaoImpl.java=UTF-8

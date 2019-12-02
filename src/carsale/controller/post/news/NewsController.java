@@ -1,4 +1,4 @@
-package carsale.controller;
+package carsale.controller.post.news;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,24 +11,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import carsale.model.Car;
-import carsale.service.CarService;
-import carsale.serviceImpl.CarServiceImpl;
+import carsale.model.Post;
+import carsale.service.PostService;
+import carsale.serviceImpl.PostServiceImpl;
 
 /**
- * Servlet implementation class HomeController
+ * Servlet implementation class NewsController
  */
-@WebServlet("/trang-chu")
-public class HomeController extends HttpServlet {
+@WebServlet("/news")
+public class NewsController extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  private CarService carService;
+  private PostService postService;
   private Gson gson;
 
   /**
    * @see HttpServlet#HttpServlet()
    */
-  public HomeController() {
-    carService = new CarServiceImpl();
+  public NewsController() {
+    postService = new PostServiceImpl();
     gson = new Gson();
   }
 
@@ -38,8 +38,10 @@ public class HomeController extends HttpServlet {
    */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    ArrayList<Car> list = carService.getAllCar();
-    String json = gson.toJson(list);
+    String id = request.getParameter("id");
+    int newsId = Integer.parseInt(id);
+    Post news = postService.getNewById(newsId);
+    String json = gson.toJson(news);
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     response.getWriter().write(json);

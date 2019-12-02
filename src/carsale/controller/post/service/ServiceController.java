@@ -1,8 +1,6 @@
-package carsale.controller;
+package carsale.controller.post.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,24 +9,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import carsale.model.Car;
-import carsale.service.CarService;
-import carsale.serviceImpl.CarServiceImpl;
+import carsale.model.Post;
+import carsale.service.PostService;
+import carsale.serviceImpl.PostServiceImpl;
 
 /**
- * Servlet implementation class HomeController
+ * Servlet implementation class ServiceController
  */
-@WebServlet("/trang-chu")
-public class HomeController extends HttpServlet {
+@WebServlet("/service")
+public class ServiceController extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  private CarService carService;
+  private PostService postService;
   private Gson gson;
 
   /**
    * @see HttpServlet#HttpServlet()
    */
-  public HomeController() {
-    carService = new CarServiceImpl();
+  public ServiceController() {
+    postService = new PostServiceImpl();
     gson = new Gson();
   }
 
@@ -38,8 +36,10 @@ public class HomeController extends HttpServlet {
    */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    ArrayList<Car> list = carService.getAllCar();
-    String json = gson.toJson(list);
+    String id = request.getParameter("id");
+    int serviceId = Integer.parseInt(id);
+    Post service = postService.getServiceById(serviceId);
+    String json = gson.toJson(service);
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     response.getWriter().write(json);
