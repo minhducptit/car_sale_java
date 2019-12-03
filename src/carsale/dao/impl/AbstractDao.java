@@ -14,13 +14,11 @@ import java.util.List;
 import carsale.dao.GennericDao;
 import carsale.mapper.IRowMapper;
 
-/**
- * @author <a href="mailto:developer@hitachiconsulting.com">minhduc97.ptit</a>
- */
+
 public class AbstractDao<T> implements GennericDao<T> {
 
   public Connection getConnection() {
-    String dbUrl = "jdbc:mariadb://localhost:3307/carsalel";
+    String dbUrl = "jdbc:mariadb://localhost:3307/carsale";
     String dbClass = "org.mariadb.jdbc.Driver";
     try {
       Class.forName(dbClass);

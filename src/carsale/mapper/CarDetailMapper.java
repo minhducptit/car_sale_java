@@ -20,6 +20,7 @@ public class CarDetailMapper implements IRowMapper<Car> {
       car.setCarId(rs.getInt("car_id"));
       car.setCarName(rs.getString("car_name"));
       car.setCarCategory(rs.getString("category"));
+      car.setCarType(rs.getString("type"));
       car.setCarDes(rs.getString("des"));
       car.setCarPrice(rs.getDouble("price"));
       return car;

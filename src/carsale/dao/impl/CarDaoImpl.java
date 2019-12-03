@@ -8,6 +8,7 @@ import carsale.dao.CarDao;
 import carsale.dao.DescriptionDao;
 import carsale.dao.ImageDao;
 import carsale.dao.SpecDao;
+import carsale.mapper.CarDetailMapper;
 import carsale.mapper.CarMapper;
 import carsale.mapper.ListPriceCarMapper;
 import carsale.model.Car;
@@ -54,7 +55,7 @@ public class CarDaoImpl extends AbstractDao<Car> implements CarDao {
   @Override
   public Car getCarById(int carId) {
     StringBuilder sqlCar = new StringBuilder("SELECT * FROM car AS c WHERE c.car_id=?");
-    List<Car> list = this.query(sqlCar.toString(), new CarMapper(), carId);
+    List<Car> list = this.query(sqlCar.toString(), new CarDetailMapper(), carId);
     if (list.size() == 0) {
       return null;
     } else {
