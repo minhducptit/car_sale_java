@@ -1,7 +1,6 @@
 package carsale.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +15,10 @@ import carsale.service.CarService;
 import carsale.serviceImpl.CarServiceImpl;
 
 /**
- * Servlet implementation class HomeController
+ * Servlet implementation class CarDetailControlter
  */
-@WebServlet("/trang-chu")
-public class HomeController extends HttpServlet {
+@WebServlet("/car-detail")
+public class CarDetailControlter extends HttpServlet {
   private static final long serialVersionUID = 1L;
   private CarService carService;
   private Gson gson;
@@ -27,7 +26,7 @@ public class HomeController extends HttpServlet {
   /**
    * @see HttpServlet#HttpServlet()
    */
-  public HomeController() {
+  public CarDetailControlter() {
     carService = new CarServiceImpl();
     gson = new Gson();
   }
@@ -38,8 +37,10 @@ public class HomeController extends HttpServlet {
    */
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    ArrayList<Car> list = carService.getAllCar();
-    String json = gson.toJson(list);
+    String id = request.getParameter("id");
+    int carId = Integer.parseInt(id);
+    Car car = carService.getCarById(carId);
+    String json = gson.toJson(car);
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     response.getWriter().write(json);

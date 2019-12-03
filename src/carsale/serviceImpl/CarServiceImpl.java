@@ -28,8 +28,7 @@ public class CarServiceImpl implements CarService {
    */
   @Override
   public Car getCarById(int carId) {
-    // TODO Auto-generated method stub
-    return null;
+    return cardao.getCarById(carId);
   }
 
   /**

@@ -43,7 +43,7 @@ public class AuthenticationImpl implements Authentication {
       if (user.getRole().getRoleCode().equals("ADMIN")) {
         return "/admin/home";
       } else if (user.getRole().getRoleCode().equals("USER")) {
-        return "/api/trang-chu";
+        return "/index.jsp";
       }
     }
     return "/login?action=signin&user=null";

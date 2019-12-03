@@ -21,7 +21,7 @@ public class ImageMapper implements IRowMapper<Image> {
       Image image = new Image();
       image.setImageId(rs.getInt("image_id"));
       image.setImageUrl(rs.getString("url"));
-      image.setImageType(rs.getString("type_image"));
+      image.setImageType(rs.getString("type_image"));   
       try {
         Car car = new Car();
         car.setCarId(rs.getInt("car_id"));
@@ -35,7 +35,7 @@ public class ImageMapper implements IRowMapper<Image> {
       }
       return image;
     } catch (SQLException e) {
-      System.out.println("Converter:" + e.getMessage());
+      System.out.println("Converter Image:" + e.getMessage());
       return null;
     }
   }
