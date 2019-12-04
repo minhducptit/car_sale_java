@@ -5,6 +5,7 @@ import java.util.List;
 
 import carsale.dao.ImageDao;
 import carsale.mapper.ImageMapper;
+import carsale.mapper.ImageSlideMapper;
 import carsale.model.Image;
 
 public class ImageDaoImpl extends AbstractDao<Image> implements ImageDao {
@@ -26,6 +27,23 @@ public class ImageDaoImpl extends AbstractDao<Image> implements ImageDao {
       return list;
     }
 
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see carsale.dao.ImageDao#getImageSlide()
+   */
+  @Override
+  public List<Image> getImageSlide() {
+    StringBuilder sql = new StringBuilder("SELECT * FROM image AS i ");
+    sql.append("WHERE i.type_image='slide' ");
+    List<Image> list = query(sql.toString(), new ImageSlideMapper());
+    if (list.size() == 0) {
+      return null;
+    } else {
+      return list;
+    }
   }
 
 }
