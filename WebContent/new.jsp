@@ -4,23 +4,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
-<link href="css/posts.css" rel="stylesheet" type="text/css" />
-<link href="css/abc.css" rel="stylesheet" type="text/css" />
-<link href="css/content.css" rel="stylesheet" type="text/css" />
-<link href="css/news.css" rel="stylesheet" type="text/css" />
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Tin tức</title>
-<link rel="stylesheet" href="./css/slider.css">
-<link
-	href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap"
-	rel="stylesheet">
-<script src="https://kit.fontawesome.com/33edc35265.js"></script>
-<!-- crossorigin="anonymous" -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="UTF-8">
+	<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="css/news.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<link href="css/content.css" rel="stylesheet" type="text/css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Car-sale</title>
 </head>
 <body>
 	<!-- Hearder -->
@@ -134,24 +127,7 @@
 					</h3>
 				</div>
 				<div class="block-content content-news">
-					<div>
-						<a href="postnews.jsp"><img src="img/car6.jpg" alt="hot new"></a>
-						<p>Toyota triển khai chương trình ưu đãi cho khách hàng mua xe
-							toyota giá 1 tỷ trở lên</p>
-						<p class="time">2019-09-04</p>
-					</div>
-					<div>
-						<a href="#"><img src="img/car6.jpg" alt="hot new"></a>
-						<p>Toyota triển khai chương trình ưu đãi cho khách hàng mua xe
-							toyota giá 1 tỷ trở lên</p>
-						<p class="time">2019-09-04</p>
-					</div>
-					<div>
-						<a href="#"><img src="img/car6.jpg" alt="hot new"></a>
-						<p>Toyota triển khai chương trình ưu đãi cho khách hàng mua xe
-							toyota giá 1 tỷ trở lên</p>
-						<p class="time">2019-09-04</p>
-					</div>
+					<div id="listNewHot"></div>
 				</div>
 			</div>
 			<div class="block block-access-statistics">
@@ -184,194 +160,7 @@
 			<div class="block-categories">
 				<h3><%=resourceBundle.getString("chuyenmuc")%></h3>
 			</div>
-
-			<div class="image-text">
-				<div class="image">
-					<a href="postnews.jsp"><img src="img/car1.jpg" alt="imageCar"></a>
-				</div>
-				<div class="text">
-					<a href="postnews.jsp">
-						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
-						</p>
-					</a>
-					<p class="time">2019-10-05</p>
-					<p class="content">Chương trình ưu đãi dành cho khách hàng
-						thanh toán đầy đủ khi mua xe Corolla Altis từ ngày 03/9/2019 đến
-						30/9/2019 và Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại
-						hệ thống đại lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 […]</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="postnews.jsp"><%=resourceBundle.getString("xemthem")%></a>
-			</div>
-
-			<div class="image-text">
-				<div class="image">
-					<a href="#"><img src="img/car1.jpg" alt="imageCar"></a>
-				</div>
-				<div class="text">
-					<a href="#">
-						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
-						</p>
-					</a>
-					<p class="time">2019-10-05</p>
-					<p>Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ
-						khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và
-						Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại
-						lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 – Công ty Ô tô
-						Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc
-						thực hiện […]</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
-			</div>
-
-			<div class="image-text">
-				<div class="image">
-					<a href="#"><img src="img/car1.jpg" alt="imageCar"></a>
-				</div>
-				<div class="text">
-					<a href="#">
-						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
-						</p>
-					</a>
-					<p class="time">2019-10-05</p>
-					<p>Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ
-						khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và
-						Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại
-						lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 […]</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
-			</div>
-
-			<div class="image-text">
-				<div class="image">
-					<a href="#"><img src="img/car1.jpg" alt="imageCar"></a>
-				</div>
-				<div class="text">
-					<a href="#">
-						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
-						</p>
-					</a>
-					<p class="time">2019-10-05</p>
-					<p>Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ
-						khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và
-						Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại
-						lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 – Công ty Ô tô
-						Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc
-						thực hiện […]</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
-			</div>
-
-			<div class="image-text">
-				<div class="image">
-					<a href="#"><img src="img/car1.jpg" alt="imageCar"></a>
-				</div>
-				<div class="text">
-					<a href="#">
-						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
-						</p>
-					</a>
-					<p class="time">2019-10-05</p>
-					<p>Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ
-						khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và
-						Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại
-						lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 – Công ty Ô tô
-						Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc
-						thực hiện […]</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
-			</div>
-
-			<div class="image-text">
-				<div class="image">
-					<a href="#"><img src="img/car1.jpg" alt="imageCar"></a>
-				</div>
-				<div class="text">
-					<a href="#">
-						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
-						</p>
-					</a>
-					<p class="time">2019-10-05</p>
-					<p>Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ
-						khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và
-						Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại
-						lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 – Công ty Ô tô
-						Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc
-						thực hiện […]</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
-			</div>
-
-			<div class="image-text">
-				<div class="image">
-					<a href="#"><img src="img/car1.jpg" alt="imageCar"></a>
-				</div>
-				<div class="text">
-					<a href="#">
-						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
-						</p>
-					</a>
-					<p>class="time">2019-10-05</p>
-					<p>Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ
-						khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và
-						Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại
-						lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 – Công ty Ô tô
-						Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc
-						thực hiện […]</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
-			</div>
-
-			<div class="image-text">
-				<div class="image">
-					<a href="#"><img src="img/car1.jpg" alt="imageCar"></a>
-				</div>
-				<div class="text">
-					<a href="#">
-						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
-						</p>
-					</a>
-					<p class="time">2019-10-05</p>
-					<p>Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ
-						khi mua xe Corolla Altis từ ngày 03/9/2019 đến 30/9/2019 và
-						Fortuner, Innova từ ngày 03/9/2019 đến 31/10/2019 tại hệ thống đại
-						lý Toyota trên toàn quốc. Hà Nội, ngày 03/9/2019 – Công ty Ô tô
-						Toyota Việt Nam (TMV) cùng hệ thống đại lý Toyota trên toàn quốc
-						thực hiện […]</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="#"><%=resourceBundle.getString("xemthem")%></a>
-			</div>
+			<div id="listNews"></div>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -422,7 +211,7 @@
 				</ul>
 				<p><%=resourceBundle.getString("gopyxingoi")%>: 03456789
 				</p>
-				<span> <a href="https://www.facebook.com/otovinhphuctoyota/">ltwthaydung@carssale.com</a>
+				<span> <a href="#">ltwthaydung@carssale.com</a>
 				</span>
 			</div>
 			<div class="clear"></div>
@@ -436,6 +225,67 @@
 			</p>
 		</div>
 	</footer>
-
+	<script>
+		loadNew();
+		function loadNew() {
+			var t = $.ajax({
+				url : "http://localhost:8080/CarSale/api/list-news",
+				type : "GET",
+				dataType : "json",
+				contentType : "application/json; charset=utf-8"
+			});
+			t.done(function(result) {
+				//Show list news
+				var content = '';
+			for (let i = 0; i < result.length; i++) {
+				content += '<div class="image-text">'
+						+ '<div class="image">' + '<a href="post.jsp" ><img src='+result[i].postUrlImg 
+						+ ' alt="imageCar"></a>' 
+						+ '</div>'
+						+ '<div class="text">'
+						+ '<a href="post.jsp">'
+						+ '<p>'
+						+ '<h4>'
+						+ result[i].postTitle
+						+ '</h4>' + '</p>'
+						+ '</a>'
+						+ '<p class="time">'
+						+ result[i].timeUpdate
+						+ '</p>'
+						+ '<p class="content">'
+						+ result[i].postDes
+						+ '</p>' + '</div>'
+						+ '</div>'
+						+ '<div class="see-more">'
+						+'<a href="post.jsp">'
+						+'<%=resourceBundle.getString("xemthem")%>'+'</a>'
+						+'</div>';
+						;
+			}		
+				$("#listNews").append(content);
+			});
+		}
+		loadNewHot();
+		function loadNewHot() {
+			var t = $.ajax({
+				url : "http://localhost:8080/CarSale/api/list-news",
+				type : "GET",
+				dataType : "json",
+				contentType : "application/json; charset=utf-8"
+			});
+			t.done(function(result) {
+				//Show list news hot
+				var content = '';
+			for (let i = 0; i < 3; i++) {
+				content += '<div>'
+                +'<a href="post.jsp"><img src='+result[i].postUrlImg +' alt="hot new"></a>'
+                +'<p>'+result[i].postTitle+ '</p>'
+                +'<p class="time">'+result[i].timeUpdate+'</p>'
+            	+'</div>';
+			}		
+				$("#listNewHot").append(content);
+			});
+		}
+	</script>
 </body>
 </html>
