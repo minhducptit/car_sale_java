@@ -56,6 +56,8 @@
 p.time {
     font-size: 13px;
     color: #AAAAAA;
+    padding-top:10px;
+    padding-bottom:10px;
 }
 
 p.content {
@@ -127,7 +129,8 @@ p.content {
     display: block;
     justify-content: space-between;
     min-width: 150px;
-/*    padding-top: 20px;*/
+   padding-top: 20px;
+   margin-top:20px;
 }
 
 .image {
@@ -150,15 +153,18 @@ p.content {
 
 .see-more {
     text-align: center;
-    color: white;
+    !color: white;
     width: 100px;
     height: 30px;
     background-color: #2D2B2B;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align:center;
 	display: inline-block;
 }
-
+.see-more a{
+	color: white  !important;
+}
 .see-more a:hover {
     color: white;
 }
@@ -192,15 +198,19 @@ img.icon{
 }
 .block-comment{
 	padding:50px;
-	width:100%;
+	width:80%;
 	background-color:#F1F0F4;
 		
 }
 .block-comment input{
 	height:30px;
+	widht:80%;
+	min-width:400px;
 }
 #textArea{
 	height:100px;
+	widht:80%;
+	min-width:400px;
 }
 /*reponsive for none pc*/
 
