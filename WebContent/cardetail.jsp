@@ -3,24 +3,25 @@
 <%@ page import="java.util.ResourceBundle"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
-<link href="css/abc.css" rel="stylesheet" type="text/css" />
-<link href="css/content.css" rel="stylesheet" type="text/css" />
-<link href="css/news.css" rel="stylesheet" type="text/css" />
-<link href="css/cartype.css" rel="stylesheet" type="text/css" />
-<link href="css/detail.css" rel="stylesheet" type="text/css" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>SUV</title>
-<link rel="stylesheet" href="./css/slider.css">
-<link
-	href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap"
-	rel="stylesheet">
-<script src="https://kit.fontawesome.com/33edc35265.js"></script>
+	<meta charset="UTF-8">
+	<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="css/abc.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+	<link href="css/content.css" rel="stylesheet" type="text/css" />
+	<link href="css/news.css" rel="stylesheet" type="text/css" />
+	<link href="css/cartype.css" rel="stylesheet" type="text/css" />
+	<link href="css/detail.css" rel="stylesheet" type="text/css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>SUV</title>
+	<link rel="stylesheet" href="./css/slider.css">
+	<link href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/33edc35265.js"></script>
 </head>
+
 <body>
 
 	<%
@@ -66,8 +67,7 @@
 						<h3>
 							<a href="suv.jsp">VOIS</a>
 						</h3>
-						<a href="#">Vios 1.5E (MT)</a> <a href="#">Vios G(CVT)</a> <a
-							href="#">Vios 1.5E (CVT)</a>
+						<a href="#">Vios 1.5E (MT)</a> <a href="#">Vios G(CVT)</a> <a href="#">Vios 1.5E (CVT)</a>
 					</div>
 					<div class="column">
 						<h3>
@@ -87,7 +87,7 @@
 		<div class="container-top">
 			<ul>
 				<li><a href="index.jsp"> <span>home</span>
-				</a> <span>|</span></li>
+					</a> <span>|</span></li>
 				<li><a href="new.jsp">Tin tức</a></li>
 			</ul>
 		</div>
@@ -118,26 +118,21 @@
 				</div>
 				<div class="block-content content-news-event">
 					<ul>
-						<li><label class="checkbox-container">Fortuner <input
-								type="checkbox" checked="checked"> <span
-								class="checkmark"></span>
-						</label></li>
-						<li><label class="checkbox-container">Rush <input
-								type="checkbox" checked="checked"> <span
-								class="checkmark"></span>
-						</label></li>
-						<li><label class="checkbox-container">Land Cruiser <input
-								type="checkbox" checked="checked"> <span
-								class="checkmark"></span>
-						</label></li>
-						<li><label class="checkbox-container">Prado <input
-								type="checkbox" checked="checked"> <span
-								class="checkmark"></span>
-						</label></li>
-						<li><label class="checkbox-container">Highlander <input
-								type="checkbox" checked="checked"> <span
-								class="checkmark"></span>
-						</label></li>
+						<li><label class="checkbox-container">Fortuner <input type="checkbox" checked="checked"> <span
+									class="checkmark"></span>
+							</label></li>
+						<li><label class="checkbox-container">Rush <input type="checkbox" checked="checked"> <span
+									class="checkmark"></span>
+							</label></li>
+						<li><label class="checkbox-container">Land Cruiser <input type="checkbox" checked="checked">
+								<span class="checkmark"></span>
+							</label></li>
+						<li><label class="checkbox-container">Prado <input type="checkbox" checked="checked"> <span
+									class="checkmark"></span>
+							</label></li>
+						<li><label class="checkbox-container">Highlander <input type="checkbox" checked="checked"> <span
+									class="checkmark"></span>
+							</label></li>
 					</ul>
 				</div>
 			</div>
@@ -170,28 +165,14 @@
 		<div class="main-content">
 			<div class="wrap">
 				<div class="main-box">
-					<div class="box_wrapper">
-						<h1 id="suv" style="color: white;">Fortuner 2.4G 4×2 AT</h1>
-					</div>
+					<div id="carName"></div>
 					<div class="section group">
 						<div class="avacar-detail">
-							<img class="img-detail" src="./img/car1.jpg" alt="" />
+							<div id="carImg"></div>
 						</div>
 						<div class="description">
-							<div class="para-detail">
-
-								<p>SUV là viết tắt của Sport Utility Vehicle là một chiếc xe
-									lớn, cao,chế tạo trên khung gầm chắc chắn, gồ ghề và sở hữu hệ
-									dẫn động bốn bánh giúp bạn có thể đi bất cứ đâu.</p>
-								<p>Shop chúng tôi tự hào đem đến cho khách hàng thông tin và
-									các dịch vụ hỗ trợ đầy đủ nhất cho dòng xe SUV của Toyota.</p>
-
-							</div>
-							<div class="price-display" style="height: 19px;">
-								<span class="actual-detail">$12.00</span> <span
-									class="reducedfrom-detail">$66.00</span>
-							</div>
-							<div style="padding-top: 100px; padding-left: 50px;">
+							<div id="carDes"></div>
+							<div style="padding-top: 50px; padding-left: 50px;">
 								<button class="button-detail">Đăng ký mua trả góp</button>
 								<button class="button-detail">Ước lượng chi phí</button>
 							</div>
@@ -199,154 +180,24 @@
 					</div>
 				</div>
 				<div class="main-detail">
-					<h2 class="review-title">Đánh giá nhanh:</h2>
-					<p>Có thể thấy rằng những phiên bản trước của Toyota Fortuner
-						như Fortuner 2016 trước đây chưa tạo được nhiều ấn tượng đối với
-						người dùng do thiết kế trung tính, chưa bắt mắt.</p>
-					<div class="review-image-container">
-						<img class="review-image"
-							src="img\detail\dau-xe-fortuner-24g-mt-may-dau-so-san-muaxegiatot-vn-2.jpg">
-					</div>
-					<p>Nhưng từ Fortuner 2017, Toyota đã mang đến cho khách hàng
-						một Fortuner với một diện mạo mới hoàn toàn khác biệt. Fortuner
-						lần trở lại này có thiết kế ngoại thất như phiên bản Fortuner 2017
-						ra mắt trước đó.</p>
-					<div class="review-image-container">
-						<img class="review-image"
-							src="img\detail\gioi-thieu-fortuner-24g-mt-may-dau-so-san-muaxegiatot-vn-10.jpg">
-					</div>
-					<p>Phiên bản mới toát lên vẻ hầm hố bởi thân hình to lớn với
-						kích thước tổng thể 4795 x 1855 x 1835 mm, gây ấn tượng với những
-						đường bo tròn uyển chuyển, mềm mại rất đẹp mắt.</p>
-					<div class="review-image-container">
-						<img class="review-image"
-							src="img\detail\den-xe-fortuner-24g-mt-may-dau-so-san-muaxegiatot-vn-9.jpg">
-					</div>
+					<div id="listDes"></div>
 					<div class="stat-section">
 						<h2 class="review-title">Thông số:</h2>
 						<ul class="stat">
-							<li>
-								<p>Kích thước tổng thể (DxRxC): 4795 x 1855 x 1835 mm</p>
-							</li>
-							<li>
-								<p>Khoảng sáng gầm xe: 219 mm</p>
-							</li>
-							<li>
-								<p>Loại động cơ: Diesel 2GD-FTV 2.4L</p>
-							</li>
-							<li>
-								<p>Công suất: 148 mã lực.</p>
-							</li>
-							<li>
-								<p>Mô men xoắn cực đại: 400 Nm.</p>
-							</li>
-							<li>
-								<p>Hộp số: sàn 6 cấp</p>
-							</li>
-							<li>
-								<p>Trợ lực lái: thủy điện</p>
-							</li>
-							<li>
-								<p>Kích thước lốp: 265/65R17</p>
-							</li>
-							<li>
-								<p>Hệ thống phanh (Trước/ sau): đĩa tản nhiệt/ đĩa</p>
-							</li>
-							<li>
-								<p>Hệ thống thông tin giải trí: CD, kết nối AUX, USB,
-									Bluetooth, dàn âm thanh 6 loa</p>
-							</li>
-							<li>
-								<p>Hệ thống điều hoà: chỉnh tay 2 dàn lạnh và cửa gió phía
-									sau</p>
-							</li>
-							<li>
-								<p>An ninh: hệ thống báo động và mã hóa khóa động cơ</p>
-							</li>
+							<div id="listSpec"></div>
 						</ul>
 					</div>
-
 				</div>
 				<div class="clear"></div>
 			</div>
 			<div class="wrap">
 				<div class="main-box">
-					<div class="box_wrapper">
-						<h1 id="suv" style="color: white;">CÁC SẢN PHẨM TƯƠNG TỰ</h1>
-					</div>
-
-					<div class="section group">
-						<div class="col_1_of_4 span_1_of_4">
-							<img src="./img/car1.jpg" alt="" class="ima" />
-							<div class="grid_desc">
-								<p class="title">Fortuner 2.4G 4×2 AT</p>
-								<p class="title1">Lorem ipsum dolor sitconsectetueradipis</p>
-								<div class="price1" style="height: 19px;">
-									<span class="reducedfrom">$66.00</span> <span class="actual">$12.00</span>
-								</div>
-							</div>
-							<div class="Details">
-								<a href="cardetail.jsp"
-									title="Lorem ipsum dolor sit amet, consect etuer"
-									class="button">Chi tiết <span></span>
-								</a>
-							</div>
-						</div>
-						<div class="col_1_of_4 span_1_of_4">
-							<img src="./img/car2.jpg" alt="" class="ima" />
-							<div class="grid_desc">
-								<p class="title">Toyota Rush 2018</p>
-								<p class="title1">Lorem ipsum dolor sitconsectetueradipis</p>
-								<div class="price1" style="height: 19px;">
-									<span class="reducedfrom">$66.00</span> <span class="actual">$12.00</span>
-								</div>
-							</div>
-							<div class="Details">
-								<a href="single.jsp"
-									title="Lorem ipsum dolor sit amet, consect etuer"
-									class="button">Chi tiết <span></span>
-								</a>
-							</div>
-						</div>
-						<div class="col_1_of_4 span_1_of_4">
-							<img src="./img/car3.jpg" alt="" class="ima" />
-							<div class="grid_desc">
-								<p class="title">Fortuner 2.7V 4×2</p>
-								<p class="title1">Lorem ipsum dolor sitconsectetueradipis</p>
-								<div class="price1" style="height: 19px;">
-									<span class="reducedfrom">$66.00</span> <span class="actual">$12.00</span>
-								</div>
-							</div>
-							<div class="Details">
-								<a href="single.jsp"
-									title="Lorem ipsum dolor sit amet, consect etuer"
-									class="button">Chi tiết <span></span>
-								</a>
-							</div>
-						</div>
-						<div class="col_1_of_4 span_1_of_4">
-							<img src="./img/car4.jpg" alt="" class="ima" />
-							<div class="grid_desc">
-								<p class="title">Fortuner 2.8V 4×4</p>
-								<p class="title1">Lorem ipsum dolor sitconsectetueradipis</p>
-								<div class="price1" style="height: 19px;">
-									<span class="reducedfrom">$66.00</span> <span class="actual">$12.00</span>
-								</div>
-							</div>
-							<div class="Details">
-								<a href="single.jsp"
-									title="Lorem ipsum dolor sit amet, consect etuer"
-									class="button">Chi tiết <span></span>
-								</a>
-							</div>
-
-						</div>
-						<div class="clear"></div>
-					</div>
+					<div id="listSuv"></div>
 				</div>
 				<div class="clear"></div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<footer>
 		<div class="footer-top">
@@ -373,24 +224,18 @@
 			<div class="footer-grid right-grid">
 				<h3><%=resourceBundle.getString("contactinfo")%></h3>
 				<ul class="follow_icon">
-					<li><a href="#" style="opacity: 1;"> <img
-							src="images/follow_icon.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon1.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon2.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon3.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon4.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon5.png" alt="">
-					</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="images/follow_icon.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon1.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon2.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon3.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon4.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon5.png" alt="">
+						</a></li>
 				</ul>
 				<p><%=resourceBundle.getString("gopyxingoi")%>: 03456789
 				</p>
@@ -408,5 +253,118 @@
 			</p>
 		</div>
 	</footer>
+	<script>
+		function getParameterByName(name) {
+			var results = new RegExp("[\?&]" + name + "=([^&#]*)").exec(
+				window.location.href
+			);
+			if (results == null) {
+				return null;
+			}
+			return decodeURI(results[1]) || 0;
+		}
+		var id = getParameterByName("id");
+		console.log("paramId", id);
+
+		getCarById(id);
+
+		listCar();
+
+		function getCarById(id) {
+			var t = $.ajax({
+				url: "http://localhost:8080/CarSale/api/car-detail?id=" + id,
+				type: "GET",
+				dataType: "json",
+				contentType: "application/json; charset=utf-8"
+			});
+			t.done(function (result) {
+				console.log("car detail", result);
+
+				var carName = ' <div class="box_wrapper">' +
+					'<h1 id="suv" style="color: white;">' + result.carName + '</h1>' +
+					'</div>';
+				var carImg = '<img class="img-detail" src="' + result.listImage[0].imageUrl + '" alt="" />';
+				var des = '</br> <div > ' +
+					' <p> <b> ' + result.carDes + ' </b> </p> </br>' +
+					' <p><b> Dòng xe: ' + result.carCategory + ' </b></p>' +
+					'</div>' +
+					'<div class="price-display" style="height: 19px;">' +
+					'<span class="actual-detail">Giá xe: ' + (result.carPrice).toLocaleString('it-IT', { style: 'currency', currency: 'VND' }) + ' </span>' +
+					'</div>';
+				var listDes = ' <h2 class="review-title">Đánh giá nhanh:</h2>';
+				for (var i = 0; i < result.listDescription.length; i++) {
+					listDes += '<p>' + result.listDescription[i].desContent + ' </p>' +
+						'<div class="review-image-container">' +
+						'<img class="review-image" ' +
+						'src="' + result.listDescription[i].desImage + '" />' +
+						' </div></br>';
+				}
+				var listSpec = '';
+				for (var i = 0; i < result.listSpec.length; i++) {
+					listSpec += ' <li>' +
+						'<p>' + result.listSpec[i].specName + '</p><br>' +
+						'<p>' + result.listSpec[i].specDetail + '</p>' +
+						'</li></br>';
+				}
+				$("#carName").append(carName);
+				$("#carImg").append(carImg);
+				$("#carDes").append(des);
+				$("#listDes").append(listDes);
+				$("#listSpec").append(listSpec);
+			});
+		}
+		function listCar() {
+			var t = $.ajax({
+				url: "http://localhost:8080/CarSale/api/trang-chu",
+				type: "GET",
+				dataType: "json",
+				contentType: "application/json; charset=utf-8"
+			});
+			t.done(function (result) {
+				//Show list car SUV
+				var carSuv = findCarByCategory("SUV", result);
+				var size = carSuv.length;
+				var suv = content(size, carSuv);
+				$("#listSuv").append(suv);
+			});
+		}
+		function findCarByCategory(key, result) {
+			let car = result.filter(result => {
+				return result.carCategory === key;
+			});
+			return car;
+		}
+		function content(size, array) {
+			var content = '';
+			content += '<div class="box_wrapper">' +
+				'<h1 id="suv">Các sản phẩm tương tự</h1>' +
+				'</div>' +
+				'<div class="section group">';
+			for (var i = size - 4; i < size; i++) {
+				content += '<div class="col_1_of_4 span_1_of_4">' +
+					'<img src="' + array[i].listImage[0].imageUrl + '" alt="" class="ima" />' +
+					'<div class="grid_desc">' +
+					'<p class="title">' + array[i].carName + "</p>" +
+					'<p class="title1">' + array[i].carDes + '</p>' +
+					'<div class="price1" style="height: 19px;">' +
+					'<span class="reducedfrom">' + (array[i].carPrice).toLocaleString('it-IT', { style: 'currency', currency: 'VND' }) + '</span>' +
+					'</div>' +
+					'</div>' +
+					'<div class="Details">' +
+					'<a' +
+					' href="cardetail.jsp?id=' + array[i].carId + '"' +
+					'class="button">' +
+					'<%=resourceBundle.getString("chitiet")%>' +
+					'</a>' +
+					'</div>' +
+					'</div>';
+			}
+			content += '<div class="clear"></div>' +
+				'</div>';
+			return content;
+		}
+
+	</script>
 </body>
+
 </html>

@@ -259,12 +259,12 @@
 					'<p class="title">' + array[i].carName + "</p>" +
 					'<p class="title1">' + array[i].carDes + '</p>' +
 					'<div class="price1" style="height: 19px;">' +
-					'<span class="reducedfrom">' + array[i].carPrice + '</span>' +
+					'<span class="reducedfrom">' + (array[i].carPrice).toLocaleString('it-IT', {style : 'currency', currency : 'VND'}) + '</span>' +
 					'</div>' +
 					'</div>' +
 					'<div class="Details">' +
 					'<a' +
-					' href="single.html"' +
+					' href="cardetail.jsp?id=' + array[i].carId + '"' +
 					'title="Lorem ipsum dolor sit amet, consect etuer"' +
 					'class="button">' +
 					'<%=resourceBundle.getString("chitiet")%>' +
@@ -272,7 +272,6 @@
 					'</div>' +
 					'</div>';
 			}
-
 			content += '<div class="clear"></div>' +
 				'</div>';
 			return content;
