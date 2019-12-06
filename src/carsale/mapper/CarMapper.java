@@ -6,9 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import carsale.model.Car;
-import carsale.model.Description;
 import carsale.model.Image;
-import carsale.model.Spec;
 
 public class CarMapper implements IRowMapper<Car> {
 

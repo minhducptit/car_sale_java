@@ -175,7 +175,7 @@
 		t.done(function (result) {
 			//Show list car by category
 			var car = findCarByCategory(category, result);
-			console.log("List car", car);
+			console.lo
 			var listCarByCategory = content(car);
 			console.log("listCarByCategory", listCarByCategory);
 			$("#listCar").append(listCarByCategory);
@@ -190,16 +190,11 @@
 		return car;
 	}
 	function content(array) {
-		console.log("Size Aray", array.length)
+		console.log("Size Aray", array)
 		var content = '';
 		content += '<div class="section group">';
-		var size;
-		if (array.length > 4) {
-			size = 4;
-		} else {
-			size = array.length;
-		}
-		for (let i = 0; i < size; i++) {
+
+		for (let i = 0; i < array.length; i++) {
 			content += '<div class="col_1_of_4 span_1_of_4">' +
 				'<img src="' + array[i].listImage[0].imageUrl + '" alt="" class="ima" />' +
 				'<div class="grid_desc">' +
