@@ -226,7 +226,7 @@
 	loadNewHot();
 	function loadNewHot() {
 		var t = $.ajax({
-			url : "http://localhost:8080/CarSale/api/list-news?id=1",
+			url : "http://localhost:8080/CarSale/api/list-news",
 			type : "GET",
 			dataType : "json",
 			contentType : "application/json; charset=utf-8"
@@ -235,9 +235,8 @@
 			//Show list news hot
 			var content = '';
 		for (let i = 0; i < 3; i++) {
-			var temp = 'post'+i+'.jsp';
 			content += '<div>'
-            +'<a href=""'+temp+'><img src='+result[i].postUrlImg +' alt="hot new"></a>'
+            +'<a href="post.jsp?id='+result[i].postId+'"><img src='+result[i].postUrlImg +' alt="hot new"></a>'
             +'<p>'+result[i].postTitle+ '</p>'
             +'<p class="time">'+result[i].timeUpdate+'</p>'
         	+'</div>';
@@ -245,10 +244,27 @@
 			$("#listNewHot").append(content);
 		});
 	}
-		loadPost();
-		function loadPost() {
+	
+	
+		function getParameterByName(name) {
+			var results = new RegExp("[\?&]" + name + "=([^&#]*)").exec(
+				window.location.href
+			);
+			if (results == null) {
+				return null;
+			}
+			return decodeURI(results[1]) || 0;
+		}
+		var id = getParameterByName("id");
+		
+		console.log("paramId", id);
+			
+		getPostById(id);
+
+
+		function getPostById(id) {
 			var t = $.ajax({
-				url : "http://localhost:8080/CarSale/api/list-news?id=1",
+				url : "http://localhost:8080/CarSale/api/news?id="+id,
 				type : "GET",
 				dataType : "json",
 				contentType : "application/json; charset=utf-8"
@@ -258,11 +274,11 @@
 				var content = '';
 				content+='<div class="post">'
                 +'<div class="header-post">'
-				+'<h3>'+result[0].postTitle+'<p class="time">'+result[0].timeUpdate+'</p>'
-						+'<a href="#">'+'<img src='+result[0].postUrlImg+ ' alt="image car" class="center"></a>'
+				+'<h3>'+result.postTitle+'<p class="time">'+result.timeUpdate+'</p>'
+						+'<a href="#">'+'<img src='+result.postUrlImg+ ' alt="image car" class="center"></a>'
 					+'</div>'
 		            +'<div class="content-post">'
-					+'<p>'+result[0].postContent+'</p>'
+					+'<p>'+result.postContent+'</p>'
 					+'</div>'
 					+'<div class="footer-post">'
 					+	'<br>'

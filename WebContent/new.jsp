@@ -239,11 +239,11 @@
 				var content = '';
 			for (let i = 0; i < result.length; i++) {
 				content += '<div class="image-text">'
-						+ '<div class="image">' + '<a href="post.jsp" ><img src='+result[i].postUrlImg 
+						+ '<div class="image">' + '<a href="post.jsp?id='+result[i].postId+'" ><img src='+result[i].postUrlImg 
 						+ ' alt="imageCar"></a>' 
 						+ '</div>'
 						+ '<div class="text">'
-						+ '<a href="post.jsp">'
+						+ '<a href="post.jsp?id='+result[i].postId+'">'
 						+ '<p>'
 						+ '<h4>'
 						+ result[i].postTitle
@@ -257,7 +257,7 @@
 						+ '</p>' + '</div>'
 						+ '</div>'
 						+ '<div class="see-more">'
-						+'<a href="post.jsp">'
+						+'<a href="post.jsp?id='+result[i].postId+'">'
 						+'<%=resourceBundle.getString("xemthem")%>'+'</a>'
 						+'</div>';
 						;
@@ -278,7 +278,7 @@
 				var content = '';
 			for (let i = 0; i < 3; i++) {
 				content += '<div>'
-                +'<a href="post.jsp"><img src='+result[i].postUrlImg +' alt="hot new"></a>'
+                +'<a href="post.jsp?id='+result[i].postId+'"><img src='+result[i].postUrlImg +' alt="hot new"></a>'
                 +'<p>'+result[i].postTitle+ '</p>'
                 +'<p class="time">'+result[i].timeUpdate+'</p>'
             	+'</div>';
