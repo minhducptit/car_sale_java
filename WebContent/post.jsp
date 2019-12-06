@@ -132,8 +132,6 @@
 				$("#listNewHot").append(content);
 			});
 		}
-
-
 		function getParameterByName(name) {
 			var results = new RegExp("[\?&]" + name + "=([^&#]*)").exec(
 				window.location.href
@@ -143,6 +141,7 @@
 			}
 			return decodeURI(results[1]) || 0;
 		}
+
 		var id = getParameterByName("id");
 
 		console.log("paramId", id);

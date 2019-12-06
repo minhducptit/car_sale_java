@@ -15,7 +15,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Car-sale</title>
     <link href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/33edc35265.js"></script>
 </head>
 
 <body>

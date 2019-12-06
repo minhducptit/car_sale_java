@@ -28,32 +28,16 @@
 		<div class="dropdown-content">
 			<div class="row">
 				<div class="column">
-					<h3>
-						<a href="suv.jsp">SEDAN</a>
-					</h3>
-					<a href="#">Corolla Altis 2.0 Luxury</a> <a href="#">Corolla
-						Altis 1.8E (MT)</a> <a href="#">Corolla Altis 2.0V Sport</a>
+					<div id="categorySuv"></div>
 				</div>
 				<div class="column">
-					<h3>
-						<a href="suv.jsp">SUV</a>
-					</h3>
-					<a href="#">Fortuner 2.4G 4×2 AT</a> <a href="#">Fortuner 2.7V
-						4×2</a> <a href="#">Land Cruiser Prado VX</a>
+					<div id="categoryDaDung"></div>
 				</div>
 				<div class="column">
-					<h3>
-						<a href="suv.jsp">VOIS</a>
-					</h3>
-					<a href="#">Vios 1.5E (MT)</a> <a href="#">Vios G(CVT)</a> <a
-						href="#">Vios 1.5E (CVT)</a>
+					<div id="categorySedan"></div>
 				</div>
 				<div class="column">
-					<h3>
-						<a href="suv.jsp"><%=resourceBundle.getString("xebantai")%></a>
-					</h3>
-					<a href="#">Hilux 2.4G 4x4MT</a> <a href="#">Hilux 2.4E 4×2 AT</a>
-					<a href="#">Hilux 2.8G 4×4 AT</a>
+					<div id="categoryBanTai"></div>
 				</div>
 			</div>
 		</div>
@@ -62,3 +46,48 @@
 	<a href="service.jsp"><%=resourceBundle.getString("dichvu")%></a> <a
 		href="contact.jsp"><%=resourceBundle.getString("contact")%></a>
 </div>
+<script>
+	test();
+	function test() {
+		var t = $.ajax({
+			url: "http://localhost:8080/CarSale/api/trang-chu",
+			type: "GET",
+			dataType: "json",
+			contentType: "application/json; charset=utf-8"
+		});
+		t.done(function (result) {
+			//Show list car SUV
+			var carSuv = findCarByCategory("SUV", result);
+			var categorySuv = categoryContent(carSuv);
+			$("#categorySuv").append(categorySuv);
+			//Show List Da Dung
+			var carDaDung = findCarByCategory("ĐA DỤNG", result);
+			var categoryDaDung = categoryContent(carDaDung);
+			$("#categoryDaDung").append(categoryDaDung);
+			//Show List car Sedan
+			var carSedan = findCarByCategory("SEDAN", result);
+			var categorySedan = categoryContent(carSedan);
+			$("#categorySedan").append(categorySedan);
+			//Show List Ban Tai
+			var carBanTai = findCarByCategory("BÁN TẢI", result);
+			var categoryBanTai = categoryContent(carBanTai);
+			$("#categoryBanTai").append(categoryBanTai);
+
+		});
+	}
+	function findCarByCategory(key, result) {
+		let car = result.filter(result => {
+			return result.carCategory === key;
+		});
+		return car;
+	}
+	function categoryContent(array) {
+		var content = '<h3>' +
+			'<a href="suv.jsp?category=' + array[0].carCategory + '">' + array[0].carCategory + '</a>' +
+			'</h3>';
+		for (var i = 0; i < 3; i++) {
+			content += '<a href="cardetail.jsp?id=' + array[i].carId + '">' + array[i].carName + '</a>';
+		}
+		return content;
+	}
+</script>

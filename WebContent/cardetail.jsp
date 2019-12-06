@@ -16,9 +16,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>SUV</title>
+	<title>Car-sale</title>
 	<link href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/33edc35265.js"></script>
+	<script src="js/common.js"></script>
 </head>
 
 <body>
@@ -158,12 +158,8 @@
 			return decodeURI(results[1]) || 0;
 		}
 		var id = getParameterByName("id");
-		var category;
 		console.log("paramId", id);
-
 		getCarById(id);
-		console.log("category", category);
-
 
 		function getCarById(id) {
 			var t = $.ajax({
@@ -226,8 +222,6 @@
 				} else {
 					size = array.length;
 				}
-
-
 				$("#listSuv").append(suv);
 			});
 		}

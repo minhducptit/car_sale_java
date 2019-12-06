@@ -3,24 +3,23 @@
 <%@ page import="java.util.ResourceBundle"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
-<link href="css/abc.css" rel="stylesheet" type="text/css" />
-<link href="css/content.css" rel="stylesheet" type="text/css" />
-<link href="css/news.css" rel="stylesheet" type="text/css" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Dịch vụ</title>
-<link rel="stylesheet" href="./css/slider.css">
-<link
-	href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap"
-	rel="stylesheet">
-<script src="https://kit.fontawesome.com/33edc35265.js"></script>
-<!-- crossorigin="anonymous" -->
+<head>
+	<meta charset="UTF-8">
+	<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="css/abc.css" rel="stylesheet" type="text/css" />
+	<link href="css/content.css" rel="stylesheet" type="text/css" />
+	<link href="css/news.css" rel="stylesheet" type="text/css" />
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Dịch vụ</title>
+	<link rel="stylesheet" href="./css/slider.css">
+	<link href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
 	<!-- Hearder -->
 	<%
@@ -66,8 +65,7 @@
 						<h3>
 							<a href="suv.jsp">VOIS</a>
 						</h3>
-						<a href="#">Vios 1.5E (MT)</a> <a href="#">Vios G(CVT)</a> <a
-							href="#">Vios 1.5E (CVT)</a>
+						<a href="#">Vios 1.5E (MT)</a> <a href="#">Vios G(CVT)</a> <a href="#">Vios 1.5E (CVT)</a>
 					</div>
 					<div class="column">
 						<h3>
@@ -88,7 +86,7 @@
 		<div class="container-top">
 			<ul>
 				<li><a href="index.jsp"> <span>home</span>
-				</a> <span>|</span></li>
+					</a> <span>|</span></li>
 				<li><a href="new.jsp"><%=resourceBundle.getString("tintucmoi")%></a></li>
 			</ul>
 		</div>
@@ -119,7 +117,7 @@
 						<li><a href="#"><img src="img/slide/slide2.jpg"></a></li>
 						<li><i>
 								<h3>MS LTW</h3>
-						</i></li>
+							</i></li>
 						<li>Hotline: 09999999</li>
 						<li>carsale@carsale.com</li>
 					</ul>
@@ -186,14 +184,13 @@
 
 			<div class="image-text">
 				<div class="image">
-					<a href="postservice.jsp"><img
-						src="img/service/chinh-sach-bao-hanh.jpg"></a>
+					<a href="postservice.jsp"><img src="img/service/chinh-sach-bao-hanh.jpg"></a>
 				</div>
 				<div class="text">
 					<a href="postservice.jsp">
 						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
+							<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
+								MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
 						</p>
 					</a>
 					<p class="time">2019-10-05</p>
@@ -210,13 +207,12 @@
 			<div class="clear"></div>
 			<div class="image-text">
 				<div class="image">
-					<a href="postwarranty.html"><img
-						src="img/service/chinh-sach-bao-hanh.jpg"></a>
+					<a href="postwarranty.html"><img src="img/service/chinh-sach-bao-hanh.jpg"></a>
 				</div>
 				<div class="text">
 					<a href="postwarranty.jsp">
 						<p>
-						<h4>CHÍNH SÁCH BẢO HÀNH</h4>
+							<h4>CHÍNH SÁCH BẢO HÀNH</h4>
 						</p>
 					</a>
 					<p class="time">2019-10-05</p>
@@ -261,24 +257,18 @@
 			<div class="footer-grid right-grid">
 				<h3><%=resourceBundle.getString("contactinfo")%></h3>
 				<ul class="follow_icon">
-					<li><a href="#" style="opacity: 1;"> <img
-							src="images/follow_icon.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon1.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon2.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon3.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon4.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon5.png" alt="">
-					</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="images/follow_icon.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon1.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon2.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon3.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon4.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon5.png" alt="">
+						</a></li>
 				</ul>
 				<p><%=resourceBundle.getString("gopyxingoi")%>: 03456789
 				</p>
@@ -298,4 +288,5 @@
 	</footer>
 
 </body>
+
 </html>

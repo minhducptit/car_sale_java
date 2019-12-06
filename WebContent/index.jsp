@@ -17,7 +17,6 @@
 	<title>Car-sale</title>
 	<link rel="stylesheet" href="./css/slider.css">
 	<link href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/33edc35265.js"></script>
 </head>
 
 <body>

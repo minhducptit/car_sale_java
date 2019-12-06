@@ -3,24 +3,22 @@
 <%@ page import="java.util.ResourceBundle"%>
 <!DOCTYPE html>
 <html>
-<head>
-<link href="css/styles.css" rel="stylesheet" type="text/css" />
-<link href="css/abc.css" rel="stylesheet" type="text/css" />
-<link href="css/content.css" rel="stylesheet" type="text/css" />
-<link href="css/news.css" rel="stylesheet" type="text/css" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Tin tức</title>
-<link rel="stylesheet" href="./css/slider.css">
-<link
-	href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap"
-	rel="stylesheet">
-<script src="https://kit.fontawesome.com/33edc35265.js"></script>
-<!-- crossorigin="anonymous" -->
+<head>
+	<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	<link href="css/abc.css" rel="stylesheet" type="text/css" />
+	<link href="css/content.css" rel="stylesheet" type="text/css" />
+	<link href="css/news.css" rel="stylesheet" type="text/css" />
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Car-sale</title>
+	<link rel="stylesheet" href="./css/slider.css">
+	<link href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap" rel="stylesheet">
 </head>
-<body>	
+
+<body>
 	<!-- Hearder -->
 	<%
 		ResourceBundle resourceBundle = ResourceBundle.getBundle("carsale.common.Content", request.getLocale());
@@ -65,8 +63,7 @@
 						<h3>
 							<a href="suv.jsp">VOIS</a>
 						</h3>
-						<a href="#">Vios 1.5E (MT)</a> <a href="#">Vios G(CVT)</a> <a
-							href="#">Vios 1.5E (CVT)</a>
+						<a href="#">Vios 1.5E (MT)</a> <a href="#">Vios G(CVT)</a> <a href="#">Vios 1.5E (CVT)</a>
 					</div>
 					<div class="column">
 						<h3>
@@ -87,7 +84,7 @@
 		<div class="container-top">
 			<ul>
 				<li><a href="index.html"> <span>home</span>
-				</a> <span>|</span></li>
+					</a> <span>|</span></li>
 				<li><a href="news.html">Tin tức</a></li>
 			</ul>
 		</div>
@@ -118,7 +115,7 @@
 						<li><a href="#"><img src="img/slide/slide2.jpg"></a></li>
 						<li><i>
 								<h3>MS LTW</h3>
-						</i></li>
+							</i></li>
 						<li>Hotline: 09999999</li>
 						<li>carsale@carsale.com</li>
 					</ul>
@@ -184,8 +181,7 @@
 					<h3>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
 						MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h3>
 					<p class="time">2019-10-05</p>
-					<a href="#"><img src="img/car6.jpg" alt="image car"
-						class="center"></a>
+					<a href="#"><img src="img/car6.jpg" alt="image car" class="center"></a>
 				</div>
 				<div class="content-post">
 					<p>Chương trình ưu đãi dành cho khách hàng thanh toán đầy đủ
@@ -228,13 +224,11 @@
 				<div class="block-comment">
 					<form>
 						<h3>Leave Comments</h3>
-						<b>Name</b><span style="color: red">(*)</span> <input type="text"
-							name="name"> <b>Email</b><span style="color: red">(*)</span>
-						<input type="text" name="email"> <b>Website</b> <input
-							type="text" name="website"> <b>Comment</b><span
-							style="color: red">(*)</span> <input type="text" name="comment"
-							id="textArea"> <input type="button" name="submit"
-							value="Post commnet" class="submit">
+						<b>Name</b><span style="color: red">(*)</span> <input type="text" name="name"> <b>Email</b><span
+							style="color: red">(*)</span>
+						<input type="text" name="email"> <b>Website</b> <input type="text" name="website">
+						<b>Comment</b><span style="color: red">(*)</span> <input type="text" name="comment"
+							id="textArea"> <input type="button" name="submit" value="Post commnet" class="submit">
 					</form>
 				</div>
 			</div>
@@ -268,24 +262,18 @@
 			<div class="footer-grid right-grid">
 				<h3>Thông tin liên hệ</h3>
 				<ul class="follow_icon">
-					<li><a href="#" style="opacity: 1;"> <img
-							src="images/follow_icon.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon1.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon2.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon3.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon4.png" alt="">
-					</a></li>
-					<li><a href="#" style="opacity: 1;"> <img
-							src="img/follow_icon5.png" alt="">
-					</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="images/follow_icon.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon1.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon2.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon3.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon4.png" alt="">
+						</a></li>
+					<li><a href="#" style="opacity: 1;"> <img src="img/follow_icon5.png" alt="">
+						</a></li>
 				</ul>
 				<p>Mọi góp ý xin gọi: 03456789</p>
 				<span> <a href="ltwthaydung@carssale.com">support(at)carssale.com</a>
@@ -302,4 +290,5 @@
 	</footer>
 
 </body>
+
 </html>

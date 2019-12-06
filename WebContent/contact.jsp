@@ -9,14 +9,13 @@
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	<link href="css/abc.css" rel="stylesheet" type="text/css" />
 	<link href="css/content.css" rel="stylesheet" type="text/css" />
-
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Car-sale</title>
 	<link rel="stylesheet" href="./css/slider.css">
 	<link href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/33edc35265.js"></script>
 </head>
 
 <body>
@@ -32,7 +31,6 @@
 			<h1 style="text-align: center">Contact Us</h1>
 			<p>Địa chỉ: Xã Quất Lưu- Huyện Bình Xuyên- Tỉnh Vĩnh Phúc</p>
 			<p>Điện thoại: 0973.631.248</p>
-
 		</div>
 		<div class="cot">
 			<div class="contact">
@@ -56,7 +54,6 @@
 		</div>
 
 	</div>
-
 	<!-- Footer -->
 	<jsp:include page="jsp/footer.jsp"></jsp:include>
 

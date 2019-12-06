@@ -12,11 +12,11 @@
 	<link href="css/news.css" rel="stylesheet" type="text/css" />
 	<link href="css/cartype.css" rel="stylesheet" type="text/css" />
 	<meta charset="UTF-8">
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>SUV</title>
+	<title>Car-sale</title>
 	<link href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/33edc35265.js"></script>
 </head>
 
 <body>
@@ -216,5 +216,9 @@
 	<!-- Footer -->
 	<jsp:include page="jsp/footer.jsp"></jsp:include>
 </body>
+<script>
+
+	var id = getParameterByName("id");
+</script>
 
 </html>
