@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ResourceBundle"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,51 +22,54 @@
 </head>
 <body>
 	<!-- Hearder -->
+	<%
+		ResourceBundle resourceBundle = ResourceBundle.getBundle("carsale.common.Content", request.getLocale());
+	%>
 	<div class="header">
 		<div class="header-left">
 			<img src="./icon/gmail_header48px.png" /> <span
-				style="color: aliceblue;">otohn@gmail.com</span> &nbsp; <img
-				src="./icon/phone_52px.png" /> <span style="color: aliceblue;">+84
-				39 559 2104</span>
+				style="color: aliceblue;"><%=resourceBundle.getString("email")%></span>
+			&nbsp; <img src="./icon/phone_52px.png" /> <span
+				style="color: aliceblue;"><%=resourceBundle.getString("phone")%></span>
 		</div>
 		<div class=" header-right ">
-			<a class="active" href="listCarPrice.html">Bảng giá xe</a> <a
-				href="carsales.html">Mua xe trả góp</a> <a href="#about ">Thư
-				viện</a>
+			<a class="active" href="listCarPrice.jsp"><%=resourceBundle.getString("banggiaxe")%></a>
+			<a href="carsales"><%=resourceBundle.getString("muaxetragop")%></a> <a
+				href="#about "><%=resourceBundle.getString("thuvien")%></a>
 		</div>
 	</div>
 	<div class="navbar">
-		<a href="index.html">Trang Chủ</a> <a href="news.html">Tin Tức</a>
+		<a href="index.jsp"><%=resourceBundle.getString("home")%></a> <a
+			href="new.jsp"><%=resourceBundle.getString("tintuc")%></a>
 		<div class="dropdown">
 			<button class="dropbtn">
-				Sản Phẩm <i class="fa fa-caret-down"></i>
+				<%=resourceBundle.getString("sanpham")%><i class="fa fa-caret-down"></i>
 			</button>
 			<div class="dropdown-content">
 				<div class="row">
 					<div class="column">
 						<h3>
-							<a href="suv.html">SEDAN</a>
+							<a href="suv.jsp">SEDAN</a>
 						</h3>
 						<a href="#">Corolla Altis 2.0 Luxury</a> <a href="#">Corolla
 							Altis 1.8E (MT)</a> <a href="#">Corolla Altis 2.0V Sport</a>
 					</div>
 					<div class="column">
 						<h3>
-							<a href="suv.html">SUV</a>
+							<a href="suv.jsp">SUV</a>
 						</h3>
 						<a href="#">Fortuner 2.4G 4×2 AT</a> <a href="#">Fortuner 2.7V
 							4×2</a> <a href="#">Land Cruiser Prado VX</a>
 					</div>
 					<div class="column">
 						<h3>
-							<a href="suv.html">VOIS</a>
+							<a href="suv.jsp">VOIS</a>
 						</h3>
-						<a href="#">Vios 1.5E (MT)</a> <a href="#">Vios G(CVT)</a> <a
-							href="#">Vios 1.5E (CVT)</a>
+						<a href="#">Vios 1.5E (MT)</a> <a href="#">Vios G(CVT)</a> <a href="#">Vios 1.5E (CVT)</a>
 					</div>
 					<div class="column">
 						<h3>
-							<a href="suv.html">BÁN TẢi</a>
+							<a href="suv.jsp"><%=resourceBundle.getString("xebantai")%></a>
 						</h3>
 						<a href="#">Hilux 2.4G 4x4MT</a> <a href="#">Hilux 2.4E 4×2 AT</a>
 						<a href="#">Hilux 2.8G 4×4 AT</a>
@@ -73,16 +77,17 @@
 				</div>
 			</div>
 		</div>
-		<a href="listCarPrice.html">Bảng giá xe</a> <a href="service.html">Dịch
-			vụ</a> <a href="contact.html">Liên hệ</a>
+		<a href="listCarPrice.jsp"><%=resourceBundle.getString("banggiaxe")%></a>
+		<a href="service.jsp"><%=resourceBundle.getString("dichvu")%></a> <a
+			href="contact.jsp"><%=resourceBundle.getString("contact")%></a>
 	</div>
 	<!--content news-->
 	<div class="container-news">
 		<div class="container-top">
 			<ul>
-				<li><a href="index.html"> <span>home</span>
+				<li><a href="index.jsp"> <span>home</span>
 				</a> <span>|</span></li>
-				<li><a href="news.html">Tin tức</a></li>
+				<li><a href="news.jsp">Tin tức</a></li>
 			</ul>
 		</div>
 		<div class="container-left">
@@ -94,10 +99,10 @@
 				</div>
 				<div class="block-content content-news-event">
 					<ul>
-						<li><a href="service.html">Dịch Vụ</a></li>
+						<li><a href="service.jsp">Dịch Vụ</a></li>
 						<li><a href="#">Kiến thức ô tô</a></li>
 						<li><a href="#">Luật giao thông</a></li>
-						<li><a href="news.html">Tin tức</a></li>
+						<li><a href="news.jsp">Tin tức</a></li>
 					</ul>
 				</div>
 			</div>
