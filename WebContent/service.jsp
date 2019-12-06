@@ -9,8 +9,7 @@
 <link href="css/abc.css" rel="stylesheet" type="text/css" />
 <link href="css/content.css" rel="stylesheet" type="text/css" />
 <link href="css/news.css" rel="stylesheet" type="text/css" />
-
-<meta charset="UTF-8">
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Dịch vụ</title>
@@ -183,57 +182,61 @@
 			<div class="block-categories">
 				<h3><%=resourceBundle.getString("chuyenmucdichvu")%></h3>
 			</div>
-
-			<div class="image-text">
-				<div class="image">
-					<a href="postservice.jsp"><img
-						src="img/service/chinh-sach-bao-hanh.jpg"></a>
-				</div>
-				<div class="text">
-					<a href="postservice.jsp">
-						<p>
-						<h4>TOYOTA TRIỂN KHAI CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO KHÁCH HÀNG
-							MUA XE COROLLA ALTIS, FORTUNER VÀ INNOVA</h4>
-						</p>
-					</a>
-					<p class="time">2019-10-05</p>
-					<p class="content">Trong quá trình vận hành, nhiều chi tiết
-						trên xe bị mài mòn hoặc hư hỏng theo thời gian sử dụng. Điều này
-						xảy ra với bất kỳ cơ cấu máy móc nào. Do đó, bạn cần mang xe đi
-						kiểm tra, bảo dưỡng một cách định kỳ để đảm bảo từng chi tiết cấu
-						[…]</p>
-				</div>
-			</div>
-			<div class="see-more">
-				<a href="postservice.jsp"><%=resourceBundle.getString("xemthem")%></a>
-			</div>
+			
 			<div class="clear"></div>
-			<div class="image-text">
-				<div class="image">
-					<a href="postwarranty.html"><img
-						src="img/service/chinh-sach-bao-hanh.jpg"></a>
-				</div>
-				<div class="text">
-					<a href="postwarranty.jsp">
-						<p>
-						<h4>CHÍNH SÁCH BẢO HÀNH</h4>
-						</p>
-					</a>
-					<p class="time">2019-10-05</p>
-					<p class="content">Trong quá trình vận hành, nhiều chi tiết
-						trên xe bị mài mòn hoặc hư hỏng theo thời gian sử dụng. Điều này
-						xảy ra với bất kỳ cơ cấu máy móc nào. Do đó, bạn cần mang xe đi
-						kiểm tra, bảo dưỡng một cách định kỳ để đảm bảo từng chi tiết cấu
-						[…]</p>
-
-				</div>
-				<div class="see-more">
-					<a href="postwarranty.jsp"><%=resourceBundle.getString("xemthem")%></a>
-				</div>
-			</div>
-
+			<div id="addservice"></div>
+			<!--test-->
+			
+			<script type="text/javascript">
+				loadService();
+				
+				function loadService() {
+					var t = $.ajax({
+						url : "http://localhost:8080/CarSale/api/list-service",
+						type : "GET",
+						dataType : "json",
+						contentType : "application/json; charset=utf-8"
+					});
+					t.done(function(result) {
+						//Show list news
+						var content = '';
+					for (let i = 0; i < result.length; i++) {
+						content += '<div class="image-text">'
+								+ '<div class="image">' + '<a href="post.jsp?id='+result[i].postId+'" ><img src='+result[i].postUrlImg 
+								+ ' alt="imageCar"></a>' 
+								+ '</div>'
+								+ '<div class="text">'
+								+ '<a href="post.jsp?id='+result[i].postId+'">'
+								+ '<p>'
+								+ '<h4>'
+								+ result[i].postTitle
+								+ '</h4>' + '</p>'
+								+ '</a>'
+								+ '<p class="time">'
+								+ result[i].timeUpdate
+								+ '</p>'
+								+ '<p class="content">'
+								+ result[i].postDes
+								+ '</p>' + '</div>'
+								+ '</div>'
+								+ '<div class="see-more">'
+								+'<a href="post.jsp?id='+result[i].postId+'">'
+								+'<%=resourceBundle.getString("xemthem")%>'+'</a>'
+								+'</div>';
+								;
+					}		
+						$("#addservice").append(content);
+					});
+				}
+			</script>
+			
+			<!--test-->
+			
 		</div>
 		<div class="clear"></div>
+		
+		
+		
 	</div>
 	<!-- Footer -->
 	<footer>
