@@ -228,7 +228,7 @@
                             content += '<tr>' +
                                 '<td>' + array[i].carName + '</td>' +
                                 '<td>' + array[i].carDes + '</td>' +
-                                '<td>' + array[i].carPrice + '</td>' +
+                                '<td>' + (array[i].carPrice).toLocaleString('it-IT', {style : 'currency', currency : 'VND'}) + '</td>' +
                                 '<td>' +
                                 '<button class="button-contact1">' +
                                 '<img src="./icon/wallet_16px.png" />' +

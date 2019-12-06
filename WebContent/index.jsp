@@ -252,14 +252,20 @@
 				'<h1 id="suv">' + array[0].carCategory + '</h1>' +
 				'</div>' +
 				'<div class="section group">';
-			for (let i = 0; i < 4; i++) {
+			var size;
+			if (array.length > 4) {
+				size = 4;
+			} else {
+				size = array.length;
+			}
+			for (let i = 0; i < size; i++) {
 				content += '<div class="col_1_of_4 span_1_of_4">' +
 					'<img src="' + array[i].listImage[0].imageUrl + '" alt="" class="ima" />' +
 					'<div class="grid_desc">' +
 					'<p class="title">' + array[i].carName + "</p>" +
 					'<p class="title1">' + array[i].carDes + '</p>' +
 					'<div class="price1" style="height: 19px;">' +
-					'<span class="reducedfrom">' + (array[i].carPrice).toLocaleString('it-IT', {style : 'currency', currency : 'VND'}) + '</span>' +
+					'<span class="reducedfrom">' + (array[i].carPrice).toLocaleString('it-IT', { style: 'currency', currency: 'VND' }) + '</span>' +
 					'</div>' +
 					'</div>' +
 					'<div class="Details">' +

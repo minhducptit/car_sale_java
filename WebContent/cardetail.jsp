@@ -264,11 +264,12 @@
 			return decodeURI(results[1]) || 0;
 		}
 		var id = getParameterByName("id");
+		var category;
 		console.log("paramId", id);
 
 		getCarById(id);
+		console.log("category", category);
 
-		listCar();
 
 		function getCarById(id) {
 			var t = $.ajax({
@@ -279,7 +280,7 @@
 			});
 			t.done(function (result) {
 				console.log("car detail", result);
-
+				category = result.carCategory;
 				var carName = ' <div class="box_wrapper">' +
 					'<h1 id="suv" style="color: white;">' + result.carName + '</h1>' +
 					'</div>';
@@ -311,9 +312,10 @@
 				$("#carDes").append(des);
 				$("#listDes").append(listDes);
 				$("#listSpec").append(listSpec);
+				listCar(result.carCategory);
 			});
 		}
-		function listCar() {
+		function listCar(category) {
 			var t = $.ajax({
 				url: "http://localhost:8080/CarSale/api/trang-chu",
 				type: "GET",
@@ -322,9 +324,16 @@
 			});
 			t.done(function (result) {
 				//Show list car SUV
-				var carSuv = findCarByCategory("SUV", result);
-				var size = carSuv.length;
-				var suv = content(size, carSuv);
+				var carSuv = findCarByCategory(category, result);
+				console.log("carSuv", carSuv);
+				var size;
+				if (array.length >= 4) {
+					var suv = content(size, carSuv);
+				} else {
+					size = array.length;
+				}
+
+
 				$("#listSuv").append(suv);
 			});
 		}
