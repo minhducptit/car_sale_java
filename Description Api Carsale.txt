@@ -1,6 +1,6 @@
 - List car price: GET
 	http://localhost:8080/CarSale/api/list-price
-- List bew: Get
+- List new: Get
 	http://localhost:8080/CarSale/api/list-news
 - List service: GET
 	http://localhost:8080/CarSale/api/list-service
@@ -9,4 +9,11 @@
 	param: id
  Detail service: GET
 	http://localhost:8080/CarSale/api/service?id=11
+	param: id
+-List City-fee: GET
+	http://localhost:8080/CarSale/api/city-fee
+- List car: GET
+	http://localhost:8080/CarSale/api/trang-chu
+- List Car Detail: GET
+	http://localhost:8080/CarSale/api/car-detail?id=1
 	param: id
