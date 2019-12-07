@@ -210,7 +210,7 @@
 				'<img src="' + array[i].listImage[0].imageUrl + '" alt="" class="ima" />' +
 				'<div class="grid_desc">' +
 				'<p class="title">' + array[i].carName + "</p>" +
-				// '<p class="title1">' + array[i].carDes + '</p>' +
+				'<p class="title1">' + array[i].carDes + '</p>' +
 				'<div class="price1" style="height: 19px;">' +
 				'<span class="reducedfrom">' + (array[i].carPrice).toLocaleString('it-IT', { style: 'currency', currency: 'VND' }) + '</span>' +
 				'</div>' +
