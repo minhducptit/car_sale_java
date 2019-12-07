@@ -66,8 +66,7 @@
 			  	<div>Phí biển số</div>
 			  	<div><span id = "feeLicensePlate">0</span></div>
 			 </div> 
-			  <br>
-			</ul>	
+			  <br>	
 			<div class="title-left">Phí tự nguyện (BH vật chất)</div><br>
 			<p>Phí bảo hiểm vật chất quý khách có thể tự lựa chọn công ty bảo hiểm hoặc liên hệ tư vấn Hotline:  0343542277</p><br>
 			 <div class="block-title">
