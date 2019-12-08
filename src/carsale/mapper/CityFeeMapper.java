@@ -21,6 +21,7 @@ public class CityFeeMapper implements IRowMapper<CityFee> {
       cityFee.setCityName(rs.getString("city_name"));
       cityFee.setTax(rs.getDouble("tax"));
       cityFee.setRegistration(rs.getDouble("registration"));
+      cityFee.setRoadFee(rs.getDouble("road_fee"));
       cityFee.setInsurrance(rs.getDouble("insurrance"));
       cityFee.setLicensePlate(rs.getDouble("license_plate"));
       return cityFee;

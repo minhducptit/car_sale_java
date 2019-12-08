@@ -85,7 +85,7 @@
 			<div class="block block-access-statistics">
 				<div div class="block-title">
 					<h3>
-						<b>Thống kê truy cập</b>
+						<b><%=resourceBundle.getString("thongketruycap")%></b>
 					</h3>
 				</div>
 				<div class="block-content content-access-statistics">
@@ -98,10 +98,10 @@
 
 					<div class="statistics">
 						<ul>
-							<li>Tổng số lượt truy cập hôm nay: <span>1000</span></li>
-							<li>Tổng số lượt truy cập tháng này: <span>30000</span></li>
-							<li>Tổng số lượt truy cập : <span>200221</span></li>
-							<li>Đang online : <span>221</span></li>
+							<li><%=resourceBundle.getString("luotngay")%><span>1000</span></li>
+							<li><%=resourceBundle.getString("luotthang")%><span>30000</span></li>
+							<li><%=resourceBundle.getString("tongluot")%><span>200221</span></li>
+							<li><%=resourceBundle.getString("online")%><span>221</span></li>
 							<li></li>
 						</ul>
 					</div>
@@ -120,7 +120,8 @@
 							<div id="carDes"></div>
 							<div style="padding-top: 50px; padding-left: 50px;">
 								<button class="button-detail">Đăng ký mua trả góp</button>
-								<button class="button-detail" id = "button-cost-estimates" onclick = "clickCostEstimates()">Ước lượng chi phí</button>
+								<button class="button-detail" id="button-cost-estimates"
+									onclick="clickCostEstimates()"><%=resourceBundle.getString("costestimates")%></button>
 							</div>
 						</div>
 					</div>
@@ -128,7 +129,7 @@
 				<div class="main-detail">
 					<div id="listDes"></div>
 					<div class="stat-section">
-						<h2 class="review-title">Thông số:</h2>
+						<h2 class="review-title"><%=resourceBundle.getString("parameter")%></h2>
 						<ul class="stat">
 							<div id="listSpec"></div>
 						</ul>
@@ -260,13 +261,13 @@
 				'</div>';
 			return content;
 		}
-		
-		function clickCostEstimates(){
-       	 var myBtn = document.getElementById('button-cost-estimates');
-       	 myBtn.addEventListener('click', function(event) {
-       		    window.location.href='costEstimates.jsp';
-       		  });
-       }
+
+		function clickCostEstimates() {
+			var myBtn = document.getElementById('button-cost-estimates');
+			myBtn.addEventListener('click', function (event) {
+				window.location.href = 'costEstimates.jsp';
+			});
+		}
 	</script>
 </body>
 
