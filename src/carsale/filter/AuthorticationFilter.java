@@ -43,27 +43,18 @@ public class AuthorticationFilter implements Filter {
     HttpServletResponse resp = (HttpServletResponse) response;
     String url = req.getRequestURI();
     System.out.println("Filter urf: " + url);
-    if (url.startsWith(req.getContextPath() + "/admin")
-        || url.startsWith(req.getContextPath() + "/api")) {
+    if (url.startsWith(req.getContextPath() + "/admin")) {
       User user = (User) SessionUtil.getInstance().getValue(req, "USER");
-      // System.out.println("filter user: "+user.toString());
       if (user != null) {
         if (user.getRole().getRoleCode().equals("ADMIN")) {
           System.out.println("Filler role admin");
           chain.doFilter(request, response);
-        } else if (user.getRole().getRoleCode().equals("USER")) {
-          System.out.println("Filter role user");
-          chain.doFilter(request, response);
-          // resp.sendRedirect(req.getContextPath() +
-          // "/login?action=signin&user=null");
         }
       } else {
         resp.sendRedirect(req.getContextPath() + "/login?action=signin&user=null");
       }
     } else {
       chain.doFilter(request, response);
-      // resp.sendRedirect(req.getContextPath() +
-      // "/login?action=signin&user=null");
     }
 
   }

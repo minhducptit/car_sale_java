@@ -41,7 +41,7 @@
 			function plus(n) {
 				show(index += n);
 			}
-			
+
 			function show(n) {
 				var i;
 				var x = document.getElementsByClassName("slide");
@@ -166,7 +166,6 @@
 					'<div class="Details">' +
 					'<a' +
 					' href="cardetail.jsp?id=' + array[i].carId + '"' +
-					'title="Lorem ipsum dolor sit amet, consect etuer"' +
 					'class="button">' +
 					'<%=resourceBundle.getString("chitiet")%>' +
 					'</a>' +

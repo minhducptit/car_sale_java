@@ -57,7 +57,7 @@
     <jsp:include page="jsp/footer.jsp"></jsp:include>
     <script type="text/javascript">
         test();
-
+        var numberCar = 0; //số lượng xe
         function test() {
             var t = $.ajax({
                 url: "http://localhost:8080/CarSale/api/list-price",
@@ -71,14 +71,13 @@
                     return result.carCategory;
                 });
                 var suv = demo(result);
-                console.log("List:", car);
+                soLuongXe = result.length;
                 $("#listCar").append(suv);
             });
         }
-
         function demo(array) {
             var content = '';
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < array.length; i++) {
                 content += '<tr>' +
                     '<td>' + array[i].carName + '</td>' +
                     '<td>' + array[i].carDes + '</td>' +
@@ -88,7 +87,7 @@
                     '<img src="./icon/wallet_16px.png" />' +
                     '<p>' + '<%=resourceBundle.getString("tinhmuatragop")%>' + '</p>' +
                     '</button>' +
-                    '<button onclick = "getLink()" id = "myButton" class="button-contact2">' +
+                    '<button onclick = "clickCostEstimates()" id="' + i + '" class="button-contact2">' +
                     '<img src="./icon/calculator_16px.png" />' +
                     '<p>' + '<%=resourceBundle.getString("dutoanchiphi")%>' + '</p>' +
                     '</button>' +
@@ -97,14 +96,16 @@
             }
             return content;
         }
-        function getLink(){
-        	 var myBtn = document.getElementById('myButton');
-        	 myBtn.addEventListener('click', function(event) {
-        		    window.location.href='costEstimates.jsp';
-        		  });
+
+        function clickCostEstimates() {
+            for (var i = 0; i < soLuongXe; i++) {
+                var myBtn = document.getElementById(i);
+                myBtn.addEventListener('click', function (event) {
+                    window.location.href = 'costEstimates.jsp';
+                });
+            }
         }
     </script>
-    
 </body>
 
 </html>
