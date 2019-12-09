@@ -46,15 +46,14 @@
     <div class="navbar">
         <a href="index.jsp"><i class='fas fa-home' style='font-size:20px;color:red'>&nbsp</i>Trang chủ</a>
         <div class="dropdown">
-            <a href="contact.html"><i class="fa fa-bar-chart" style="font-size:20px;color:red">&nbsp</i>Sản phẩm</a>
+            <a href="#"><i class="fa fa-bar-chart" style="font-size:20px;color:red">&nbsp</i>Car</a>
         </div>
         <div class="dropdown">
-            <a href="new-index.jsp"><i class="fa fa-bar-chart" style="font-size:20px;color:red">&nbsp</i>Tin tức</a>
+            <a href="new-list.jsp"><i class="fa fa-bar-chart" style="font-size:20px;color:red">&nbsp</i>Tin tức</a>
         </div>
         <div class="dropdown">
-            <a href="contact.html"><i class='far fa-edit' style='font-size:20px;color:red'>&nbsp</i>Dịch vụ</a>
+            <a href="#"><i class='far fa-edit' style='font-size:20px;color:red'>&nbsp</i>Dịch vụ</a>
         </div>
-        <a href="contact.html"><i class='fas fa-phone' style='font-size:20px;color:red'>&nbsp</i>Liên hệ</a>
     </div>
     <script>
         getUser();
