@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Đăng ký tài khoản</title>
-<script src="js/validate.js"></script>
 </head>
 <body>
 	<div align="center">
@@ -45,10 +44,7 @@
 			<input type="submit" value="submit" name="signup" />
 		</form>
 		<a href="login.jsp">Quay lại trang đăng nhập</a>
-	</div>	<script type="text/javascript">
-		function openPage() {
-			window.location.href = pageURL;
-		}
-	</script>
+	</div>	
+	<script src="js/validate.js"></script>
 </body>
 </html>

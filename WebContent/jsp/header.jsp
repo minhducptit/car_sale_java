@@ -14,7 +14,7 @@
 	</div>
 	<div class=" header-right ">
 		<a class="active" href="listCarPrice.jsp"><%=resourceBundle.getString("banggiaxe")%></a>
-		<a href="carsales"><%=resourceBundle.getString("muaxetragop")%></a> <a
+		<a href="carsales.jsp"><%=resourceBundle.getString("muaxetragop")%></a> <a
 			href="#about "><%=resourceBundle.getString("thuvien")%></a>
 	</div>
 </div>

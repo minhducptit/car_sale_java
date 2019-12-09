@@ -1,3 +1,22 @@
+//validate form login
+function validateFormLogin(){
+		var err="";
+		var userName = document.getElementById("userName").value;
+		var password = document.getElementById("password").value;
+		var regexUserName =/^[a-z0-9_.-@]{3,15}$/;
+		var regexPassword= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+		if(!regexUserName.test(userName)){
+			alert("UserName phải có 3-15 ký tự bao gồm các kí tự từ a-z 0-9 _ - . @");
+			err+=" username";
+		}
+		if(!regexPassword.test(password)){
+			alert("Password phải có tối thiểu tám ký tự, ít nhất một chữ cái viết hoa, một chữ cái viết thường và một số:");
+			err+=" password";
+		}
+		if(err.length>0) return false;
+		return true;
+}
+//validate form sign up
 function validateFormSignUp() {
 	var userName = document.getElementById("userName").value;
 	var password = document.getElementById("password").value;
@@ -8,7 +27,7 @@ function validateFormSignUp() {
 	var email = document.getElementById("email").value;
 	var regexUserName =/^[a-z0-9_.-@]{3,15}$/;
 	var regexPassword= /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-	var regexAge=/^\S[0-9]{0,3}$/;
+	var regexAge=/^(?:1[01][0-9]|120|1[7-9]|[2-9][0-9])$/;
 	var regexPhone=/[0-9]{10}/;
 	var regexEmail= /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/;
 	var err="";
@@ -21,11 +40,11 @@ function validateFormSignUp() {
 		err+=" password";
 	}
 	if(fullName.includes("'")||fullName.includes("--")||fullName==""){
-		alert("Full name không được để trống và không được có kí tự ' hoặc --");
+		alert("Fullname không được để trống và không được có kí tự ' hoặc --");
 		err+=" fullName";
 	}
 	if(!regexAge.test(age)){
-		alert("Age từ 0-200");
+		alert("Age từ 17-120");
 		err+=" age";
 	}
 	if(address.includes("'")||address.includes("--")||address==""){

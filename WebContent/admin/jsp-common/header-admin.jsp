@@ -49,10 +49,10 @@
             <a href="#"><i class="fa fa-bar-chart" style="font-size:20px;color:red">&nbsp</i>Car</a>
         </div>
         <div class="dropdown">
-            <a href="new-list.jsp"><i class="fa fa-bar-chart" style="font-size:20px;color:red">&nbsp</i>Tin tức</a>
+            <a href="new-list.jsp"><i class="fa fa-newspaper-o" style="font-size:20px;color:red">&nbsp</i>Tin tức</a>
         </div>
         <div class="dropdown">
-            <a href="#"><i class='far fa-edit' style='font-size:20px;color:red'>&nbsp</i>Dịch vụ</a>
+            <a href="#"><i class="fa fa-codepen" style="font-size:20px;color:red">&nbsp</i>Dịch vụ</a>
         </div>
     </div>
     <script>

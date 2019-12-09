@@ -30,6 +30,13 @@
 	<jsp:include page="jsp/header.jsp"></jsp:include>
 	<!-- Content -->
 	<div class="container-news">
+		<div class="container-top">
+			<ul>
+				<li><a href="index.jsp"> <span>home</span>
+					</a> <span>|</span></li>
+				<li><a href="new.jsp">Tin tức</a></li>
+			</ul>
+		</div>
 		<div class="container-left">
 			<div class="block block-news-event">
 				<div div class="block-title">
@@ -101,7 +108,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="main-content container-right">
+		<div class="main-content">
 			<div class="wrap">
 				<div class="main-box">
 					<div id="carName"></div>
@@ -112,7 +119,7 @@
 						<div class="description">
 							<div id="carDes"></div>
 							<div style="padding-top: 50px; padding-left: 50px;">
-								<button class="button-detail">Đăng ký mua trả góp</button>
+								<button class="button-detail" id="button_installment" onclick="clickInstallment()">Đăng ký mua trả góp</button>
 								<button class="button-detail" id="button-cost-estimates"
 									onclick="clickCostEstimates()"><%=resourceBundle.getString("costestimates")%></button>
 							</div>
@@ -259,6 +266,12 @@
 			var myBtn = document.getElementById('button-cost-estimates');
 			myBtn.addEventListener('click', function (event) {
 				window.location.href = 'costEstimates.jsp';
+			});
+		}
+		function clickInstallment() {
+			var btn = document.getElementById('button_installment');
+			btn.addEventListener('click', function (event) {
+				window.location.href = 'carsales.jsp';
 			});
 		}
 	</script>

@@ -2,13 +2,8 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-left: 5%;
 }
-
-.container-top {
-    height: auto;
-    display: none;
-}
-
 
 /*css container-left*/
 
