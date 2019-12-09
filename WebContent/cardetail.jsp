@@ -30,13 +30,6 @@
 	<jsp:include page="jsp/header.jsp"></jsp:include>
 	<!-- Content -->
 	<div class="container-news">
-		<div class="container-top">
-			<ul>
-				<li><a href="index.jsp"> <span>home</span>
-					</a> <span>|</span></li>
-				<li><a href="new.jsp">Tin tức</a></li>
-			</ul>
-		</div>
 		<div class="container-left">
 			<div class="block block-news-event">
 				<div div class="block-title">
