@@ -3,13 +3,17 @@ package carsale.service.Impl;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import carsale.dao.UserDao;
 import carsale.dao.impl.UserDaoImpl;
+import carsale.model.ChangePassword;
 import carsale.model.Role;
 import carsale.model.User;
 import carsale.service.RoleService;
 import carsale.service.UserService;
+import carsale.untils.SessionUtil;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -22,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
   /** The b crypt. */
   private BCrypt bCrypt;
-  
+
   private RoleService roleService;
 
   /**
@@ -30,7 +34,7 @@ public class UserServiceImpl implements UserService {
    */
   public UserServiceImpl() {
     userDao = new UserDaoImpl();
-    roleService= new RoleServiceImpl();
+    roleService = new RoleServiceImpl();
   }
 
   /**
@@ -87,9 +91,9 @@ public class UserServiceImpl implements UserService {
    */
   @Override
   public void updateUser(User user) {
-//    Role role= roleService.getRoleById(roleId);
-//    user.setRole(role);
-    System.out.println("User Service Impl"+user.toString());
+    // Role role= roleService.getRoleById(roleId);
+    // user.setRole(role);
+    System.out.println("User Service Impl" + user.toString());
     userDao.updateUser(user);
   }
 
@@ -127,14 +131,26 @@ public class UserServiceImpl implements UserService {
 
   /**
    * {@inheritDoc}
+   * 
    * @see carsale.service.UserService#changePassword(carsale.model.User)
    */
   @Override
-  public void changePassword(User user) {
-   String passwordEncoding =
-       BCrypt.withDefaults().hashToString(12, user.getPassword().toCharArray());
-    user.setPassword(passwordEncoding);
-    userDao.changePassword(user);
+  public int changePassword(HttpServletRequest request, ChangePassword changePassword) {
+    User user = (User) SessionUtil.getInstance().getValue(request, "USER");
+    User oldUser = userDao.getByUsername(user.getUserName());
+    BCrypt.Result result = BCrypt.verifyer()
+        .verify(changePassword.getOldPassword().toCharArray(), oldUser.getPassword());
+    if (!result.verified) {
+      return 0;
+    } else {
+      String passwordEncoding = BCrypt.withDefaults().hashToString(12,
+          changePassword.getNewPassword().toCharArray());
+      System.out.println("Pass encoding"+passwordEncoding);
+      oldUser.setPassword(passwordEncoding);
+      userDao.changePassword(oldUser);
+      return 1;
+    }
+
   }
 
 }

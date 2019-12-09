@@ -25,7 +25,7 @@
                     <a href="../change-pass.jsp"><i class="fa fa-gear fa-fw"></i> Change Password</a>
                 </div>
                 <div class="columnnew">
-                    <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </div>
             </div>
         </div>

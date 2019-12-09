@@ -3,6 +3,9 @@ package carsale.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
+import carsale.model.ChangePassword;
 import carsale.model.User;
 
 /**
@@ -76,5 +79,5 @@ public interface UserService {
 
   User getByUsername(String username);
   
-  void changePassword(User user);
+  int changePassword(HttpServletRequest request,ChangePassword changePassword);
 }

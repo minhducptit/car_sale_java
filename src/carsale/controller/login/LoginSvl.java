@@ -85,10 +85,6 @@ public class LoginSvl extends HttpServlet {
     String submit = request.getParameter("action");
     if (submit.equals("submit")) {
       User user = FormUtil.toModel(User.class, request);
-      System.out.println(user.getUserName());
-      System.out.println(user.getPassword());
-      System.out.println(user.getEmail());
-      System.out.println("Signup: " + user.toString());
       String url =
           Authentication.of(user.getUserName(), user.getPassword()).urlRediect(request);
       System.out.println("Login URL:" + url);

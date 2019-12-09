@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import carsale.model.Role;
 import carsale.model.User;
 import carsale.service.RoleService;
 import carsale.service.UserService;
@@ -40,13 +39,16 @@ public class UpdateUserController extends HttpServlet {
 
   /**
    * {@inheritDoc}
-   * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+   * 
+   * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest,
+   *      javax.servlet.http.HttpServletResponse)
    */
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     resp.getWriter().write("HEllo");
   }
+
   /**
    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
    *      response)
@@ -55,26 +57,23 @@ public class UpdateUserController extends HttpServlet {
       throws ServletException, IOException {
     String submit = request.getParameter("submit");
     System.out.println(submit);
-    if(submit.equals("Update user")) {
-      
+    if (submit.equals("Update user")) {
       User userUpdate = FormUtil.toModel(User.class, request);
       User user = (User) SessionUtil.getInstance().getValue(request, "USER");
       userUpdate.setUserId(user.getUserId());
-//    Role role = roleService.getRoleById(2);
-//    user.setRole(role);
-    System.out.println("Insert User Update " + userUpdate.toString());
-    userService.updateUser(userUpdate);
-    if(response.SC_OK==200) {
-      request.setAttribute("message", "Cập nhật tài khoản thành công");
-      RequestDispatcher rd = request.getRequestDispatcher("user-update.jsp");
-      rd.forward(request, response);
-    }else {
-      request.setAttribute("message", "Cập nhật tài khoản không thành công");
-      RequestDispatcher rd = request.getRequestDispatcher("user-update.jsp");
-      rd.forward(request, response);
+      System.out.println("Insert User Update " + userUpdate.toString());
+      userService.updateUser(userUpdate);
+      if (response.SC_OK == 200) {
+        request.setAttribute("message", "Cập nhật tài khoản thành công");
+        RequestDispatcher rd = request.getRequestDispatcher("user-update.jsp");
+        rd.forward(request, response);
+      } else {
+        request.setAttribute("message", "Cập nhật tài khoản không thành công");
+        RequestDispatcher rd = request.getRequestDispatcher("user-update.jsp");
+        rd.forward(request, response);
+      }
     }
-    }
-   
+
   }
 
 }
