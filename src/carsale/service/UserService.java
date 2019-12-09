@@ -52,7 +52,7 @@ public interface UserService {
    * @param user
    *          the user
    */
-  public void updateUser(User user);
+  public void updateUser(User user, int roleId);
 
   /**
    * Delete user.
@@ -76,4 +76,5 @@ public interface UserService {
 
   User getByUsername(String username);
   
+  void changePassword(User user);
 }

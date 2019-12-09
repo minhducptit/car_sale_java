@@ -56,4 +56,32 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     return result;
   }
 
+  /**
+   * {@inheritDoc}
+   * 
+   * @see carsale.dao.UserDao#updateUser(carsale.model.User)
+   */
+  @Override
+  public void updateUser(User user) {
+    StringBuilder sql = new StringBuilder("Update user AS u ");
+    sql.append(
+        " SET u.full_name=?, u.age=?,u.phone=?, u.email=?, u.address=?, u.username=?, u.role=?");
+    sql.append(" WHERE u.user_id=?");
+    update(sql.toString(), user.getFullName(), user.getAge(), user.getPhone(), user.getEmail(),
+        user.getAddress(), user.getUserName(), user.getUserId());
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see carsale.dao.UserDao#changePassword(carsale.model.User)
+   */
+  @Override
+  public void changePassword(User user) {
+    StringBuilder sql = new StringBuilder("Update user AS u ");
+    sql.append(" SET u.pass=?");
+    sql.append(" WHERE u.user_id=?");
+    update(sql.toString(), user.getPassword(), user.getUserId());
+  }
+
 }

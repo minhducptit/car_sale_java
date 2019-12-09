@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import carsale.dao.UserDao;
 import carsale.dao.impl.UserDaoImpl;
+import carsale.model.Role;
 import carsale.model.User;
+import carsale.service.RoleService;
 import carsale.service.UserService;
 
 // TODO: Auto-generated Javadoc
@@ -20,13 +22,15 @@ public class UserServiceImpl implements UserService {
 
   /** The b crypt. */
   private BCrypt bCrypt;
+  
+  private RoleService roleService;
 
   /**
    * Instantiates a new user service impl.
    */
   public UserServiceImpl() {
     userDao = new UserDaoImpl();
-
+    roleService= new RoleServiceImpl();
   }
 
   /**
@@ -82,9 +86,10 @@ public class UserServiceImpl implements UserService {
    * @see carsale.service.UserService#updateUser(carsale.model.User)
    */
   @Override
-  public void updateUser(User user) {
-    // TODO Auto-generated method stub
-
+  public void updateUser(User user, int roleId) {
+    Role role= roleService.getRoleById(roleId);
+    user.setRole(role);
+    userDao.updateUser(user);
   }
 
   /**
@@ -106,7 +111,6 @@ public class UserServiceImpl implements UserService {
    */
   @Override
   public User isExits(String username, String password) {
-
     return userDao.isExits(username, password);
   }
 
@@ -118,6 +122,18 @@ public class UserServiceImpl implements UserService {
   @Override
   public User getByUsername(String userName) {
     return userDao.getByUsername(userName);
+  }
+
+  /**
+   * {@inheritDoc}
+   * @see carsale.service.UserService#changePassword(carsale.model.User)
+   */
+  @Override
+  public void changePassword(User user) {
+   String passwordEncoding =
+       BCrypt.withDefaults().hashToString(12, user.getPassword().toCharArray());
+    user.setPassword(passwordEncoding);
+    userDao.changePassword(user);
   }
 
 }
