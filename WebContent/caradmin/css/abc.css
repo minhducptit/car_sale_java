@@ -1,0 +1,246 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.clearfix:after {
+    display: block;
+    clear: both;
+}
+
+.wrapper {
+    width: 100%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    background: #3e3436;
+    margin: 1px 1px 1px;
+}
+
+
+/*----- Phần menu -----*/
+
+.menu {
+    width: 1000px;
+    margin: 0px auto;
+    background: #ff0000;
+    height: 50px;
+    margin-top: 1px;
+}
+
+.menu li {
+    margin: 0px;
+    list-style: none;
+    font-family: 'Ek Mukta';
+}
+
+.menu a {
+    transition: all linear 0.15s;
+    color: #919191;
+    text-decoration: none;
+}
+
+.menu li:hover>a,
+.menu .current-item>a {
+    text-decoration: none;
+    color: #ff0000;
+}
+
+.menu .arrow {
+    font-size: 11px;
+    line-height: 0%;
+}
+
+
+/*----- css cho phần menu cha -----*/
+
+.menu>ul>li {
+    float: left;
+    display: inline-block;
+    position: relative;
+    font-size: 19px;
+}
+
+.menu>ul>li>a {
+    padding: 10px 40px;
+    display: inline-block;
+    color: white;
+}
+
+.menu>ul>li:hover>a,
+.menu>ul>.current-item>a {
+    background: #2e2728;
+}
+
+
+/*----css cho menu con----*/
+
+.menu li:hover .sub-menu {
+    z-index: 1;
+    opacity: 1;
+}
+
+.sub-menu {
+    width: 160%;
+    padding: 5px 0px;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity linear 0.15s;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    background: #2e2728;
+}
+
+.sub-menu li {
+    display: block;
+    font-size: 16px;
+}
+
+.sub-menu li a {
+    padding: 10px 30px;
+    display: block;
+}
+
+.sub-menu li a:hover,
+.sub-menu .current-item a {
+    background: #3e3436;
+}
+
+
+/* Contact Style */
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+/* Style the container/contact section */
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+
+
+/* Create two columns that float next to eachother */
+
+.contact {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+}
+
+
+/* Clear floats after the columns */
+
+.cot:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 600px) {
+    .contact,
+    input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+.calsale {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    border-top: solid 10px #E6E6E6;
+    border-bottom: solid 10px #E6E6E6;
+    border-left: solid 200px #E6E6E6;
+    border-right: solid 200px #E6E6E6;
+    background-color: #4d4d4d;
+    color: #FFFFFF;
+    height: 580px;
+}
+
+.calsale-1 {
+    font-family: Tahoma;
+    font-weight: 500;
+}
+
+.calsale-2 {
+    float: left;
+    width: 50px;
+    margin-top: 6px;
+    padding: 20px;
+}
+
+
+/*
+Nút Buttom
+*/
+
+#country {
+    width: 300px;
+    height: 80px;
+}
+
+#tienvay {
+    width: 400px;
+    height: 80px;
+}
+
+#tienvaypt {
+    width: 400px;
+    height: 80px;
+}
+
+#vnd {
+    width: 400px;
+    height: 80px;
+}
+
+#laixuatvay {
+    width: 400px;
+    height: 80px;
+    margin-top: 10px;
+}
+
+#thoihanvay {
+    width: 400px;
+    height: 80px;
+}
+
+#sub {
+    width: 100px;
+    height: 50px;
+    color: yellow;
+}
+
+#res {
+    width: 100px;
+    height: 50px;
+    color: red;
+}
