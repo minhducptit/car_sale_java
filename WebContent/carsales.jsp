@@ -9,13 +9,16 @@
 	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 	<link href="css/abc.css" rel="stylesheet" type="text/css" />
 	<link href="css/content.css" rel="stylesheet" type="text/css" />
-
-	<meta charset="UTF-8">
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Car-sale</title>
 	<link rel="stylesheet" href="./css/slider.css">
-	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+	<!--link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'-->
+	<link
+	href="https://fonts.googleapis.com/css?family=Be+Vietnam&display=swap"
+	rel="stylesheet">
+	<script src="https://kit.fontawesome.com/33edc35265.js"></script>
 </head>
 
 <body>
@@ -34,28 +37,120 @@
 		</div>
 		<div class="calsales-2">
 			<form action="/carsales.jsp">
-				<select id="country" name="country">
-					<option value="0">Chọn xe bạn muốn mua</option>
-					<option value="fotuner">Fortuner 2.4G 4×2 AT</option>
-					<option value="rush">Toyota Rush 2018</option>
-					<option value="vios">Vios 1.5E (MT)</option>
-					<option value="corolla">Corolla Altis 1.8G (CVT)</option>
-				</select>&nbsp; <input type="text" id="vnd" placeholder="0 VND" disabled>
-				<input type="number" id="tienvay" min="1" max="1000000000" placeholder="Nhập số tiền vay (vnd)">&nbsp;
-				<input type="number" id="tienvaypt" min="1" max="100" placeholder="Nhập số tiền vay tính theo (%)">
+				<select id="country" name="country" onchange="itemSelected()">
+					<option value="0" >Chọn xe bạn muốn mua</option>
+				</select>&nbsp; <input type="text" id="vnd" placeholder="giá bán" disabled>
+				<input type="number" id="tienvay" min="1" max="1000000000" placeholder="Nhập số tiền vay (vnd)" onchange="calcu()">&nbsp;
+				<input type="number" id="tienvaypt" min="1.00" max="100.00" step="0.01" placeholder="Nhập số tiền vay tính theo (%)" disabled>
 				<input type="number" id="laixuatvay" min="1" max="100" placeholder="Nhập lãi xuất vay (%/thang)">&nbsp;
-				<input type="number" id="thoihanvay" min="1" max="1000000" placeholder="Nhập thời hạn vay (tháng)">
+				<input type="number" id="thoihanvay" min="1" max="10" placeholder="Nhập thời hạn vay (tháng)">
 			</form>
+			
 		</div>
+			
 		<br>
 		<div class="thanhtoan">
-			<input id="sub" type="submit" value="Submit"> <input id="res" type="reset" value="Clear">
+			<input id="sub" type="submit" value="Submit" onclick="saveSubmit()"> <input id="res" type="reset" value="Clear" onclick="resetInfo()">
 		</div>
-
+		<div style="margin: 0 10% 0 10%">
+            <table class="responstable">
+                <thead>
+                    <tr>
+                        <th>
+                            <h1>TÊN XE</h1>
+                        </th>
+                        <th>
+                             <h1>GIÁ(vnd)</h1>
+                        </th>
+                        <th>
+                             <h1>SỐ TIỀN VAY(vnd)</h1>
+                        </th>
+                        <th>
+                             <h1>LÃI SUẤT(%/tháng)</h1>
+                        </th>
+                        <th>
+                             <h1>THỜI HẠN(tháng)</h1>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="formSale">
+                </tbody>
+            </table>
+        </div>
 	</div>
 	<!-- Footer -->
 	<jsp:include page="jsp/footer.jsp"></jsp:include>
+	<!-- test -->
+			<script type="text/javascript">
+			test();
 
+	        function test() {
+	            var f = $.ajax({
+	                url: "http://localhost:8080/CarSale/api/list-price",
+	                type: "GET",
+	                dataType: "json",
+	                contentType: "application/json; charset=utf-8"
+	            });
+	            f.done(function (result) {
+	                console.log(result);
+	                var items='';
+	                for(let i=0;i<result.length;i++){
+	                	items+= '<option value="'+result[i].carName+'" >'+result[i].carName+'</option>' ;
+	                }
+	                console.log(items);
+	                $("#country").append(items);
+	            });
+	        }  
+	        
+	        
+	        function itemSelected(){
+	        	var selected_index = document.getElementById('country').selectedIndex;
+	        	var t = $.ajax({
+	                url: "http://localhost:8080/CarSale/api/car-detail?id="+selected_index,
+	                type: "GET",
+	                dataType: "json",
+	                contentType: "application/json; charset=utf-8"
+	            });
+	        	t.done(function (info) {
+	                console.log(info);  
+					if(selected_index>0){
+						document.getElementById('vnd').value=info.carPrice;
+					}else{
+						document.getElementById('vnd').value='giá bán';
+					}
+	            });
+	        }
+	        
+	        function calcu(){
+	        	var loan=document.getElementById('tienvay').value;
+	        	console.log(loan);
+	        	var price=document.getElementById('vnd').value;
+	        	console.log(price);
+	        	var div=(loan/price)*100;
+	        	document.getElementById('tienvaypt').value=div.toFixed(2);
+	        }
+	        function resetInfo(){
+	        	 location.reload();
+	        }
+	        function saveSubmit(){
+	        	var carname=document.getElementById('country').value;
+	        	var price=document.getElementById('vnd').value;
+	        	var loan=document.getElementById('tienvay').value;
+	        	var rate=document.getElementById('laixuatvay').value;
+	        	var dur=document.getElementById('thoihanvay').value;
+	        	var inform='<tr>' +
+                '<td>' + carname + '</td>' +
+                '<td>' + price + '</td>' +
+                '<td>' + loan + '</td>' +
+                '<td>' + rate +'</td>'+
+                '<td>' + dur +'</td>'+
+                '</tr>';
+                
+                $("#formSale").append(inform);
+	        }
+			</script>
+							
+			<!-- test -->	
 </body>
 
 </html>
