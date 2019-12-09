@@ -43,22 +43,22 @@
                     <form action="" method="POST">
                         <div class="form-group">
                             <label>Old Password</label> <br>
-                            <input type="password class=" form-control" name="oldpass"
+                            <input type="text" class=" form-control" name="oldpass"
                                 placeholder="Please enter old password" />
                         </div>
                         <div class="form-group">
                             <label>New Password</label> <br>
-                            <input type="password" class="form-control" name="newpass"
+                            <input type="text" class="form-control" name="newpass"
                                 placeholder="Please enter new password" />
                         </div>
                         <div class="form-group">
                             <label>Confirm Password</label> <br>
-                            <input type="password" class="form-control" name="confirmpass"
+                            <input type="text" class="form-control" name="confirmpass"
                                 placeholder="Please enter confirm password" />
                         </div>
                         <br>
                         <button type="submit" class="btn btn-default">Update</button>
-                        <button type="reset"> <a href="new_list.html"> Cancel</a></button>
+                        <button type="reset"> <a href="index.jsp"> Cancel</a></button>
                         <form>
                 </div>
             </div>
