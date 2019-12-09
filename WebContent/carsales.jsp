@@ -78,6 +78,31 @@
             </table>
         </div>
 	</div>
+	<div style="margin: 0 10% 0 10%">
+            <table class="responstable">
+                <thead>
+                    <tr>
+                        <th>
+                            <h1>THÁNG</h1>
+                        </th>
+                        <th>
+                             <h1>TIỀN GỐC(vnd)</h1>
+                        </th>
+                        <th>
+                             <h1>TIỀN LÃI(vnd)</h1>
+                        </th>
+                        <th>
+                             <h1>GỐC + LÃI(vnd)</h1>
+                        </th>
+                        <th>
+                             <h1>DƯ NỢ(vnd)</h1>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="tabletwo">
+                </tbody>
+            </table>
+        </div>
 	<!-- Footer -->
 	<jsp:include page="jsp/footer.jsp"></jsp:include>
 	<!-- test -->
@@ -138,15 +163,41 @@
 	        	var loan=document.getElementById('tienvay').value;
 	        	var rate=document.getElementById('laixuatvay').value;
 	        	var dur=document.getElementById('thoihanvay').value;
+	        	var cashpermonth=loan/dur;
+	        	console.log(cashpermonth);
 	        	var inform='<tr>' +
                 '<td>' + carname + '</td>' +
                 '<td>' + price + '</td>' +
                 '<td>' + loan + '</td>' +
                 '<td>' + rate +'</td>'+
                 '<td>' + dur +'</td>'+
-                '</tr>';
+                '</tr>';  
+                var table='';
+                var total=Number(loan);
                 
+                for(let i=0;i<dur;i++){
+                	var month=i+1;
+                	var inpermonth=(price*rate*0.01)-(cashpermonth*i*rate*0.01);
+                	var sum=cashpermonth+(price*rate*0.01)-(cashpermonth*i*rate*0.01);
+                	total+=inpermonth;
+                	var remain=price-cashpermonth*i;
+                	table+='<tr>'+
+                	'<td>'+month+'</td>'+
+                    '<td>'+cashpermonth+'</td>'+
+                    '<td>'+inpermonth+'</td>'+
+                    '<td>'+sum+'</td>'+
+                    '<td>'+remain+'</td>'+
+                    '</tr>';
+                }
+                
+               table+='<tr>'+
+           	'<td colspan="2">TỔNG GỐC:'+loan+'</td>'+
+            '<td colspan="3">TỔNG GỐC+LÃI:'+total+'</td>'+
+            '</tr>';
+                console.log(table);
                 $("#formSale").append(inform);
+                $("#tabletwo").append(table);
+//                 '<h1>TỔNG GỐC:'+loan+'    TỔNG GỐC+LÃI:'+total+'</h1>'
 	        }
 			</script>
 							
