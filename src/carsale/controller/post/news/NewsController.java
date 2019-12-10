@@ -20,13 +20,13 @@ import carsale.service.Impl.PostServiceImpl;
  */
 @WebServlet("/api/news")
 public class NewsController extends HttpServlet {
-  
+
   /** The Constant serialVersionUID. */
   private static final long serialVersionUID = 1L;
-  
+
   /** The post service. */
   private PostService postService;
-  
+
   /** The gson. */
   private Gson gson;
 
@@ -43,10 +43,14 @@ public class NewsController extends HttpServlet {
   /**
    * Do get.
    *
-   * @param request the request
-   * @param response the response
-   * @throws ServletException the servlet exception
-   * @throws IOException Signals that an I/O exception has occurred.
+   * @param request
+   *          the request
+   * @param response
+   *          the response
+   * @throws ServletException
+   *           the servlet exception
+   * @throws IOException
+   *           Signals that an I/O exception has occurred.
    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
    *      response)
    */
@@ -60,5 +64,4 @@ public class NewsController extends HttpServlet {
     response.setCharacterEncoding("UTF-8");
     response.getWriter().write(json);
   }
-
 }

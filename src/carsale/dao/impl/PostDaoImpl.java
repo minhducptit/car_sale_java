@@ -82,4 +82,58 @@ public class PostDaoImpl extends AbstractDao<Post> implements PostDao {
     }
   }
 
+  /**
+   * {@inheritDoc}
+   * 
+   * @see carsale.dao.PostDao#deleteNews(int)
+   */
+  @Override
+  public Long deleteNews(int newId) {
+    StringBuilder sql = new StringBuilder("DELETE FROM post  ");
+    sql.append(" WHERE post.type_post='tin tức' AND post.post_id=? ");
+    Long result = delete(sql.toString(), newId);
+    return result;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see carsale.dao.PostDao#deleteService(int)
+   */
+  @Override
+  public Long deleteService(int serviceId) {
+    StringBuilder sql = new StringBuilder("DELETE FROM post  ");
+    sql.append(" WHERE post.type_post='dịch vụ' AND post.post_id=? ");
+    Long result = delete(sql.toString(), serviceId);
+    return result;
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see carsale.dao.PostDao#updateNews(carsale.model.Post)
+   */
+  @Override
+  public void updateNews(Post post) {
+    System.out.println("Post Dao" + post);
+    StringBuilder sql = new StringBuilder("UPDATE post AS p ");
+    sql.append(" SET p.title=? , p.des=?");
+    sql.append(" WHERE p.post_id=? ");
+    update(sql.toString(), post.getPostTitle(), post.getPostDes(), post.getPostId());
+  }
+
+  /**
+   * {@inheritDoc}
+   * 
+   * @see carsale.dao.PostDao#updateService(carsale.model.Post)
+   */
+  @Override
+  public void updateService(Post post) {
+    System.out.println("Post Dao" + post);
+    StringBuilder sql = new StringBuilder("UPDATE post AS p ");
+    sql.append(" SET p.title=? , p.des=?");
+    sql.append(" WHERE p.post_id=? ");
+    update(sql.toString(), post.getPostTitle(), post.getPostDes(), post.getPostId());
+  }
+
 }

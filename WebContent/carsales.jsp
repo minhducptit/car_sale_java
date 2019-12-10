@@ -167,8 +167,8 @@
 	        	console.log(cashpermonth);
 	        	var inform='<tr>' +
                 '<td>' + carname + '</td>' +
-                '<td>' + price + '</td>' +
-                '<td>' + loan + '</td>' +
+                '<td>' + price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })+ '</td>' +
+                '<td>' + loan.toLocaleString('it-IT', { style: 'currency', currency: 'VND' }) + '</td>' +
                 '<td>' + rate +'</td>'+
                 '<td>' + dur +'</td>'+
                 '</tr>';  
@@ -183,16 +183,16 @@
                 	var remain=price-cashpermonth*i;
                 	table+='<tr>'+
                 	'<td>'+month+'</td>'+
-                    '<td>'+cashpermonth+'</td>'+
-                    '<td>'+inpermonth+'</td>'+
-                    '<td>'+sum+'</td>'+
-                    '<td>'+remain+'</td>'+
+                    '<td>'+cashpermonth.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })+'</td>'+
+                    '<td>'+inpermonth.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })+'</td>'+
+                    '<td>'+sum.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })+'</td>'+
+                    '<td>'+remain.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })+'</td>'+
                     '</tr>';
                 }
                 
                table+='<tr>'+
-           	'<td colspan="2">TỔNG GỐC:'+loan+'</td>'+
-            '<td colspan="3">TỔNG GỐC+LÃI:'+total+'</td>'+
+           	'<td colspan="2">TỔNG GỐC:'+loan.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })+'</td>'+
+            '<td colspan="3">TỔNG GỐC+LÃI:'+total.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })+'</td>'+
             '</tr>';
                 console.log(table);
                 $("#formSale").append(inform);

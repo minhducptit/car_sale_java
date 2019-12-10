@@ -56,4 +56,45 @@ public class PostServiceImpl implements PostService {
     return postDao.getServiceById(serviceId);
   }
 
+  /**
+   * {@inheritDoc}
+   * @see carsale.service.PostService#deleteNews(int)
+   */
+  @Override
+  public Long deleteNews(int newId) {
+    return postDao.deleteNews(newId);
+  }
+
+  /**
+   * {@inheritDoc}
+   * @see carsale.service.PostService#deleteService(int)
+   */
+  @Override
+  public Long deleteService(int serviceId) {
+   return postDao.deleteService(serviceId);
+  }
+
+  /**
+   * {@inheritDoc}
+   * @see carsale.service.PostService#updateNews(carsale.model.Post, int)
+   */
+  @Override
+  public void updateNews(Post post) {
+    java.util.Date today=new java.util.Date();
+    java.sql.Date date=new java.sql.Date(today.getTime()); 
+    post.setTimeUpdate(date);
+    postDao.updateNews(post);
+  }
+
+  /**
+   * {@inheritDoc}
+   * @see carsale.service.PostService#updateService(carsale.model.Post, int)
+   */
+  @Override
+  public void updateService(Post post) {
+    java.util.Date today=new java.util.Date();
+    java.sql.Date date=new java.sql.Date(today.getTime()); 
+    post.setTimeUpdate(date);
+    postDao.updateService(post);
+  }
 }

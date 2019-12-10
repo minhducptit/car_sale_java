@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Car-sale</title>
+    <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="css/abc.css" type="text/css" />
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="./css/design_fromAD.css" type="text/css">
@@ -79,6 +80,7 @@
         });
         t.done(function (result) {
             //Show list news
+            var size = result.length;
             var content = '';
             for (var i = 0; i < result.length; i++) {
                 content += '<tr class="odd gradeX" align="center">' +
@@ -87,14 +89,27 @@
                     '<td>' + result[i].postContent + '</td>' +
                     '<td>' + result[i].timeUpdate + '</td>' +
                     '<td>' + result[i].postType + '</td>' +
-                    '<td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>' +
+                    '<td class="center"><i class="fa fa-trash-o  fa-fw"></i><button onclick="deleteNew(' + result[i].postId + ')" id="newDelete">Delete</button></td>' +
                     '<td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="new-edit.jsp?id=' + result[i].postId + '">Edit</a></td>' +
                     ' </tr>';
             }
             $("#listNews").append(content);
         });
-    }
 
+    }
+    function deleteNews(id) {
+        var myBtn = document.getElementById("newDelete").addEventListener("click", function (event) {
+            deleteNewsById(id);
+        });
+    }
+    function deleteNewsById(id) {
+        var t = $.ajax({
+            url: "http://localhost:8080/CarSale/admin/new-update?id=" + id,
+            type: "DELETE",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8"
+        });
+    }
 </script>
 
 </html>

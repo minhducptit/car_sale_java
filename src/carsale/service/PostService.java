@@ -16,4 +16,12 @@ public interface PostService {
   public Post getNewById(int newsId);
 
   public Post getServiceById(int serviceId);
+  
+  public Long deleteNews(int newId);
+  
+  public Long deleteService(int serviceId);
+
+  public void updateNews(Post post);
+  
+  public void updateService(Post post);
 }

@@ -3,7 +3,6 @@ package carsale.model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.ArrayList;
 
 // TODO: Auto-generated Javadoc
 /**

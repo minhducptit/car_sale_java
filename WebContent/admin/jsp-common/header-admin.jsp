@@ -52,7 +52,7 @@
             <a href="new-list.jsp"><i class="fa fa-newspaper-o" style="font-size:20px;color:red">&nbsp</i>Tin tức</a>
         </div>
         <div class="dropdown">
-            <a href="#"><i class="fa fa-codepen" style="font-size:20px;color:red">&nbsp</i>Dịch vụ</a>
+            <a href="service-list.jsp"><i class="fa fa-codepen" style="font-size:20px;color:red">&nbsp</i>Dịch vụ</a>
         </div>
     </div>
     <script>
