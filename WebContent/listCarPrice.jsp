@@ -77,7 +77,7 @@
                     '<td>' + array[i].carDes + '</td>' +
                     '<td>' + (array[i].carPrice).toLocaleString('it-IT', { style: 'currency', currency: 'VND' }) + '</td>' +
                     '<td>' +
-                    '<button class="button-contact1">' +
+                    '<button class="button-contact1" id="'+i+'b" onclick="clickInstallment()">' +
                     '<img src="./icon/wallet_16px.png" />' +
                     '<p>' + '<%=resourceBundle.getString("tinhmuatragop")%>' + '</p>' +
                     '</button>' +
@@ -95,6 +95,14 @@
        			var myBtn = document.getElementById(i);
 	       		myBtn.addEventListener('click', function(event) {
 	        		    window.location.href='costEstimates.jsp';
+        		});
+       	 }
+       }
+       function clickInstallment(){  
+    	   for(var i=0;i<soLuongXe;i++){
+       			var btn = document.getElementById(''+i+'b');
+	       		btn.addEventListener('click', function(event) {
+	        		    window.location.href='carsales.jsp';
         		});
        	 }
        }

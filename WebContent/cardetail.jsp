@@ -112,7 +112,7 @@
 						<div class="description">
 							<div id="carDes"></div>
 							<div style="padding-top: 50px; padding-left: 50px;">
-								<button class="button-detail">Đăng ký mua trả góp</button>
+								<button class="button-detail" onclick="clickInstallment()" id="button-installment">Đăng ký mua trả góp</button>
 								<button class="button-detail" id="button-cost-estimates"
 									onclick="clickCostEstimates()"><%=resourceBundle.getString("costestimates")%></button>
 							</div>
@@ -261,6 +261,14 @@
 				window.location.href = 'costEstimates.jsp';
 			});
 		}
+		function clickInstallment(){  
+	    	   
+	       			var btn = document.getElementById('button-installment');
+		       		btn.addEventListener('click', function(event) {
+		        		    window.location.href='carsales.jsp';
+	        		});
+	       	 
+	       }
 	</script>
 </body>
 
