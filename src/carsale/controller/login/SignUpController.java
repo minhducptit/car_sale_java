@@ -58,7 +58,7 @@ public class SignUpController extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     User user = FormUtil.toModel(User.class, request);
-    Role role = roleService.getRoleById(2);
+    Role role = roleService.getRoleById(1);
     user.setRole(role);
     System.out.println("Insert User " + user.toString());
     Long result = userService.insertUser(user);
